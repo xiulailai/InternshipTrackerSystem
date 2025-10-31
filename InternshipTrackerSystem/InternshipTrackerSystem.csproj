@@ -12,4 +12,10 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Forms\CompanyHR\" />
+    <Folder Include="Forms\Admin\" />
+    <Folder Include="Forms\Student\" />
+  </ItemGroup>
+
 </Project>
