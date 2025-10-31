@@ -52,42 +52,6 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
-        /// Retrieves supervisor details by supervisor ID
-        /// </summary>
-        /// <param name="supervisorId">Supervisor ID</param>
-        /// <returns>SupervisorModel object</returns>
-        public static SupervisorModel GetSupervisorById(int supervisorId)
-        {
-            try
-            {
-                string query = @"
-                    SELECT s.SupervisorID, s.UserID, s.FullName, s.Department, 
-                           s.ContactNumber, s.Specialization,
-                           u.Username, u.Email, u.UserRole, u.IsActive, u.CreatedDate
-                    FROM Supervisors s
-                    INNER JOIN Users u ON s.UserID = u.UserID
-                    WHERE s.SupervisorID = @SupervisorId";
-
-                var parameters = new Dictionary<string, object>
-                {
-                    { "@SupervisorId", supervisorId }
-                };
-
-                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
-
-                if (dt.Rows.Count > 0)
-                {
-                    return MapToSupervisorModel(dt.Rows[0]);
-                }
-
-                return null;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error retrieving supervisor: {ex.Message}", ex);
-            }
-        }
 
         /// <summary>
         /// Updates supervisor profile information
