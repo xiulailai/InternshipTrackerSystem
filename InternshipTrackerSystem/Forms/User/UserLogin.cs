@@ -45,7 +45,7 @@ namespace InternshipTrackerSystem.Forms
                 {
                     frmSupvMain supervisorForm = new frmSupvMain(userID);
                     supervisorForm.Show();
-                    this.Hide(); 
+                    this.Hide();
                 }
                 else if (role == "Student")
                 {
@@ -72,6 +72,8 @@ namespace InternshipTrackerSystem.Forms
         {
             Application.Exit(); //this is to exit the form
         }
+
+
     }
 }
 
