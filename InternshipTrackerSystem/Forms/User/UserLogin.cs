@@ -70,7 +70,7 @@ namespace InternshipTrackerSystem.Forms
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); //this is to exit the form
         }
 
 
