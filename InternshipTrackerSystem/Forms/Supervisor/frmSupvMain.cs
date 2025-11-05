@@ -20,6 +20,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
         private int supervisorId;
         private SupervisorModel supervisor;
         private Timer refreshTimer;
+        private bool isLoggingOut = false;
 
         public frmSupvMain(int userId)
         {
@@ -271,6 +272,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 if (result == DialogResult.Yes)
                 {
                     // Stop timer
+                    isLoggingOut = true;
                     if (refreshTimer != null)
                     {
                         refreshTimer.Stop();
@@ -278,11 +280,12 @@ namespace InternshipTrackerSystem.Forms.Supervisor
 
                     // Close this form and return to login
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    this.Hide();
 
                     // Show login form (assumes you have UserLogin form)
-                    // UserLogin loginForm = new UserLogin();
-                    // loginForm.Show();
+                    frmUserLogin loginForm = new frmUserLogin();
+                    loginForm.Show();
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -405,6 +408,11 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void frmSupvMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!isLoggingOut) Application.Exit(); 
         }
     }
 }

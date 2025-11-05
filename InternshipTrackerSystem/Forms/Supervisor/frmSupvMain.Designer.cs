@@ -393,6 +393,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Supervisor Dashboard";
             FormClosing += frmSupvMain_FormClosing;
+            FormClosed += frmSupvMain_FormClosed;
             Load += frmSupvMain_Load;
             ResumeLayout(false);
             PerformLayout();

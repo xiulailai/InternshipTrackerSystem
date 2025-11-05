@@ -436,6 +436,5 @@ namespace InternshipTrackerSystem
                 errorProvider1.SetError(txtContacts, "");
             }
         }
-
     }
 }

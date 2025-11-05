@@ -43,9 +43,9 @@ namespace InternshipTrackerSystem.Forms
                 // 🧩 Redirect based on role
                 if (role == "Supervisor")
                 {
-                    frmSupvMain supervisorForm = new frmSupvMain(userID);
-                    supervisorForm.Show();
                     this.Hide();
+                    frmSupvMain supervisorForm = new frmSupvMain(userID);
+                    supervisorForm.ShowDialog();
                 }
                 else if (role == "Student")
                 {
