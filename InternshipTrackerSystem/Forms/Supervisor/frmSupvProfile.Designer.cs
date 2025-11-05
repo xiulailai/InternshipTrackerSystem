@@ -102,7 +102,7 @@
             txtName.Font = new Font("Segoe UI", 9F);
             txtName.Location = new Point(160, 30);
             txtName.Name = "txtName";
-            txtName.Size = new Size(200, 27);
+            txtName.Size = new Size(220, 27);
             txtName.TabIndex = 4;
             // 
             // txtDepartment
@@ -110,7 +110,7 @@
             txtDepartment.Font = new Font("Segoe UI", 9F);
             txtDepartment.Location = new Point(160, 65);
             txtDepartment.Name = "txtDepartment";
-            txtDepartment.Size = new Size(200, 27);
+            txtDepartment.Size = new Size(220, 27);
             txtDepartment.TabIndex = 4;
             // 
             // txtContacts
@@ -118,7 +118,7 @@
             txtContacts.Font = new Font("Segoe UI", 9F);
             txtContacts.Location = new Point(160, 100);
             txtContacts.Name = "txtContacts";
-            txtContacts.Size = new Size(200, 27);
+            txtContacts.Size = new Size(220, 27);
             txtContacts.TabIndex = 4;
             txtContacts.TextChanged += txtContacts_TextChanged;
             txtContacts.Leave += txtContacts_Leave;
@@ -129,7 +129,7 @@
             txtSpecialization.Font = new Font("Segoe UI", 9F);
             txtSpecialization.Location = new Point(160, 135);
             txtSpecialization.Name = "txtSpecialization";
-            txtSpecialization.Size = new Size(200, 27);
+            txtSpecialization.Size = new Size(220, 27);
             txtSpecialization.TabIndex = 4;
             // 
             // btnBack

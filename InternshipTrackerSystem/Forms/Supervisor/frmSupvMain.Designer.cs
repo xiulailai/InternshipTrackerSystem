@@ -269,7 +269,7 @@
             txtEmail.Location = new Point(250, 100);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
-            txtEmail.Size = new Size(150, 23);
+            txtEmail.Size = new Size(200, 23);
             txtEmail.TabIndex = 7;
             // 
             // lblEmail
