@@ -71,7 +71,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
             try
             {
                 // Fetch supervisor details
-                supervisor = SupervisorService.GetSupervisorByUserId(userId);
+                supervisor = SupervisorClass.GetSupervisorByUserId(userId);
 
                 if (supervisor == null)
                 {
@@ -108,7 +108,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
             try
             {
                 // Fetch statistics
-                SupervisorStatisticsModel stats = SupervisorService.GetSupervisorStatistics(supervisorId);
+                SupervisorStatisticsModel stats = SupervisorClass.GetSupervisorStatistics(supervisorId);
 
                 if (stats != null)
                 {
@@ -143,7 +143,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
         {
             try
             {
-                int unreadCount = SupervisorService.GetUnreadNotificationCount(userId);
+                int unreadCount = SupervisorClass.GetUnreadNotificationCount(userId);
 
                 if (unreadCount > 0)
                 {
@@ -362,7 +362,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 string message = $"Welcome back, {supervisor.FullName}!\n\n";
 
                 // Add contextual messages based on statistics
-                var stats = SupervisorService.GetSupervisorStatistics(supervisorId);
+                var stats = SupervisorClass.GetSupervisorStatistics(supervisorId);
 
                 if (stats.PendingReports > 0)
                 {

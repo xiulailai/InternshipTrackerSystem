@@ -197,7 +197,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 this.Cursor = Cursors.WaitCursor;
 
                 // Fetch internships from database
-                allInternships = SupervisorService.GetInternshipsBySupervisor(supervisorId);
+                allInternships = SupervisorClass.GetInternshipsBySupervisor(supervisorId);
 
                 // Bind to DataGridView
                 dgvInterns.DataSource = null;
@@ -239,7 +239,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 this.Cursor = Cursors.WaitCursor;
 
                 // Search using service
-                List<InternshipModel> searchResults = SupervisorService.SearchInternships(supervisorId, searchTerm);
+                List<InternshipModel> searchResults = SupervisorClass.SearchInternships(supervisorId, searchTerm);
 
                 // Update display
                 dgvInterns.DataSource = null;
@@ -432,7 +432,7 @@ Program: {student.Program ?? "N/A"}
                 }
 
                 // Get student details
-                StudentModel student = SupervisorService.GetStudentById(selectedInternship.StudentId);
+                StudentModel student = SupervisorClass.GetStudentById(selectedInternship.StudentId);
 
                 if (student == null)
                 {

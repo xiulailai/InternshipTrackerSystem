@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InternshipTrackerSystem.Services
 {
-    public class UserService
+    public class UserClass
     {
         public DataRow Login(string email, string password)
         {

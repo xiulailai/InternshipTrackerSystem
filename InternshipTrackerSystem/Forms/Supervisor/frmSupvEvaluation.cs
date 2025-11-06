@@ -116,7 +116,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
             try
             {
                 // Get internships needing evaluation
-                var internships = SupervisorService.GetInternshipsNeedingEvaluation(supervisorId);
+                var internships = SupervisorClass.GetInternshipsNeedingEvaluation(supervisorId);
 
                 if (internships == null || internships.Count == 0)
                 {
@@ -192,7 +192,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
         {
             try
             {
-                currentInternship = SupervisorService.GetInternshipById(internshipId);
+                currentInternship = SupervisorClass.GetInternshipById(internshipId);
 
                 if (currentInternship == null)
                 {
@@ -205,7 +205,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 }
 
                 // Validate supervisor access
-                if (!SupervisorService.ValidateSupervisorAccess(supervisorId, internshipId))
+                if (!SupervisorClass.ValidateSupervisorAccess(supervisorId, internshipId))
                 {
                     MessageBox.Show("You do not have permission to evaluate this internship.",
                         "Access Denied",
@@ -239,7 +239,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 if (!selectedInternshipId.HasValue)
                     return;
 
-                existingEvaluation = SupervisorService.GetEvaluationByInternship(selectedInternshipId.Value);
+                existingEvaluation = SupervisorClass.GetEvaluationByInternship(selectedInternshipId.Value);
 
                 if (existingEvaluation != null)
                 {
@@ -361,7 +361,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                     return;
 
                 // Check if evaluation already exists
-                if (SupervisorService.HasEvaluation(selectedInternshipId.Value))
+                if (SupervisorClass.HasEvaluation(selectedInternshipId.Value))
                 {
                     MessageBox.Show("An evaluation already exists for this internship. Use 'Update' instead.",
                         "Duplicate Evaluation",
@@ -398,7 +398,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 evaluation.CalculateOverallScore();
 
                 // Save to database
-                int evaluationId = SupervisorService.CreateEvaluation(evaluation);
+                int evaluationId = SupervisorClass.CreateEvaluation(evaluation);
 
                 if (evaluationId > 0)
                 {
@@ -535,7 +535,7 @@ RECOMMENDATIONS:
                 existingEvaluation.CalculateOverallScore();
 
                 // Update in database
-                bool success = SupervisorService.UpdateEvaluation(existingEvaluation);
+                bool success = SupervisorClass.UpdateEvaluation(existingEvaluation);
 
                 if (success)
                 {
@@ -577,7 +577,7 @@ RECOMMENDATIONS:
                     return;
                 }
 
-                existingEvaluation = SupervisorService.GetEvaluationByInternship(selectedInternshipId.Value);
+                existingEvaluation = SupervisorClass.GetEvaluationByInternship(selectedInternshipId.Value);
 
                 if (existingEvaluation != null)
                 {

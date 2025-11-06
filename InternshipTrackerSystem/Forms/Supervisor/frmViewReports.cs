@@ -250,7 +250,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 if (result == DialogResult.Yes)
                 {
                     // Update status to Approved
-                    bool success = SupervisorService.UpdateReportStatus(selectedReport.ReportId, "Approved");
+                    bool success = SupervisorClass.UpdateReportStatus(selectedReport.ReportId, "Approved");
 
                     if (success)
                     {
@@ -303,7 +303,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 }
 
                 // Update status to Rejected
-                bool success = SupervisorService.UpdateReportStatus(selectedReport.ReportId, "Rejected");
+                bool success = SupervisorClass.UpdateReportStatus(selectedReport.ReportId, "Rejected");
 
                 if (success)
                 {
@@ -636,17 +636,17 @@ REPORT CONTENT:
             if (statusFilter == "Submitted")
             {
                 // Load only pending/submitted reports
-                allReports = SupervisorService.GetPendingReports(supervisorId);
+                allReports = SupervisorClass.GetPendingReports(supervisorId);
             }
             else if (statusFilter == "All")
             {
                 // Load all reports
-                allReports = SupervisorService.GetAllReportsBySupervisor(supervisorId);
+                allReports = SupervisorClass.GetAllReportsBySupervisor(supervisorId);
             }
             else
             {
                 // Load all and filter by status
-                allReports = SupervisorService.GetAllReportsBySupervisor(supervisorId);
+                allReports = SupervisorClass.GetAllReportsBySupervisor(supervisorId);
                 allReports = allReports.Where(r => r.Status == statusFilter).ToList();
             }
 
@@ -658,7 +658,7 @@ REPORT CONTENT:
         private void LoadReportsByInternship(int internshipId, string statusFilter)
         {
             // Get reports for specific internship
-            allReports = SupervisorService.GetReportsByInternship(internshipId);
+            allReports = SupervisorClass.GetReportsByInternship(internshipId);
 
             // Apply status filter if not "All"
             if (statusFilter != "All")

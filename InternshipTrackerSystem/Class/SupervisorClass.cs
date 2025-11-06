@@ -11,7 +11,7 @@ namespace InternshipTrackerSystem.Service
     /// Service class for Supervisor-related operations
     /// Handles supervisor profile, internship management, evaluations, and reports
     /// </summary>
-    public class SupervisorService
+    public class SupervisorClass
     {
         #region Supervisor Profile Management
 

@@ -51,7 +51,7 @@ namespace InternshipTrackerSystem
                 this.Cursor = Cursors.WaitCursor;
 
                 // Fetch supervisor data
-                supervisor = SupervisorService.GetSupervisorByUserId(userId);
+                supervisor = SupervisorClass.GetSupervisorByUserId(userId);
 
                 if (supervisor == null)
                 {
@@ -293,7 +293,7 @@ namespace InternshipTrackerSystem
                 supervisor.Specialization = txtSpecialization.Text.Trim();
 
                 // Save to database
-                bool success = SupervisorService.UpdateSupervisorProfile(supervisor);
+                bool success = SupervisorClass.UpdateSupervisorProfile(supervisor);
 
                 if (success)
                 {

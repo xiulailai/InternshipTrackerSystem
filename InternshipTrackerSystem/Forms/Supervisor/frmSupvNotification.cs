@@ -285,7 +285,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 this.Cursor = Cursors.WaitCursor;
 
                 // Fetch notifications from service
-                allNotifications = SupervisorService.GetNotifications(userId, showUnreadOnly);
+                allNotifications = SupervisorClass.GetNotifications(userId, showUnreadOnly);
 
                 // Sort by date (newest first)
                 if (allNotifications != null)
@@ -354,7 +354,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 if (result == DialogResult.Yes)
                 {
                     // Mark all as read
-                    bool success = SupervisorService.MarkAllNotificationsAsRead(userId);
+                    bool success = SupervisorClass.MarkAllNotificationsAsRead(userId);
 
                     if (success)
                     {
@@ -417,7 +417,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                 }
 
                 // Mark as read
-                bool success = SupervisorService.MarkNotificationAsRead(notificationId);
+                bool success = SupervisorClass.MarkNotificationAsRead(notificationId);
 
                 if (success)
                 {
@@ -454,7 +454,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
         {
             try
             {
-                int unreadCount = SupervisorService.GetUnreadNotificationCount(userId);
+                int unreadCount = SupervisorClass.GetUnreadNotificationCount(userId);
 
                 // Update form title
                 if (unreadCount > 0)

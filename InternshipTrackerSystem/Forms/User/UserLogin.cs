@@ -13,7 +13,7 @@ namespace InternshipTrackerSystem.Forms
 {
     public partial class frmUserLogin : Form
     {
-        private readonly Services.UserService userService = new Services.UserService();
+        private readonly Services.UserClass userService = new Services.UserClass();
         public frmUserLogin()
         {
             InitializeComponent();
