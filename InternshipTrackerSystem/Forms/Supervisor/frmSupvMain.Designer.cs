@@ -237,7 +237,7 @@
             // 
             lblSupervisorName.AutoSize = true;
             lblSupervisorName.Font = new Font("Segoe UI", 10F);
-            lblSupervisorName.Location = new Point(100, 20);
+            lblSupervisorName.Location = new Point(114, 20);
             lblSupervisorName.Name = "lblSupervisorName";
             lblSupervisorName.Size = new Size(0, 23);
             lblSupervisorName.TabIndex = 9;

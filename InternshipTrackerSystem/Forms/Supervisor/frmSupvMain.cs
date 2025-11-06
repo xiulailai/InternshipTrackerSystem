@@ -409,7 +409,12 @@ namespace InternshipTrackerSystem.Forms.Supervisor
 
         private void frmSupvMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!isLoggingOut) Application.Exit(); 
+            if (!isLoggingOut) Application.Exit();
+        }
+
+        private void lblWelcome_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
