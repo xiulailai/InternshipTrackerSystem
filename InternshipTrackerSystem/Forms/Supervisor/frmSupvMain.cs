@@ -119,9 +119,6 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                     txtPendingReports.Text = stats.PendingReports.ToString();
                     txtPendingEvaluations.Text = stats.PendingEvaluations.ToString();
                     txtTotalStudents.Text = stats.TotalStudentsSupervised.ToString();
-
-                    // Optional: Highlight pending items if any
-                    HighlightPendingItems(stats);
                 }
                 else
                 {

@@ -73,7 +73,10 @@ namespace InternshipTrackerSystem.Forms
             Application.Exit(); //this is to exit the form
         }
 
-
+        private void frmUserLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); // Ensure the application exits when the login form is closed
+        }
     }
 }
 

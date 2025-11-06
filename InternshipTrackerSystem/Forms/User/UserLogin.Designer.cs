@@ -101,6 +101,7 @@
             Controls.Add(lblEmail);
             Name = "frmUserLogin";
             Text = "Internship Tracker System";
+            FormClosed += frmUserLogin_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
