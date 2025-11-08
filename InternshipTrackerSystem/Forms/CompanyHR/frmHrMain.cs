@@ -26,7 +26,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         private CompanyHRModel hrModel;
         private Timer refreshTimer;
         private bool isLoggingOut = false;
-        public frmHrMain()
+        public frmHrMain(int userId)
         {
             InitializeComponent();
             this.userId = userId;
@@ -46,7 +46,6 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             {
                 LoadHRData();
                 LoadStatistics();
-                UpdateUnreadNotificationBadge();
 
             }
             catch (Exception ex)
@@ -128,40 +127,15 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 SetStatisticsToZero();
             }
         }
-        private void UpdateUnreadNotificationBadge()
-        {
-            try
-            {
-                int unreadCount = CompanyHRClass.GetUnreadNotificationCount(userId);
-
-                if (unreadCount > 0)
-                {
-                    btnNotifications.Text = $"🔔 Notifications ({unreadCount})";
-                    btnNotifications.BackColor = Color.Orange;
-                }
-                else
-                {
-                    btnNotifications.Text = "🔔 Notifications";
-                    btnNotifications.BackColor = Color.FromArgb(234, 179, 8);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Silently fail - not critical
-                System.Diagnostics.Debug.WriteLine($"Error updating notification badge: {ex.Message}");
-            }
-        }
-
-
         private void btnManagePositions_Click(object sender, EventArgs e)
         {
             try
             {
-               // frmManagePositions managePositionsForm = new frmManagePositions(hrId, companyId);
-               // managePositionsForm.ShowDialog();
+                frmManagePositions managePositionsForm = new frmManagePositions(hrId, companyId);
+                managePositionsForm.ShowDialog();
 
-               // Refresh statistics when returning
-               LoadStatistics();
+                // Refresh statistics when returning
+                LoadStatistics();
             }
             catch (Exception ex)
             {
@@ -177,8 +151,8 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                // frmReviewApplications reviewApplicationsForm = new frmReviewApplications(hrId, companyId);
-                // reviewApplicationsForm.ShowDialog();
+                frmReviewApplications reviewApplicationsForm = new frmReviewApplications(hrId, companyId);
+                reviewApplicationsForm.ShowDialog();
 
                 // Refresh statistics when returning
                 LoadStatistics();
@@ -192,50 +166,12 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             }
         }
 
-        private void btnViewInterns_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                frmViewInterns viewInternsForm = new frmViewInterns(companyId);
-                viewInternsForm.ShowDialog();
-
-                // Refresh statistics when returning
-                LoadStatistics();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error opening View Interns form: {ex.Message}",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnNotifications_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // frmHRNotification notificationForm = new frmHRNotification(userId);
-                // notificationForm.ShowDialog();
-
-                // Refresh notification badge when returning
-                UpdateUnreadNotificationBadge();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error opening Notifications form: {ex.Message}",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
-
         private void btnProfile_Click(object sender, EventArgs e)
         {
             try
             {
-                // frmHRProfile profileForm = new frmHRProfile(userId);
-                // profileForm.ShowDialog();
+                frmHRProfile profileForm = new frmHRProfile(userId);
+                profileForm.ShowDialog();
 
                 // Refresh HR data when returning (in case profile was updated)
                 LoadHRData();
@@ -254,7 +190,6 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             try
             {
                 LoadStatistics();
-                UpdateUnreadNotificationBadge();
                 MessageBox.Show("Dashboard refreshed successfully!",
                     "Refresh",
                     MessageBoxButtons.OK,
@@ -268,7 +203,23 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     MessageBoxIcon.Error);
             }
         }
+        private void btnTrackInterns_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmTrackInterns trackInternsForm = new frmTrackInterns(companyId);
+                trackInternsForm.ShowDialog();
 
+                LoadStatistics();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening Track Interns form: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
         private void btnLogout_Click(object sender, EventArgs e)
         {
             try
@@ -319,7 +270,6 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             try
             {
                 LoadStatistics();
-                UpdateUnreadNotificationBadge();
             }
             catch
             {

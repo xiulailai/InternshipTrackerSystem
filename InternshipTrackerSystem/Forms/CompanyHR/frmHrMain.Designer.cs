@@ -44,11 +44,10 @@
             label4 = new Label();
             label5 = new Label();
             groupBox2 = new GroupBox();
+            btnTrackInterns = new Button();
             btnLogout = new Button();
             btnRefresh = new Button();
             btnProfile = new Button();
-            btnNotifications = new Button();
-            btnViewInterns = new Button();
             btnReviewApplications = new Button();
             btnManagePositions = new Button();
             grpHRInfo.SuspendLayout();
@@ -202,22 +201,31 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnTrackInterns);
             groupBox2.Controls.Add(btnLogout);
             groupBox2.Controls.Add(btnRefresh);
             groupBox2.Controls.Add(btnProfile);
-            groupBox2.Controls.Add(btnNotifications);
-            groupBox2.Controls.Add(btnViewInterns);
             groupBox2.Controls.Add(btnReviewApplications);
             groupBox2.Controls.Add(btnManagePositions);
             groupBox2.Location = new Point(26, 332);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(365, 171);
+            groupBox2.Size = new Size(365, 138);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
             // 
+            // btnTrackInterns
+            // 
+            btnTrackInterns.Location = new Point(17, 96);
+            btnTrackInterns.Name = "btnTrackInterns";
+            btnTrackInterns.Size = new Size(152, 29);
+            btnTrackInterns.TabIndex = 7;
+            btnTrackInterns.Text = "Track Interns";
+            btnTrackInterns.UseVisualStyleBackColor = true;
+            btnTrackInterns.Click += btnTrackInterns_Click;
+            // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(104, 131);
+            btnLogout.Location = new Point(191, 96);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(152, 29);
             btnLogout.TabIndex = 6;
@@ -227,7 +235,7 @@
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(191, 96);
+            btnRefresh.Location = new Point(191, 61);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(152, 29);
             btnRefresh.TabIndex = 5;
@@ -237,33 +245,13 @@
             // 
             // btnProfile
             // 
-            btnProfile.Location = new Point(17, 96);
+            btnProfile.Location = new Point(17, 61);
             btnProfile.Name = "btnProfile";
             btnProfile.Size = new Size(152, 29);
             btnProfile.TabIndex = 4;
             btnProfile.Text = "My Profile";
             btnProfile.UseVisualStyleBackColor = true;
             btnProfile.Click += btnProfile_Click;
-            // 
-            // btnNotifications
-            // 
-            btnNotifications.Location = new Point(191, 61);
-            btnNotifications.Name = "btnNotifications";
-            btnNotifications.Size = new Size(152, 29);
-            btnNotifications.TabIndex = 3;
-            btnNotifications.Text = "Notifications";
-            btnNotifications.UseVisualStyleBackColor = true;
-            btnNotifications.Click += btnNotifications_Click;
-            // 
-            // btnViewInterns
-            // 
-            btnViewInterns.Location = new Point(17, 61);
-            btnViewInterns.Name = "btnViewInterns";
-            btnViewInterns.Size = new Size(152, 29);
-            btnViewInterns.TabIndex = 2;
-            btnViewInterns.Text = "View Interns";
-            btnViewInterns.UseVisualStyleBackColor = true;
-            btnViewInterns.Click += btnViewInterns_Click;
             // 
             // btnReviewApplications
             // 
@@ -289,12 +277,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(419, 515);
+            ClientSize = new Size(419, 481);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(grpHRInfo);
             Name = "frmHrMain";
-            Text = "frmHrMain";
+            Text = "Company HR Dashboard";
             FormClosing += frmHrMain_FormClosing;
             FormClosed += frmHrMain_FormClosed;
             Load += frmHrMain_Load;
@@ -324,12 +312,11 @@
         private Label label6;
         private TextBox txtPendingReviews;
         private GroupBox groupBox2;
-        private Button btnViewInterns;
         private Button btnReviewApplications;
         private Button btnManagePositions;
         private Button btnLogout;
         private Button btnRefresh;
         private Button btnProfile;
-        private Button btnNotifications;
+        private Button btnTrackInterns;
     }
 }
