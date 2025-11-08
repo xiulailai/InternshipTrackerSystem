@@ -351,6 +351,7 @@ namespace InternshipTrackerSystem.Class
                 throw new Exception($"Error updating position: {ex.Message}");
             }
         }
+
         public static DataTable GetPositionDetails(int positionId)
         {
             try
