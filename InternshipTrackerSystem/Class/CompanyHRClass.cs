@@ -145,19 +145,19 @@ namespace InternshipTrackerSystem.Class
                 }
 
                 string query = @"
-            INSERT INTO internshippositions 
-            (companyid, postedbyhrid, title, description, requirements, status, posteddate)
-            VALUES (@companyid, @hrid, @title, @description, @requirements, @status, GETDATE())";
+                    INSERT INTO internshippositions 
+                    (companyid, postedbyhrid, title, description, requirements, status, posteddate)
+                    VALUES (@companyid, @hrid, @title, @description, @requirements, @status, GETDATE())";
 
                 var parameters = new Dictionary<string, object>
-        {
-            { "@companyid", companyId },
-            { "@hrid", hrId },
-            { "@title", title },
-            { "@description", description },
-            { "@requirements", requirements },
-            { "@status", status }
-        };
+                {
+                    { "@companyid", companyId },
+                    { "@hrid", hrId },
+                    { "@title", title },
+                    { "@description", description },
+                    { "@requirements", requirements },
+                    { "@status", status }
+                };
 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
                 return rowsAffected > 0;
@@ -173,17 +173,17 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-            SELECT 
-                ip.positionid,
-                ip.title,
-                ip.description,
-                ip.requirements,
-                ip.status,
-                ip.posteddate,
-                COUNT(a.applicationid) AS applications
-            FROM internshippositions ip
-            LEFT JOIN applications a ON ip.positionid = a.positionid
-            WHERE ip.companyid = @companyid";
+                    SELECT 
+                        ip.positionid,
+                        ip.title,
+                        ip.description,
+                        ip.requirements,
+                        ip.status,
+                        ip.posteddate,
+                        COUNT(a.applicationid) AS applications
+                    FROM internshippositions ip
+                    LEFT JOIN applications a ON ip.positionid = a.positionid
+                    WHERE ip.companyid = @companyid";
 
                 if (statusFilter != "All")
                 {
@@ -191,14 +191,14 @@ namespace InternshipTrackerSystem.Class
                 }
 
                 query += @"
-            GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, 
-                     ip.status, ip.posteddate
-            ORDER BY ip.posteddate DESC";
+                    GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, 
+                             ip.status, ip.posteddate
+                    ORDER BY ip.posteddate DESC";
 
                 var parameters = new Dictionary<string, object>
-        {
-            { "@companyid", companyId }
-        };
+                {
+                    { "@companyid", companyId }
+                };
 
                 if (statusFilter != "All")
                 {
@@ -224,15 +224,15 @@ namespace InternshipTrackerSystem.Class
                 }
 
                 string query = @"
-            UPDATE internshippositions 
-            SET status = @status
-            WHERE positionid = @positionid";
+                    UPDATE internshippositions 
+                    SET status = @status
+                    WHERE positionid = @positionid";
 
                 var parameters = new Dictionary<string, object>
-        {
-            { "@positionid", positionId },
-            { "@status", status }
-        };
+                {
+                    { "@positionid", positionId },
+                    { "@status", status }
+                };
 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
                 return rowsAffected > 0;
@@ -249,20 +249,20 @@ namespace InternshipTrackerSystem.Class
             {
                 // First delete related applications
                 string deleteApplications = @"
-            DELETE FROM applications 
-            WHERE positionid = @positionid";
+                    DELETE FROM applications 
+                    WHERE positionid = @positionid";
 
                 var parameters = new Dictionary<string, object>
-        {
-            { "@positionid", positionId }
-        };
+                {
+                    { "@positionid", positionId }
+                };
 
                 DatabaseHelper.ExecuteNonQuery(deleteApplications, parameters);
 
                 // Then delete the position
                 string deletePosition = @"
-            DELETE FROM internshippositions 
-            WHERE positionid = @positionid";
+                    DELETE FROM internshippositions 
+                    WHERE positionid = @positionid";
 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(deletePosition, parameters);
                 return rowsAffected > 0;
@@ -278,20 +278,20 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-            SELECT 
-                positionid,
-                title,
-                description,
-                requirements,
-                status,
-                posteddate
-            FROM internshippositions
-            WHERE positionid = @positionid";
+                    SELECT 
+                        positionid,
+                        title,
+                        description,
+                        requirements,
+                        status,
+                        posteddate
+                    FROM internshippositions
+                    WHERE positionid = @positionid";
 
                 var parameters = new Dictionary<string, object>
-        {
-            { "@positionid", positionId }
-        };
+                {
+                    { "@positionid", positionId }
+                };
 
                 return DatabaseHelper.ExecuteQuery(query, parameters);
             }
@@ -327,21 +327,21 @@ namespace InternshipTrackerSystem.Class
                 }
 
                 string query = @"
-            UPDATE internshippositions 
-            SET title = @title, 
-                description = @description, 
-                requirements = @requirements, 
-                status = @status
-            WHERE positionid = @positionid";
+                    UPDATE internshippositions 
+                    SET title = @title, 
+                        description = @description, 
+                        requirements = @requirements, 
+                        status = @status
+                    WHERE positionid = @positionid";
 
                 var parameters = new Dictionary<string, object>
-        {
-            { "@positionid", positionId },
-            { "@title", title },
-            { "@description", description },
-            { "@requirements", requirements },
-            { "@status", status }
-        };
+                {
+                    { "@positionid", positionId },
+                    { "@title", title },
+                    { "@description", description },
+                    { "@requirements", requirements },
+                    { "@status", status }
+                };
 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
                 return rowsAffected > 0;
@@ -357,37 +357,187 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-            SELECT 
-                ip.positionid,
-                ip.title,
-                ip.description,
-                ip.requirements,
-                ip.status,
-                ip.posteddate,
-                c.companyname,
-                ch.fullname AS postedby,
-                COUNT(a.applicationid) AS totalapplications,
-                SUM(CASE WHEN a.status = 'Pending' THEN 1 ELSE 0 END) AS pendingapplications,
-                SUM(CASE WHEN a.status = 'Accepted' THEN 1 ELSE 0 END) AS acceptedapplications,
-                SUM(CASE WHEN a.status = 'Rejected' THEN 1 ELSE 0 END) AS rejectedapplications
-            FROM internshippositions ip
-            INNER JOIN companies c ON ip.companyid = c.companyid
-            INNER JOIN companyhr ch ON ip.postedbyhrid = ch.hrid
-            LEFT JOIN applications a ON ip.positionid = a.positionid
-            WHERE ip.positionid = @positionid
-            GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, 
-                     ip.status, ip.posteddate, c.companyname, ch.fullname";
+                    SELECT 
+                        ip.positionid,
+                        ip.title,
+                        ip.description,
+                        ip.requirements,
+                        ip.status,
+                        ip.posteddate,
+                        c.companyname,
+                        ch.fullname AS postedby,
+                        COUNT(a.applicationid) AS totalapplications,
+                        SUM(CASE WHEN a.status = 'Pending' THEN 1 ELSE 0 END) AS pendingapplications,
+                        SUM(CASE WHEN a.status = 'Accepted' THEN 1 ELSE 0 END) AS acceptedapplications,
+                        SUM(CASE WHEN a.status = 'Rejected' THEN 1 ELSE 0 END) AS rejectedapplications
+                    FROM internshippositions ip
+                    INNER JOIN companies c ON ip.companyid = c.companyid
+                    INNER JOIN companyhr ch ON ip.postedbyhrid = ch.hrid
+                    LEFT JOIN applications a ON ip.positionid = a.positionid
+                    WHERE ip.positionid = @positionid
+                    GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, 
+                             ip.status, ip.posteddate, c.companyname, ch.fullname";
 
                 var parameters = new Dictionary<string, object>
-        {
-            { "@positionid", positionId }
-        };
+                {
+                    { "@positionid", positionId }
+                };
 
                 return DatabaseHelper.ExecuteQuery(query, parameters);
             }
             catch (Exception ex)
             {
                 throw new Exception($"Error fetching position details: {ex.Message}");
+            }
+        }
+
+        public static DataTable GetCompanyPositionsList(int companyId)
+        {
+            try
+            {
+                string query = @"
+                    SELECT DISTINCT title
+                    FROM internshippositions
+                    WHERE companyid = @companyid
+                    ORDER BY title";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@companyid", companyId }
+                };
+
+                return DatabaseHelper.ExecuteQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error fetching positions list: {ex.Message}");
+            }
+        }
+
+        public static DataTable GetApplicationsByCompany(int companyId, string statusFilter = "All", string positionFilter = "All")
+        {
+            try
+            {
+                string query = @"
+                    SELECT 
+                        a.applicationid,
+                        a.studentid,
+                        s.fullname AS studentname,
+                        ip.positionid,
+                        ip.title AS positiontitle,
+                        a.applieddate,
+                        a.status
+                    FROM applications a
+                    INNER JOIN students s ON a.studentid = s.studentid
+                    INNER JOIN internshippositions ip ON a.positionid = ip.positionid
+                    WHERE ip.companyid = @companyid";
+
+                // Add status filter
+                if (statusFilter != "All")
+                {
+                    query += " AND a.status = @status";
+                }
+
+                // Add position filter
+                if (positionFilter != "All")
+                {
+                    query += " AND ip.title = @position";
+                }
+
+                query += " ORDER BY a.applieddate DESC";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@companyid", companyId }
+                };
+
+                if (statusFilter != "All")
+                {
+                    parameters.Add("@status", statusFilter);
+                }
+
+                if (positionFilter != "All")
+                {
+                    parameters.Add("@position", positionFilter);
+                }
+
+                return DatabaseHelper.ExecuteQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error fetching applications: {ex.Message}");
+            }
+        }
+
+        public static DataTable GetApplicationDetails(int applicationId)
+        {
+            try
+            {
+                string query = @"
+                    SELECT 
+                        a.applicationid,
+                        a.applieddate,
+                        a.status,
+                        a.remarks,
+                        s.studentid,
+                        s.fullname AS studentname,
+                        s.matricno,
+                        s.program,
+                        s.cgpa,
+                        s.skills,
+                        s.contactno,
+                        u.email,
+                        ip.title AS positiontitle
+                    FROM applications a
+                    INNER JOIN students s ON a.studentid = s.studentid
+                    INNER JOIN users u ON s.userid = u.userid
+                    INNER JOIN internshippositions ip ON a.positionid = ip.positionid
+                    WHERE a.applicationid = @applicationid";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@applicationid", applicationId }
+                };
+
+                return DatabaseHelper.ExecuteQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error fetching application details: {ex.Message}");
+            }
+        }
+
+        public static bool UpdateApplicationStatus(int applicationId, int hrId, string status, string remarks)
+        {
+            try
+            {
+                // Validate status
+                if (status != "Accepted" && status != "Rejected" && status != "Pending")
+                {
+                    throw new Exception("Invalid status. Must be 'Accepted', 'Rejected', or 'Pending'");
+                }
+
+                string query = @"
+                    UPDATE applications 
+                    SET status = @status,
+                        reviewedbyhrid = @hrid,
+                        remarks = @remarks
+                    WHERE applicationid = @applicationid";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@applicationid", applicationId },
+                    { "@hrid", hrId },
+                    { "@status", status },
+                    { "@remarks", string.IsNullOrWhiteSpace(remarks) ? DBNull.Value : (object)remarks }
+                };
+
+                int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
+                return rowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error updating application status: {ex.Message}");
             }
         }
     }
