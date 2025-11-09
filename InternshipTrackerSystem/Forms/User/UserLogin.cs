@@ -53,7 +53,9 @@ namespace InternshipTrackerSystem.Forms
                 }
                 else if (role == "CompanyHR")
                 {
-                    MessageBox.Show("Company HR dashboard under construction.");
+                    this.Hide();
+                    frmCompanyHRMain hrForm = new frmCompanyHRMain(userID);
+                    hrForm.ShowDialog();
                 }
                 else if (role == "Admin")
                 {
