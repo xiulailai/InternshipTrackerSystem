@@ -170,8 +170,8 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                frmHRProfile profileForm = new frmHRProfile(userId);
-                profileForm.ShowDialog();
+                // frmHRProfile profileForm = new frmHRProfile(userId);
+                // profileForm.ShowDialog();
 
                 // Refresh HR data when returning (in case profile was updated)
                 LoadHRData();
@@ -207,8 +207,8 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                frmTrackInterns trackInternsForm = new frmTrackInterns(companyId);
-                trackInternsForm.ShowDialog();
+                // frmTrackInterns trackInternsForm = new frmTrackInterns(companyId);
+                // trackInternsForm.ShowDialog();
 
                 LoadStatistics();
             }

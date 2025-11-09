@@ -44,6 +44,13 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     lblCompanyValue.Text = row["companyname"].ToString();
                     lblPostedByValue.Text = row["postedby"].ToString();
                     lblPostedDateValue.Text = Convert.ToDateTime(row["posteddate"]).ToString("dd/MM/yyyy hh:mm tt");
+                    lblLocationValue.Text = row["location"].ToString();
+                    lblDurationValue.Text = row["duration"].ToString();
+                    lblStipendValue.Text = row["stipend"].ToString();
+                    lblStartDateValue.Text = Convert.ToDateTime(row["startdate"]).ToString("dd/MM/yyyy hh:mm tt");
+                    lblEndDateValue.Text = Convert.ToDateTime(row["enddate"]).ToString("dd/MM/yyyy hh:mm tt");
+                    lblApplicationDeadlineValue.Text = Convert.ToDateTime(row["applicationdeadline"]).ToString("dd/MM/yyyy hh:mm tt");
+                    lblAvailableSlotsValue.Text = row["availableslots"].ToString();
 
                     // Status with color coding
                     string status = row["status"].ToString();

@@ -125,6 +125,12 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
+                // Check if filters are initialized
+                if (cboStatusFilter.SelectedItem == null || cboPositionFilter.SelectedItem == null)
+                {
+                    return; // Don't load if filters aren't ready yet
+                }
+
                 string statusFilter = cboStatusFilter.SelectedItem.ToString();
                 string positionFilter = cboPositionFilter.SelectedItem.ToString();
 
@@ -141,8 +147,8 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     dgvApplications.Columns["studentname"].Width = 150;
                     dgvApplications.Columns["positiontitle"].HeaderText = "Position Title";
                     dgvApplications.Columns["positiontitle"].Width = 180;
-                    dgvApplications.Columns["applieddate"].HeaderText = "Applied Date";
-                    dgvApplications.Columns["applieddate"].Width = 120;
+                    dgvApplications.Columns["applicationdate"].HeaderText = "Application Date";
+                    dgvApplications.Columns["applicationdate"].Width = 120;
                     dgvApplications.Columns["status"].HeaderText = "Status";
                     dgvApplications.Columns["status"].Width = 100;
 
@@ -218,22 +224,22 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
                     // Student information
                     lblStudent.Text = $"Student: {row["studentname"]}";
-                    lblStudentID.Text = $"Student ID: {row["matricno"]}";
+                    lblStudentID.Text = $"Student ID: {row["studentidnumber"]}";
                     lblProgram.Text = $"Program: {row["program"]}";
-                    lblCGPA.Text = $"CGPA: {row["cgpa"]}";
-                    lblContact.Text = $"Contact: {row["contactno"]}";
+                    lblCGPA.Text = $"CGPA: {row["gpa"]}";
+                    lblContact.Text = $"Contact: {row["contactnumber"]}";
                     lblEmail.Text = $"Email: {row["email"]}";
 
                     // Application information
                     lblPositionApplied.Text = $"Position Applied: {row["positiontitle"]}";
-                    lblAppliedDate.Text = $"Applied Date: {Convert.ToDateTime(row["applieddate"]):dd/MM/yyyy hh:mm tt}";
+                    lblAppliedDate.Text = $"Applied Date: {Convert.ToDateTime(row["applicationdate"]):dd/MM/yyyy hh:mm tt}";
 
                     // Skills
                     lblSkills.Text = $"Skills: {row["skills"]}";
 
                     // Previous remarks
-                    lblRemarks.Text = row["remarks"] != DBNull.Value ?
-                        $"Remarks: {row["remarks"]}" :
+                    lblRemarks.Text = row["reviewnotes"] != DBNull.Value ?
+                        $"Remarks: {row["reviewnotes"]}" :
                         "Remarks: No previous remarks";
                 }
             }

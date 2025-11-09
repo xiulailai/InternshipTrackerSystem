@@ -70,10 +70,10 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(164, 81);
+            txtEmail.Location = new Point(135, 81);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
-            txtEmail.Size = new Size(125, 27);
+            txtEmail.Size = new Size(208, 27);
             txtEmail.TabIndex = 4;
             // 
             // label2
@@ -87,10 +87,10 @@
             // 
             // txtCompany
             // 
-            txtCompany.Location = new Point(164, 46);
+            txtCompany.Location = new Point(135, 46);
             txtCompany.Name = "txtCompany";
             txtCompany.ReadOnly = true;
-            txtCompany.Size = new Size(125, 27);
+            txtCompany.Size = new Size(208, 27);
             txtCompany.TabIndex = 2;
             // 
             // label1
