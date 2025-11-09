@@ -1,4 +1,5 @@
-﻿using InternshipTrackerSystem.Forms.Supervisor;
+﻿using InternshipTrackerSystem.Forms.CompanyHR;
+using InternshipTrackerSystem.Forms.Supervisor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +55,7 @@ namespace InternshipTrackerSystem.Forms
                 else if (role == "CompanyHR")
                 {
                     this.Hide();
-                    frmCompanyHRMain hrForm = new frmCompanyHRMain(userID);
+                    frmHrMain hrForm = new frmHrMain(userID);
                     hrForm.ShowDialog();
                 }
                 else if (role == "Admin")
