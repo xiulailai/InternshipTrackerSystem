@@ -1,4 +1,4 @@
-﻿using System.Data.SqlClient;
+﻿using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,12 +47,12 @@ namespace assignment_student
 
             try
             {
-                using (var conn = new SqlConnection(connStr))
+                using (var conn = new NpgsqlConnection(connStr))
                 {
                     conn.Open();
 
                     string checkEmailSql = "SELECT COUNT(*) FROM users WHERE email = @em;";
-                    using (var checkCmd = new SqlCommand(checkEmailSql, conn))
+                    using (var checkCmd = new NpgsqlCommand(checkEmailSql, conn))
                     {
                         checkCmd.Parameters.AddWithValue("@em", email);
                         int count = Convert.ToInt32(checkCmd.ExecuteScalar());
@@ -64,7 +64,7 @@ namespace assignment_student
                     }
 
                     string checkStudentSql = "SELECT COUNT(*) FROM students WHERE studentidnumber = @id;";
-                    using (var checkCmd = new SqlCommand(checkStudentSql, conn))
+                    using (var checkCmd = new NpgsqlCommand(checkStudentSql, conn))
                     {
                         checkCmd.Parameters.AddWithValue("@id", studentId);
                         int count = Convert.ToInt32(checkCmd.ExecuteScalar());
@@ -80,7 +80,7 @@ namespace assignment_student
                          VALUES (@user, @em, @pass, @role)
                          RETURNING userid;";
 
-                    using (var cmd2 = new SqlCommand(insertUserSql, conn))
+                    using (var cmd2 = new NpgsqlCommand(insertUserSql, conn))
                     {
                         cmd2.Parameters.AddWithValue("@user", username);
                         cmd2.Parameters.AddWithValue("@em", email);
@@ -93,7 +93,7 @@ namespace assignment_student
                         (studentidnumber, fullname, program, contactnumber, address, userid)
                         VALUES (@id, @name, @prog, @contact, @addr, @uid);";
 
-                    using (var cmd1 = new SqlCommand(insertStudentSql, conn))
+                    using (var cmd1 = new NpgsqlCommand(insertStudentSql, conn))
                     {
                         cmd1.Parameters.AddWithValue("@id", studentId);
                         cmd1.Parameters.AddWithValue("@name", fullName);
@@ -104,7 +104,7 @@ namespace assignment_student
                         cmd1.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Succefully Sign Up。Please Login Again", "Succeful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Succefully Sign Up. Please Login Again", "Succeful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     this.Hide();
                     frmStuLogin loginForm = new frmStuLogin();
