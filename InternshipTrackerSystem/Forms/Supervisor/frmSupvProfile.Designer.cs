@@ -102,7 +102,7 @@
             txtName.Font = new Font("Segoe UI", 9F);
             txtName.Location = new Point(160, 30);
             txtName.Name = "txtName";
-            txtName.Size = new Size(220, 27);
+            txtName.Size = new Size(240, 27);
             txtName.TabIndex = 4;
             // 
             // txtDepartment
@@ -110,7 +110,7 @@
             txtDepartment.Font = new Font("Segoe UI", 9F);
             txtDepartment.Location = new Point(160, 65);
             txtDepartment.Name = "txtDepartment";
-            txtDepartment.Size = new Size(220, 27);
+            txtDepartment.Size = new Size(240, 27);
             txtDepartment.TabIndex = 4;
             // 
             // txtContacts
@@ -118,7 +118,7 @@
             txtContacts.Font = new Font("Segoe UI", 9F);
             txtContacts.Location = new Point(160, 100);
             txtContacts.Name = "txtContacts";
-            txtContacts.Size = new Size(220, 27);
+            txtContacts.Size = new Size(240, 27);
             txtContacts.TabIndex = 4;
             txtContacts.TextChanged += txtContacts_TextChanged;
             txtContacts.Leave += txtContacts_Leave;
@@ -129,7 +129,7 @@
             txtSpecialization.Font = new Font("Segoe UI", 9F);
             txtSpecialization.Location = new Point(160, 135);
             txtSpecialization.Name = "txtSpecialization";
-            txtSpecialization.Size = new Size(220, 27);
+            txtSpecialization.Size = new Size(240, 27);
             txtSpecialization.TabIndex = 4;
             // 
             // btnBack
@@ -293,7 +293,7 @@
             groupBox1.Font = new Font("Segoe UI", 10F);
             groupBox1.Location = new Point(30, 25);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(400, 220);
+            groupBox1.Size = new Size(420, 220);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             groupBox1.Text = "Account Information (Read-only)";
@@ -311,7 +311,7 @@
             groupBox2.Font = new Font("Segoe UI", 10F);
             groupBox2.Location = new Point(30, 248);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(400, 170);
+            groupBox2.Size = new Size(420, 170);
             groupBox2.TabIndex = 15;
             groupBox2.TabStop = false;
             groupBox2.Text = "Account Information (Editable)";
