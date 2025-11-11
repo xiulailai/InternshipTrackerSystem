@@ -332,15 +332,5 @@ namespace InternshipTrackerSystem.Models
         public int PendingReports { get; set; }
         public int PendingEvaluations { get; set; }
         public int TotalStudentsSupervised { get; set; }
-
-        /// Calculates completion rate percentage
-        public double CompletionRate
-        {
-            get
-            {
-                if (TotalInternships == 0) return 0;
-                return Math.Round((CompletedInternships / (double)TotalInternships) * 100, 2);
-            }
-        }
     }
 }
