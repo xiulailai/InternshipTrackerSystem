@@ -67,7 +67,7 @@
             cboStatusFilter.FormattingEnabled = true;
             cboStatusFilter.Location = new Point(26, 69);
             cboStatusFilter.Name = "cboStatusFilter";
-            cboStatusFilter.Size = new Size(151, 28);
+            cboStatusFilter.Size = new Size(220, 28);
             cboStatusFilter.TabIndex = 1;
             cboStatusFilter.SelectedIndexChanged += cboStatusFilter_SelectedIndexChanged;
             // 
@@ -140,7 +140,7 @@
             // lblSkills
             // 
             lblSkills.AutoSize = true;
-            lblSkills.Location = new Point(15, 194);
+            lblSkills.Location = new Point(15, 193);
             lblSkills.Name = "lblSkills";
             lblSkills.Size = new Size(45, 20);
             lblSkills.TabIndex = 10;
@@ -167,7 +167,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(342, 94);
+            lblEmail.Location = new Point(343, 93);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(49, 20);
             lblEmail.TabIndex = 7;
@@ -176,7 +176,7 @@
             // lblCGPA
             // 
             lblCGPA.AutoSize = true;
-            lblCGPA.Location = new Point(343, 63);
+            lblCGPA.Location = new Point(342, 63);
             lblCGPA.Name = "lblCGPA";
             lblCGPA.Size = new Size(48, 20);
             lblCGPA.TabIndex = 7;
@@ -194,7 +194,7 @@
             // lblContact
             // 
             lblContact.AutoSize = true;
-            lblContact.Location = new Point(15, 94);
+            lblContact.Location = new Point(15, 93);
             lblContact.Name = "lblContact";
             lblContact.Size = new Size(63, 20);
             lblContact.TabIndex = 7;
@@ -212,7 +212,7 @@
             // lblStudent
             // 
             lblStudent.AutoSize = true;
-            lblStudent.Location = new Point(15, 32);
+            lblStudent.Location = new Point(15, 33);
             lblStudent.Name = "lblStudent";
             lblStudent.Size = new Size(63, 20);
             lblStudent.TabIndex = 0;
@@ -230,7 +230,7 @@
             // 
             // btnReject
             // 
-            btnReject.Location = new Point(212, 588);
+            btnReject.Location = new Point(168, 588);
             btnReject.Name = "btnReject";
             btnReject.Size = new Size(136, 29);
             btnReject.TabIndex = 8;
@@ -240,7 +240,7 @@
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(385, 588);
+            btnRefresh.Location = new Point(310, 588);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(136, 29);
             btnRefresh.TabIndex = 9;

@@ -129,7 +129,7 @@
             // 
             // txtActiveInterns
             // 
-            txtActiveInterns.Location = new Point(164, 112);
+            txtActiveInterns.Location = new Point(218, 108);
             txtActiveInterns.Name = "txtActiveInterns";
             txtActiveInterns.ReadOnly = true;
             txtActiveInterns.Size = new Size(125, 27);
@@ -147,7 +147,7 @@
             // 
             // txtPendingReviews
             // 
-            txtPendingReviews.Location = new Point(164, 81);
+            txtPendingReviews.Location = new Point(218, 77);
             txtPendingReviews.Name = "txtPendingReviews";
             txtPendingReviews.ReadOnly = true;
             txtPendingReviews.Size = new Size(125, 27);
@@ -156,7 +156,7 @@
             // 
             // txtTotalApplications
             // 
-            txtTotalApplications.Location = new Point(164, 50);
+            txtTotalApplications.Location = new Point(218, 46);
             txtTotalApplications.Name = "txtTotalApplications";
             txtTotalApplications.ReadOnly = true;
             txtTotalApplications.Size = new Size(125, 27);
@@ -174,7 +174,7 @@
             // 
             // txtActivePositions
             // 
-            txtActivePositions.Location = new Point(164, 20);
+            txtActivePositions.Location = new Point(218, 16);
             txtActivePositions.Name = "txtActivePositions";
             txtActivePositions.ReadOnly = true;
             txtActivePositions.Size = new Size(125, 27);
