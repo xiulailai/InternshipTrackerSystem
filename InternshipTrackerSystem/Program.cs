@@ -1,5 +1,6 @@
 ﻿using InternshipTrackerSystem.Data;
 using InternshipTrackerSystem.Forms;
+using InternshipTrackerSystem.Forms.CompanyHR;
 using InternshipTrackerSystem.Services;
 using System;
 using System.Data;
@@ -16,6 +17,8 @@ namespace InternshipTrackerSystem
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
             Application.Run(new frmUserLogin());
+            
+
         }
     }
 }

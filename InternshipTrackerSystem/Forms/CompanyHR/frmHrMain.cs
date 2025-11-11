@@ -207,7 +207,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                frmTrackInterns trackInternsForm = new frmTrackInterns(companyId);
+                frm trackInternsForm = new frm(companyId);
                 trackInternsForm.ShowDialog();
 
                 LoadStatistics();
@@ -311,6 +311,16 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 refreshTimer.Stop();
                 refreshTimer.Dispose();
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grpHRInfo_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
