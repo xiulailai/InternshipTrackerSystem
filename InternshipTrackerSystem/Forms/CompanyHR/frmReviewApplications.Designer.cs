@@ -67,7 +67,7 @@
             cboStatusFilter.FormattingEnabled = true;
             cboStatusFilter.Location = new Point(26, 69);
             cboStatusFilter.Name = "cboStatusFilter";
-            cboStatusFilter.Size = new Size(151, 28);
+            cboStatusFilter.Size = new Size(220, 28);
             cboStatusFilter.TabIndex = 1;
             cboStatusFilter.SelectedIndexChanged += cboStatusFilter_SelectedIndexChanged;
             // 
@@ -94,7 +94,7 @@
             cboPositionFilter.FormattingEnabled = true;
             cboPositionFilter.Location = new Point(268, 69);
             cboPositionFilter.Name = "cboPositionFilter";
-            cboPositionFilter.Size = new Size(151, 28);
+            cboPositionFilter.Size = new Size(220, 28);
             cboPositionFilter.TabIndex = 4;
             cboPositionFilter.SelectedIndexChanged += cboPositionFilter_SelectedIndexChanged;
             // 
@@ -104,7 +104,7 @@
             dgvApplications.Location = new Point(26, 103);
             dgvApplications.Name = "dgvApplications";
             dgvApplications.RowHeadersWidth = 51;
-            dgvApplications.Size = new Size(476, 188);
+            dgvApplications.Size = new Size(673, 188);
             dgvApplications.TabIndex = 5;
             dgvApplications.CellDoubleClick += dgvApplications_CellDoubleClick;
             dgvApplications.SelectionChanged += dgvApplications_SelectionChanged;
@@ -123,7 +123,7 @@
             groupBox1.Controls.Add(lblStudent);
             groupBox1.Location = new Point(26, 297);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(476, 271);
+            groupBox1.Size = new Size(673, 271);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Selected Applicant Details";
@@ -140,7 +140,7 @@
             // lblSkills
             // 
             lblSkills.AutoSize = true;
-            lblSkills.Location = new Point(15, 194);
+            lblSkills.Location = new Point(15, 193);
             lblSkills.Name = "lblSkills";
             lblSkills.Size = new Size(45, 20);
             lblSkills.TabIndex = 10;
@@ -167,7 +167,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(242, 94);
+            lblEmail.Location = new Point(343, 93);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(49, 20);
             lblEmail.TabIndex = 7;
@@ -176,7 +176,7 @@
             // lblCGPA
             // 
             lblCGPA.AutoSize = true;
-            lblCGPA.Location = new Point(242, 63);
+            lblCGPA.Location = new Point(342, 63);
             lblCGPA.Name = "lblCGPA";
             lblCGPA.Size = new Size(48, 20);
             lblCGPA.TabIndex = 7;
@@ -185,7 +185,7 @@
             // lblStudentID
             // 
             lblStudentID.AutoSize = true;
-            lblStudentID.Location = new Point(242, 32);
+            lblStudentID.Location = new Point(342, 32);
             lblStudentID.Name = "lblStudentID";
             lblStudentID.Size = new Size(82, 20);
             lblStudentID.TabIndex = 7;
@@ -194,7 +194,7 @@
             // lblContact
             // 
             lblContact.AutoSize = true;
-            lblContact.Location = new Point(15, 94);
+            lblContact.Location = new Point(15, 93);
             lblContact.Name = "lblContact";
             lblContact.Size = new Size(63, 20);
             lblContact.TabIndex = 7;
@@ -212,7 +212,7 @@
             // lblStudent
             // 
             lblStudent.AutoSize = true;
-            lblStudent.Location = new Point(15, 32);
+            lblStudent.Location = new Point(15, 33);
             lblStudent.Name = "lblStudent";
             lblStudent.Size = new Size(63, 20);
             lblStudent.TabIndex = 0;
@@ -230,7 +230,7 @@
             // 
             // btnReject
             // 
-            btnReject.Location = new Point(201, 588);
+            btnReject.Location = new Point(168, 588);
             btnReject.Name = "btnReject";
             btnReject.Size = new Size(136, 29);
             btnReject.TabIndex = 8;
@@ -240,7 +240,7 @@
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(366, 588);
+            btnRefresh.Location = new Point(310, 588);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(136, 29);
             btnRefresh.TabIndex = 9;
@@ -250,7 +250,7 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(366, 623);
+            btnBack.Location = new Point(563, 588);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(136, 29);
             btnBack.TabIndex = 10;
@@ -262,7 +262,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(526, 663);
+            ClientSize = new Size(726, 663);
             Controls.Add(btnBack);
             Controls.Add(btnRefresh);
             Controls.Add(btnReject);

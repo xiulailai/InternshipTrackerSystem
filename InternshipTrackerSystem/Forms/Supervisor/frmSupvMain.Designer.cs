@@ -259,7 +259,7 @@
             txtDepartment.Location = new Point(250, 70);
             txtDepartment.Name = "txtDepartment";
             txtDepartment.ReadOnly = true;
-            txtDepartment.Size = new Size(150, 23);
+            txtDepartment.Size = new Size(200, 23);
             txtDepartment.TabIndex = 7;
             // 
             // txtEmail

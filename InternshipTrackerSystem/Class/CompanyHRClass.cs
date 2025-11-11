@@ -3,6 +3,7 @@ using InternshipTrackerSystem.Model;
 using InternshipTrackerSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -124,30 +125,46 @@ namespace InternshipTrackerSystem.Class
             }
         }
 
-        public static bool CreatePosition(int companyId, int hrId, string title, string description, string requirements, string status)
+        public static bool CreatePosition(int companyId, int hrId, string title, string description, string requirements, string location, int duration, string stipend, DateTime startDate, DateTime endDate, DateTime applicationDeadline, int availableSlots, string status)
         {
             try
             {
-                // Validate inputs
-                if (string.IsNullOrWhiteSpace(title) || title.Length < 5)
+                // Add new validations
+                if (string.IsNullOrWhiteSpace(location))
                 {
-                    throw new Exception("Position title must be at least 5 characters long");
+                    throw new Exception("Location is required");
                 }
 
-                if (string.IsNullOrWhiteSpace(description) || description.Length < 20)
+                if (string.IsNullOrWhiteSpace(stipend))
                 {
-                    throw new Exception("Description must be at least 20 characters long");
+                    throw new Exception("Stipend is required");
                 }
 
-                if (string.IsNullOrWhiteSpace(requirements) || requirements.Length < 10)
+                if (duration <= 0)
                 {
-                    throw new Exception("Requirements must be at least 10 characters long");
+                    throw new Exception("Duration must be greater than 0");
                 }
 
+                if (availableSlots <= 0)
+                {
+                    throw new Exception("Available slots must be greater than 0");
+                }
+
+                if (applicationDeadline >= startDate)
+                {
+                    throw new Exception("Application deadline must be before start date");
+                }
+
+                if (startDate >= endDate)
+                {
+                    throw new Exception("End date must be after start date");
+                }
+
+                // Update the INSERT query
                 string query = @"
                     INSERT INTO internshippositions 
-                    (companyid, postedbyhrid, title, description, requirements, status, posteddate)
-                    VALUES (@companyid, @hrid, @title, @description, @requirements, @status, GETDATE())";
+                    (companyid, postedbyhrid, title, description, requirements, location, duration, stipend, startdate, enddate, applicationdeadline, availableslots, status, posteddate)
+                    VALUES (@companyid, @hrid, @title, @description, @requirements, @location, @duration, @stipend, @startdate, @enddate, @applicationdeadline, @availableslots, @status, GETDATE())";
 
                 var parameters = new Dictionary<string, object>
                 {
@@ -156,6 +173,13 @@ namespace InternshipTrackerSystem.Class
                     { "@title", title },
                     { "@description", description },
                     { "@requirements", requirements },
+                    { "@location", location },
+                    { "@duration", duration },
+                    { "@stipend", stipend },
+                    { "@startdate", startDate },
+                    { "@enddate", endDate },
+                    { "@applicationdeadline", applicationDeadline },
+                    { "@availableslots", availableSlots },
                     { "@status", status }
                 };
 
@@ -278,13 +302,7 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-                    SELECT 
-                        positionid,
-                        title,
-                        description,
-                        requirements,
-                        status,
-                        posteddate
+                    SELECT positionid, title, description, requirements, location, duration, stipend, startdate, enddate, applicationdeadline, availableslots, status, posteddate
                     FROM internshippositions
                     WHERE positionid = @positionid";
 
@@ -301,7 +319,7 @@ namespace InternshipTrackerSystem.Class
             }
         }
 
-        public static bool UpdatePosition(int positionId, string title, string description, string requirements, string status)
+        public static bool UpdatePosition(int positionId, string title, string description, string requirements, string location, int duration, string stipend, DateTime startDate, DateTime endDate, DateTime applicationDeadline, int availableSlots, string status)
         {
             try
             {
@@ -330,16 +348,29 @@ namespace InternshipTrackerSystem.Class
                     UPDATE internshippositions 
                     SET title = @title, 
                         description = @description, 
-                        requirements = @requirements, 
+                        requirements = @requirements,
+                        location = @location,
+                        duration = @duration,
+                        stipend = @stipend,
+                        startdate = @startdate,
+                        enddate = @enddate,
+                        applicationdeadline = @applicationdeadline,
+                        availableslots = @availableslots,
                         status = @status
                     WHERE positionid = @positionid";
 
                 var parameters = new Dictionary<string, object>
                 {
-                    { "@positionid", positionId },
                     { "@title", title },
                     { "@description", description },
                     { "@requirements", requirements },
+                    { "@location", location },
+                    { "@duration", duration },
+                    { "@stipend", stipend },
+                    { "@startdate", startDate },
+                    { "@enddate", endDate },
+                    { "@applicationdeadline", applicationDeadline },
+                    { "@availableslots", availableSlots },
                     { "@status", status }
                 };
 
@@ -364,6 +395,13 @@ namespace InternshipTrackerSystem.Class
                         ip.requirements,
                         ip.status,
                         ip.posteddate,
+                        ip.location,
+                        ip.duration,
+                        ip.stipend,
+                        ip.startdate,
+                        ip.enddate,
+                        ip.applicationdeadline,
+                        ip.availableslots,
                         c.companyname,
                         ch.fullname AS postedby,
                         COUNT(a.applicationid) AS totalapplications,
@@ -375,8 +413,7 @@ namespace InternshipTrackerSystem.Class
                     INNER JOIN companyhr ch ON ip.postedbyhrid = ch.hrid
                     LEFT JOIN applications a ON ip.positionid = a.positionid
                     WHERE ip.positionid = @positionid
-                    GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, 
-                             ip.status, ip.posteddate, c.companyname, ch.fullname";
+                    GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, ip.status, ip.posteddate, ip.location, ip.duration, ip.stipend, ip.startdate, ip.enddate, ip.applicationdeadline, ip.availableslots, c.companyname, ch.fullname";
 
                 var parameters = new Dictionary<string, object>
                 {
@@ -425,7 +462,7 @@ namespace InternshipTrackerSystem.Class
                         s.fullname AS studentname,
                         ip.positionid,
                         ip.title AS positiontitle,
-                        a.applieddate,
+                        a.applicationdate,
                         a.status
                     FROM applications a
                     INNER JOIN students s ON a.studentid = s.studentid
@@ -444,7 +481,7 @@ namespace InternshipTrackerSystem.Class
                     query += " AND ip.title = @position";
                 }
 
-                query += " ORDER BY a.applieddate DESC";
+                query += " ORDER BY a.applicationdate DESC";
 
                 var parameters = new Dictionary<string, object>
                 {
@@ -476,16 +513,16 @@ namespace InternshipTrackerSystem.Class
                 string query = @"
                     SELECT 
                         a.applicationid,
-                        a.applieddate,
+                        a.applicationdate,
                         a.status,
-                        a.remarks,
+                        a.reviewnotes,
                         s.studentid,
                         s.fullname AS studentname,
-                        s.matricno,
+                        s.studentidnumber,
                         s.program,
-                        s.cgpa,
+                        s.gpa,
                         s.skills,
-                        s.contactno,
+                        s.contactnumber,
                         u.email,
                         ip.title AS positiontitle
                     FROM applications a
@@ -542,4 +579,3 @@ namespace InternshipTrackerSystem.Class
         }
     }
 }
-

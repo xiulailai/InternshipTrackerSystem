@@ -20,6 +20,13 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         private string originalTitle;
         private string originalDescription;
         private string originalRequirements;
+        private string originalLocation;
+        private int originalDuration;
+        private string originalStipend;
+        private DateTime originalStartDate;
+        private DateTime originalEndDate;
+        private DateTime originalApplicationDeadline;
+        private int originalAvailableSlots;
         private string originalStatus;
         private DateTime postedDate;
 
@@ -62,6 +69,26 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             cboStatus.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
+        private void SetupNumericControls()
+        {
+            // Setup Duration (in weeks)
+            numDuration.Minimum = 1;
+            numDuration.Maximum = 52; // Up to 1 year
+            numDuration.DecimalPlaces = 0;
+
+            // Setup Available Slots
+            numAvailableSlots.Minimum = 1;
+            numAvailableSlots.Maximum = 100;
+            numAvailableSlots.DecimalPlaces = 0;
+        }
+
+        private void SetupDatePickers()
+        {
+            dtpApplicationDeadline.Format = DateTimePickerFormat.Short;
+            dtpStartDate.Format = DateTimePickerFormat.Short;
+            dtpEndDate.Format = DateTimePickerFormat.Short;
+        }
+
         private void LoadPositionData()
         {
             try
@@ -76,6 +103,13 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     originalTitle = row["title"].ToString();
                     originalDescription = row["description"].ToString();
                     originalRequirements = row["requirements"].ToString();
+                    originalLocation = row["location"].ToString();
+                    originalDuration = Convert.ToInt32(row["duration"]);
+                    originalStipend = row["stipend"].ToString();
+                    originalStartDate = Convert.ToDateTime(row["startdate"]);
+                    originalEndDate = Convert.ToDateTime(row["enddate"]);
+                    originalApplicationDeadline = Convert.ToDateTime(row["applicationdeadline"]);
+                    originalAvailableSlots = Convert.ToInt32(row["availableslots"]);
                     originalStatus = row["status"].ToString();
                     postedDate = Convert.ToDateTime(row["posteddate"]);
 
@@ -84,6 +118,13 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     txtTitle.Text = originalTitle;
                     txtDescription.Text = originalDescription;
                     txtRequirements.Text = originalRequirements;
+                    txtLocation.Text = originalLocation;
+                    numDuration.Value = originalDuration;
+                    txtStipend.Text = originalStipend;
+                    dtpStartDate.Value = originalStartDate;
+                    dtpEndDate.Value = originalEndDate;
+                    dtpApplicationDeadline.Value = originalApplicationDeadline;
+                    numAvailableSlots.Value = originalAvailableSlots;
                     cboStatus.SelectedItem = originalStatus;
                     lblPostedDate.Text = $"Posted Date: {postedDate:dd/MM/yyyy hh:mm tt}";
 
@@ -122,14 +163,12 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 isValid = false;
             }
 
-
             // Validate description
             if (string.IsNullOrWhiteSpace(txtDescription.Text))
             {
                 errorMessage += "• Job Description is required\n";
                 isValid = false;
             }
-
 
             // Validate requirements
             if (string.IsNullOrWhiteSpace(txtRequirements.Text))
@@ -138,11 +177,37 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 isValid = false;
             }
 
+            // Validate location
+            if (string.IsNullOrWhiteSpace(txtLocation.Text))
+            {
+                errorMessage += "• Location is required\n";
+                isValid = false;
+            }
+
+            // Validate stipend
+            if (string.IsNullOrWhiteSpace(txtStipend.Text))
+            {
+                errorMessage += "• Stipend is required\n";
+                isValid = false;
+            }
 
             // Validate status
             if (cboStatus.SelectedIndex == -1)
             {
                 errorMessage += "• Status must be selected\n";
+                isValid = false;
+            }
+
+            // Validate dates
+            if (dtpApplicationDeadline.Value >= dtpStartDate.Value)
+            {
+                errorMessage += "• Application deadline must be before start date\n";
+                isValid = false;
+            }
+
+            if (dtpStartDate.Value >= dtpEndDate.Value)
+            {
+                errorMessage += "• End date must be after start date\n";
                 isValid = false;
             }
 
@@ -161,6 +226,13 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             return txtTitle.Text.Trim() != originalTitle ||
                    txtDescription.Text.Trim() != originalDescription ||
                    txtRequirements.Text.Trim() != originalRequirements ||
+                   txtLocation.Text.Trim() != originalLocation ||
+                   (int)numDuration.Value != originalDuration ||
+                   txtStipend.Text.Trim() != originalStipend ||
+                   dtpStartDate.Value.Date != originalStartDate.Date ||
+                   dtpEndDate.Value.Date != originalEndDate.Date ||
+                   dtpApplicationDeadline.Value.Date != originalApplicationDeadline.Date ||
+                   (int)numAvailableSlots.Value != originalAvailableSlots ||
                    (cboStatus.SelectedItem != null && cboStatus.SelectedItem.ToString() != originalStatus);
         }
 
@@ -173,6 +245,12 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
                 // Setup status combo box
                 SetupStatusComboBox();
+
+                // Setup numeric controls
+                SetupNumericControls();
+
+                // Setup date pickers
+                SetupDatePickers();
 
                 // Load position data
                 LoadPositionData();
@@ -214,12 +292,23 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 string title = txtTitle.Text.Trim();
                 string description = txtDescription.Text.Trim();
                 string requirements = txtRequirements.Text.Trim();
+                string location = txtLocation.Text.Trim();
+                int duration = (int)numDuration.Value;
+                string stipend = txtStipend.Text.Trim();
+                DateTime startDate = dtpStartDate.Value;
+                DateTime endDate = dtpEndDate.Value;
+                DateTime applicationDeadline = dtpApplicationDeadline.Value;
+                int availableSlots = (int)numAvailableSlots.Value;
                 string status = cboStatus.SelectedItem.ToString();
 
                 // Confirm update
                 DialogResult confirmResult = MessageBox.Show(
                     $"Update position:\n\n" +
                     $"Title: {title}\n" +
+                    $"Location: {location}\n" +
+                    $"Duration: {duration} weeks\n" +
+                    $"Stipend: {stipend}\n" +
+                    $"Available Slots: {availableSlots}\n" +
                     $"Status: {status}\n\n" +
                     $"Are you sure you want to update this position?",
                     "Confirm Update",
@@ -232,13 +321,8 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     btnUpdate.Enabled = false;
                     Cursor = Cursors.WaitCursor;
 
-                    // Call the method to update position
-                    bool success = CompanyHRClass.UpdatePosition(
-                        positionId,
-                        title,
-                        description,
-                        requirements,
-                        status);
+                    // Call the method to update position with new parameters
+                    bool success = CompanyHRClass.UpdatePosition(positionId, title, description, requirements, location, duration, stipend, startDate, endDate, applicationDeadline, availableSlots, status);
 
                     Cursor = Cursors.Default;
                     btnUpdate.Enabled = true;

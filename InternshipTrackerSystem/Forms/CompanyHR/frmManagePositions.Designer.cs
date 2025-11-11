@@ -99,7 +99,7 @@
             dgvPositions.Location = new Point(36, 118);
             dgvPositions.Name = "dgvPositions";
             dgvPositions.RowHeadersWidth = 51;
-            dgvPositions.Size = new Size(502, 188);
+            dgvPositions.Size = new Size(927, 188);
             dgvPositions.TabIndex = 5;
             dgvPositions.CellDoubleClick += dgvPositions_CellDoubleClick;
             dgvPositions.SelectionChanged += dgvPositions_SelectionChanged;
@@ -146,7 +146,7 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(410, 394);
+            btnBack.Location = new Point(847, 331);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(116, 29);
             btnBack.TabIndex = 10;
@@ -162,7 +162,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 434);
+            ClientSize = new Size(1017, 434);
             Controls.Add(btnBack);
             Controls.Add(btnDelete);
             Controls.Add(btnToggleStatus);

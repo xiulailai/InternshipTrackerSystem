@@ -42,6 +42,11 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 // Setup status combo box
                 SetupStatusComboBox();
 
+                // Setup numeric controls
+                SetupNumericControls();
+
+                // Setup date pickers
+                SetupDatePickers();
 
                 // Focus on title field
                 txtTitle.Focus();
@@ -53,6 +58,32 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+        private void SetupNumericControls()
+        {
+            // Setup Duration (in weeks)
+            numDuration.Minimum = 1;
+            numDuration.Maximum = 52; // Up to 1 year
+            numDuration.Value = 12; // Default 12 weeks
+            numDuration.DecimalPlaces = 0;
+
+            // Setup Available Slots
+            numAvailableSlots.Minimum = 1;
+            numAvailableSlots.Maximum = 100;
+            numAvailableSlots.Value = 1; // Default 1 slot
+            numAvailableSlots.DecimalPlaces = 0;
+        }
+        private void SetupDatePickers()
+        {
+            // Set MinDate FIRST before setting Value
+            dtpApplicationDeadline.MinDate = DateTime.Now.Date;
+            dtpStartDate.MinDate = DateTime.Now.Date;
+            dtpEndDate.MinDate = DateTime.Now.Date;
+
+            // Set format
+            dtpApplicationDeadline.Format = DateTimePickerFormat.Short;
+            dtpStartDate.Format = DateTimePickerFormat.Short;
+            dtpEndDate.Format = DateTimePickerFormat.Short;
         }
 
         private void SetupStatusComboBox()
@@ -90,10 +121,43 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 isValid = false;
             }
 
+            // Validate location
+            if (string.IsNullOrWhiteSpace(txtLocation.Text))
+            {
+                errorMessage += "• Location is required\n";
+                isValid = false;
+            }
+
+            // Validate stipend
+            if (string.IsNullOrWhiteSpace(txtStipend.Text))
+            {
+                errorMessage += "• Stipend is required\n";
+                isValid = false;
+            }
+
             // Validate status
             if (cboStatus.SelectedIndex == -1)
             {
                 errorMessage += "• Status must be selected\n";
+                isValid = false;
+            }
+
+            // Validate dates
+            if (dtpApplicationDeadline.Value >= dtpStartDate.Value)
+            {
+                errorMessage += "• Application deadline must be before start date\n";
+                isValid = false;
+            }
+
+            if (dtpStartDate.Value >= dtpEndDate.Value)
+            {
+                errorMessage += "• End date must be after start date\n";
+                isValid = false;
+            }
+
+            if (dtpApplicationDeadline.Value < DateTime.Now.Date)
+            {
+                errorMessage += "• Application deadline cannot be in the past\n";
                 isValid = false;
             }
 
@@ -120,12 +184,23 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 string title = txtTitle.Text.Trim();
                 string description = txtDescription.Text.Trim();
                 string requirements = txtRequirements.Text.Trim();
+                string location = txtLocation.Text.Trim();
+                int duration = (int)numDuration.Value;
+                string stipend = txtStipend.Text.Trim();
+                DateTime startDate = dtpStartDate.Value;
+                DateTime endDate = dtpEndDate.Value;
+                DateTime applicationDeadline = dtpApplicationDeadline.Value;
+                int availableSlots = (int)numAvailableSlots.Value;
                 string status = cboStatus.SelectedItem.ToString();
 
                 // Confirm creation
                 DialogResult confirmResult = MessageBox.Show(
                     $"Create new position:\n\n" +
                     $"Title: {title}\n" +
+                    $"Location: {location}\n" +
+                    $"Duration: {duration} weeks\n" +
+                    $"Stipend: {stipend}\n" +
+                    $"Available Slots: {availableSlots}\n" +
                     $"Status: {status}\n\n" +
                     $"Are you sure you want to create this position?",
                     "Confirm Creation",
@@ -145,6 +220,13 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                         title,
                         description,
                         requirements,
+                        location,
+                        duration,
+                        stipend,
+                        startDate,
+                        endDate,
+                        applicationDeadline,
+                        availableSlots,
                         status);
 
                     Cursor = Cursors.Default;
@@ -195,6 +277,16 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 txtTitle.Clear();
                 txtDescription.Clear();
                 txtRequirements.Clear();
+                txtLocation.Clear();
+                txtStipend.Clear();
+
+                numDuration.Value = 12;
+                numAvailableSlots.Value = 1;
+
+                dtpApplicationDeadline.Value = DateTime.Now.AddDays(30);
+                dtpStartDate.Value = DateTime.Now.AddDays(60);
+                dtpEndDate.Value = DateTime.Now.AddDays(150);
+
                 cboStatus.SelectedIndex = 0;
 
                 txtTitle.Focus();
@@ -205,8 +297,10 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             // Check if any data has been entered
             bool hasData = !string.IsNullOrWhiteSpace(txtTitle.Text) ||
-                          (!string.IsNullOrWhiteSpace(txtDescription.Text)) ||
-                          (!string.IsNullOrWhiteSpace(txtRequirements.Text));
+               (!string.IsNullOrWhiteSpace(txtDescription.Text)) ||
+               (!string.IsNullOrWhiteSpace(txtRequirements.Text)) ||
+               (!string.IsNullOrWhiteSpace(txtLocation.Text)) ||
+               (!string.IsNullOrWhiteSpace(txtStipend.Text));
 
             if (hasData)
             {

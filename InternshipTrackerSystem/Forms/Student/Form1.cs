@@ -1,5 +1,8 @@
-using System.Data.SqlClient;
+﻿using System;
 using System.Data;
+using System.Windows.Forms;
+using Npgsql;
+
 namespace assignment_student
 {
     public partial class frmStuLogin : Form
@@ -16,57 +19,71 @@ namespace assignment_student
 
             string connStr = "Host=localhost;Port=5432;Username=postgres;Password=Password123!;Database=InternshipTracker;";
 
-            if (username == "" || password == "")
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please Emter Your Email and Password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter your Email and Password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                using (var conn = new SqlConnection(connStr))
+                using (var conn = new NpgsqlConnection(connStr))
                 {
                     conn.Open();
+                    string sql = @"
+                SELECT s.studentid, u.passwordhash
+                FROM users u
+                JOIN students s ON u.userid = s.userid
+                WHERE u.email = @e;
+            ";
 
-                    string sql = "SELECT passwordhash FROM users WHERE email = @e";
-                    using (var cmd = new SqlCommand(sql, conn))
+                    using (var cmd = new NpgsqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@e", username);
-
-                        object result = cmd.ExecuteScalar();
-
-                        if (result == null)
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            MessageBox.Show("User Haven't Sign Up Yet?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                            if (!reader.Read())
+                            {
+                                MessageBox.Show("User not found. Have you signed up?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
-                        string dbPassword = result.ToString();
+                            int studentId = reader.GetInt32(0); 
+                            string dbPassword = reader.GetString(1); 
 
-                        if (dbPassword != password)
-                        {
-                            MessageBox.Show("Wrong Password?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                            if (dbPassword != password)
+                            {
+                                MessageBox.Show("Wrong password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
-                        MessageBox.Show("Login Successful", "Wellcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                          
+                            Session.LoginEmail = username;
 
-                        Form3 mainPage = new Form3();
-                        mainPage.Show();
-                        this.Hide();
-                    }
-                }
+                            Session.StudentId = studentId;
+
+                            MessageBox.Show("Login Successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            frmHomePage mainPage = new frmHomePage();
+                            mainPage.Show();
+                            this.Hide();
+
+                        } 
+                    } 
+                } 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("404 Not Found?\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Connection or query error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+
         private void button2_Click(object sender, EventArgs e)
         {
-            frmStuSignUp mainPage = new frmStuSignUp();
-            mainPage.Show();
+           
+            frmStuSignUp signupPage = new frmStuSignUp();
+            signupPage.Show();
             this.Hide();
         }
     }

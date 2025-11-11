@@ -1,60 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel;
+﻿using Npgsql;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.DataFormats;
-using System.Data.SqlClient;
 
 namespace assignment_student
-{ 
+{
     public partial class Form3 : Form
     {
-        private void LoadStudentsData()
-        {
-            string connStr = "Host=localhost;Port=5432;Username=postgres;Password=Password123!;Database=InternshipTracker;";
-
-            string query = "SELECT * FROM internshippositions;";
-
-            using (var conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                using (var cmd = new SqlCommand(query, conn))
-                using (var adapter = new SqlDataAdapter(cmd))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    dgvStudents.DataSource = dt;
-                }
-            }
-        }
-        public BindingList<Student> Students { get; set; }
         public Form3()
         {
             InitializeComponent();
-            Students = new BindingList<Student>()
+        }
+
+        private void LoadStudentsData()
         {
-            new Student(){ ID = 1, Name = "Alice", Age = 20 },
-            new Student(){ ID = 2, Name = "Bob", Age = 25 }
-        };
+            if (Session.StudentId == 0)
+            {
+                MessageBox.Show("ERROR: login expired", "Session Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string connStr = "Host=localhost;Port=5432;Username=postgres;Password=Password123!;Database=InternshipTracker;";
+
+            string query = @"
+                SELECT 
+                    p.Title AS PositionTitle, 
+                    a.applicationdate AS ApplicationDate, 
+                    a.status AS Status,
+                    a.coverletter AS CoverLetter
+                FROM applications a
+                JOIN internshippositions p ON a.positionid = p.positionid
+                WHERE a.studentid = @studentid;
+            ";
+
+            try
+            {
+                using (var conn = new NpgsqlConnection(connStr))
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@studentid", Session.StudentId);
+
+                        using (var adapter = new NpgsqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+
+                            dgvStudents.AutoGenerateColumns = true;
+                            dgvStudents.DataSource = dt;
+                            dgvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loading error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            dgvStudents.DataSource = Students;
             LoadStudentsData();
         }
-        public class Student
+
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            public int ID { get; set; }
-            public string Name { get; set; }
-            public int Age { get; set; }
-        
+            frmHomePage mainPage = new frmHomePage();
+            mainPage.Show();
+            this.Hide();
         }
     }
 }
