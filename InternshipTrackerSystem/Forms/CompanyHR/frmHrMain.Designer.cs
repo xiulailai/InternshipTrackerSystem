@@ -30,20 +30,20 @@
         {
             grpHRInfo = new GroupBox();
             txtEmail = new TextBox();
-            label2 = new Label();
+            lblEmail = new Label();
             txtCompany = new TextBox();
-            label1 = new Label();
+            lblCompany = new Label();
             lblHRName = new Label();
-            groupBox1 = new GroupBox();
+            grpHRStatistics = new GroupBox();
             txtActiveInterns = new TextBox();
-            label6 = new Label();
+            lblActiveInterns = new Label();
             txtPendingReviews = new TextBox();
             txtTotalApplications = new TextBox();
-            label3 = new Label();
+            lblPendingRev = new Label();
             txtActivePositions = new TextBox();
-            label4 = new Label();
-            label5 = new Label();
-            groupBox2 = new GroupBox();
+            lblTotalApp = new Label();
+            lblActivePos = new Label();
+            grpHRButtons = new GroupBox();
             btnTrackInterns = new Button();
             btnLogout = new Button();
             btnRefresh = new Button();
@@ -51,16 +51,16 @@
             btnReviewApplications = new Button();
             btnManagePositions = new Button();
             grpHRInfo.SuspendLayout();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            grpHRStatistics.SuspendLayout();
+            grpHRButtons.SuspendLayout();
             SuspendLayout();
             // 
             // grpHRInfo
             // 
             grpHRInfo.Controls.Add(txtEmail);
-            grpHRInfo.Controls.Add(label2);
+            grpHRInfo.Controls.Add(lblEmail);
             grpHRInfo.Controls.Add(txtCompany);
-            grpHRInfo.Controls.Add(label1);
+            grpHRInfo.Controls.Add(lblCompany);
             grpHRInfo.Controls.Add(lblHRName);
             grpHRInfo.Location = new Point(26, 24);
             grpHRInfo.Name = "grpHRInfo";
@@ -76,14 +76,14 @@
             txtEmail.Size = new Size(208, 27);
             txtEmail.TabIndex = 4;
             // 
-            // label2
+            // lblEmail
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(17, 84);
-            label2.Name = "label2";
-            label2.Size = new Size(49, 20);
-            label2.TabIndex = 3;
-            label2.Text = "Email:";
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(17, 84);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(49, 20);
+            lblEmail.TabIndex = 3;
+            lblEmail.Text = "Email:";
             // 
             // txtCompany
             // 
@@ -93,14 +93,14 @@
             txtCompany.Size = new Size(208, 27);
             txtCompany.TabIndex = 2;
             // 
-            // label1
+            // lblCompany
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(17, 53);
-            label1.Name = "label1";
-            label1.Size = new Size(75, 20);
-            label1.TabIndex = 1;
-            label1.Text = "Company:";
+            lblCompany.AutoSize = true;
+            lblCompany.Location = new Point(17, 53);
+            lblCompany.Name = "lblCompany";
+            lblCompany.Size = new Size(75, 20);
+            lblCompany.TabIndex = 1;
+            lblCompany.Text = "Company:";
             // 
             // lblHRName
             // 
@@ -111,21 +111,21 @@
             lblHRName.TabIndex = 0;
             lblHRName.Text = "Welcome, ";
             // 
-            // groupBox1
+            // grpHRStatistics
             // 
-            groupBox1.Controls.Add(txtActiveInterns);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(txtPendingReviews);
-            groupBox1.Controls.Add(txtTotalApplications);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(txtActivePositions);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Location = new Point(26, 165);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(365, 145);
-            groupBox1.TabIndex = 5;
-            groupBox1.TabStop = false;
+            grpHRStatistics.Controls.Add(txtActiveInterns);
+            grpHRStatistics.Controls.Add(lblActiveInterns);
+            grpHRStatistics.Controls.Add(txtPendingReviews);
+            grpHRStatistics.Controls.Add(txtTotalApplications);
+            grpHRStatistics.Controls.Add(lblPendingRev);
+            grpHRStatistics.Controls.Add(txtActivePositions);
+            grpHRStatistics.Controls.Add(lblTotalApp);
+            grpHRStatistics.Controls.Add(lblActivePos);
+            grpHRStatistics.Location = new Point(26, 165);
+            grpHRStatistics.Name = "grpHRStatistics";
+            grpHRStatistics.Size = new Size(365, 145);
+            grpHRStatistics.TabIndex = 5;
+            grpHRStatistics.TabStop = false;
             // 
             // txtActiveInterns
             // 
@@ -136,14 +136,14 @@
             txtActiveInterns.TabIndex = 7;
             txtActiveInterns.Text = "0";
             // 
-            // label6
+            // lblActiveInterns
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(17, 115);
-            label6.Name = "label6";
-            label6.Size = new Size(101, 20);
-            label6.TabIndex = 6;
-            label6.Text = "Active Interns:";
+            lblActiveInterns.AutoSize = true;
+            lblActiveInterns.Location = new Point(17, 115);
+            lblActiveInterns.Name = "lblActiveInterns";
+            lblActiveInterns.Size = new Size(101, 20);
+            lblActiveInterns.TabIndex = 6;
+            lblActiveInterns.Text = "Active Interns:";
             // 
             // txtPendingReviews
             // 
@@ -163,14 +163,14 @@
             txtTotalApplications.TabIndex = 4;
             txtTotalApplications.Text = "0";
             // 
-            // label3
+            // lblPendingRev
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(17, 84);
-            label3.Name = "label3";
-            label3.Size = new Size(122, 20);
-            label3.TabIndex = 3;
-            label3.Text = "Pending Reviews:";
+            lblPendingRev.AutoSize = true;
+            lblPendingRev.Location = new Point(17, 84);
+            lblPendingRev.Name = "lblPendingRev";
+            lblPendingRev.Size = new Size(122, 20);
+            lblPendingRev.TabIndex = 3;
+            lblPendingRev.Text = "Pending Reviews:";
             // 
             // txtActivePositions
             // 
@@ -181,37 +181,37 @@
             txtActivePositions.TabIndex = 2;
             txtActivePositions.Text = "0";
             // 
-            // label4
+            // lblTotalApp
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(17, 53);
-            label4.Name = "label4";
-            label4.Size = new Size(132, 20);
-            label4.TabIndex = 1;
-            label4.Text = "Total Applications:";
+            lblTotalApp.AutoSize = true;
+            lblTotalApp.Location = new Point(17, 53);
+            lblTotalApp.Name = "lblTotalApp";
+            lblTotalApp.Size = new Size(132, 20);
+            lblTotalApp.TabIndex = 1;
+            lblTotalApp.Text = "Total Applications:";
             // 
-            // label5
+            // lblActivePos
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(17, 23);
-            label5.Name = "label5";
-            label5.Size = new Size(115, 20);
-            label5.TabIndex = 0;
-            label5.Text = "Active Positions:";
+            lblActivePos.AutoSize = true;
+            lblActivePos.Location = new Point(17, 23);
+            lblActivePos.Name = "lblActivePos";
+            lblActivePos.Size = new Size(115, 20);
+            lblActivePos.TabIndex = 0;
+            lblActivePos.Text = "Active Positions:";
             // 
-            // groupBox2
+            // grpHRButtons
             // 
-            groupBox2.Controls.Add(btnTrackInterns);
-            groupBox2.Controls.Add(btnLogout);
-            groupBox2.Controls.Add(btnRefresh);
-            groupBox2.Controls.Add(btnProfile);
-            groupBox2.Controls.Add(btnReviewApplications);
-            groupBox2.Controls.Add(btnManagePositions);
-            groupBox2.Location = new Point(26, 332);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(365, 138);
-            groupBox2.TabIndex = 6;
-            groupBox2.TabStop = false;
+            grpHRButtons.Controls.Add(btnTrackInterns);
+            grpHRButtons.Controls.Add(btnLogout);
+            grpHRButtons.Controls.Add(btnRefresh);
+            grpHRButtons.Controls.Add(btnProfile);
+            grpHRButtons.Controls.Add(btnReviewApplications);
+            grpHRButtons.Controls.Add(btnManagePositions);
+            grpHRButtons.Location = new Point(26, 332);
+            grpHRButtons.Name = "grpHRButtons";
+            grpHRButtons.Size = new Size(365, 138);
+            grpHRButtons.TabIndex = 6;
+            grpHRButtons.TabStop = false;
             // 
             // btnTrackInterns
             // 
@@ -278,8 +278,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(419, 481);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(grpHRButtons);
+            Controls.Add(grpHRStatistics);
             Controls.Add(grpHRInfo);
             Name = "frmHrMain";
             Text = "Company HR Dashboard";
@@ -288,9 +288,9 @@
             Load += frmHrMain_Load;
             grpHRInfo.ResumeLayout(false);
             grpHRInfo.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
+            grpHRStatistics.ResumeLayout(false);
+            grpHRStatistics.PerformLayout();
+            grpHRButtons.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -299,19 +299,19 @@
         private GroupBox grpHRInfo;
         private Label lblHRName;
         private TextBox txtEmail;
-        private Label label2;
+        private Label lblEmail;
         private TextBox txtCompany;
-        private Label label1;
-        private GroupBox groupBox1;
+        private Label lblCompany;
+        private GroupBox grpHRStatistics;
         private TextBox txtTotalApplications;
-        private Label label3;
+        private Label lblPendingRev;
         private TextBox txtActivePositions;
-        private Label label4;
-        private Label label5;
+        private Label lblTotalApp;
+        private Label lblActivePos;
         private TextBox txtActiveInterns;
-        private Label label6;
+        private Label lblActiveInterns;
         private TextBox txtPendingReviews;
-        private GroupBox groupBox2;
+        private GroupBox grpHRButtons;
         private Button btnReviewApplications;
         private Button btnManagePositions;
         private Button btnLogout;

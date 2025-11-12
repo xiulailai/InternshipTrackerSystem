@@ -30,15 +30,15 @@
         {
             btnCancel = new Button();
             btnConfirm = new Button();
-            groupBox2 = new GroupBox();
+            grpRejection = new GroupBox();
             txtRemarks = new TextBox();
-            label2 = new Label();
-            groupBox1 = new GroupBox();
+            lblReject = new Label();
+            grpDetails = new GroupBox();
             lblAction = new Label();
             lblPosition = new Label();
             lblStudent = new Label();
-            groupBox2.SuspendLayout();
-            groupBox1.SuspendLayout();
+            grpRejection.SuspendLayout();
+            grpDetails.SuspendLayout();
             SuspendLayout();
             // 
             // btnCancel
@@ -61,15 +61,15 @@
             btnConfirm.UseVisualStyleBackColor = true;
             btnConfirm.Click += btnConfirm_Click;
             // 
-            // groupBox2
+            // grpRejection
             // 
-            groupBox2.Controls.Add(txtRemarks);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Location = new Point(12, 145);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(354, 143);
-            groupBox2.TabIndex = 5;
-            groupBox2.TabStop = false;
+            grpRejection.Controls.Add(txtRemarks);
+            grpRejection.Controls.Add(lblReject);
+            grpRejection.Location = new Point(12, 145);
+            grpRejection.Name = "grpRejection";
+            grpRejection.Size = new Size(354, 143);
+            grpRejection.TabIndex = 5;
+            grpRejection.TabStop = false;
             // 
             // txtRemarks
             // 
@@ -79,25 +79,25 @@
             txtRemarks.Size = new Size(323, 100);
             txtRemarks.TabIndex = 1;
             // 
-            // label2
+            // lblReject
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(16, 14);
-            label2.Name = "label2";
-            label2.Size = new Size(159, 20);
-            label2.TabIndex = 0;
-            label2.Text = "Reason for Rejection: *";
+            lblReject.AutoSize = true;
+            lblReject.Location = new Point(16, 14);
+            lblReject.Name = "lblReject";
+            lblReject.Size = new Size(159, 20);
+            lblReject.TabIndex = 0;
+            lblReject.Text = "Reason for Rejection: *";
             // 
-            // groupBox1
+            // grpDetails
             // 
-            groupBox1.Controls.Add(lblAction);
-            groupBox1.Controls.Add(lblPosition);
-            groupBox1.Controls.Add(lblStudent);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(354, 116);
-            groupBox1.TabIndex = 4;
-            groupBox1.TabStop = false;
+            grpDetails.Controls.Add(lblAction);
+            grpDetails.Controls.Add(lblPosition);
+            grpDetails.Controls.Add(lblStudent);
+            grpDetails.Location = new Point(12, 12);
+            grpDetails.Name = "grpDetails";
+            grpDetails.Size = new Size(354, 116);
+            grpDetails.TabIndex = 4;
+            grpDetails.TabStop = false;
             // 
             // lblAction
             // 
@@ -133,15 +133,15 @@
             ClientSize = new Size(383, 347);
             Controls.Add(btnCancel);
             Controls.Add(btnConfirm);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(grpRejection);
+            Controls.Add(grpDetails);
             Name = "frmRejectApplication";
             Text = "frmRejectApplication";
             Load += frmRejectApplication_Load;
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            grpRejection.ResumeLayout(false);
+            grpRejection.PerformLayout();
+            grpDetails.ResumeLayout(false);
+            grpDetails.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -149,10 +149,10 @@
 
         private Button btnCancel;
         private Button btnConfirm;
-        private GroupBox groupBox2;
+        private GroupBox grpRejection;
         private TextBox txtRemarks;
-        private Label label2;
-        private GroupBox groupBox1;
+        private Label lblReject;
+        private GroupBox grpDetails;
         private Label lblAction;
         private Label lblPosition;
         private Label lblStudent;

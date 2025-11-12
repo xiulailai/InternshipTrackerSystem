@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
+            grpDetails = new GroupBox();
             lblAction = new Label();
             lblPosition = new Label();
             lblStudent = new Label();
-            groupBox2 = new GroupBox();
+            grpRemarks = new GroupBox();
             txtRemarks = new TextBox();
-            label2 = new Label();
+            lblRemarks = new Label();
             btnConfirm = new Button();
             btnCancel = new Button();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            grpDetails.SuspendLayout();
+            grpRemarks.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // grpDetails
             // 
-            groupBox1.Controls.Add(lblAction);
-            groupBox1.Controls.Add(lblPosition);
-            groupBox1.Controls.Add(lblStudent);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(354, 116);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
+            grpDetails.Controls.Add(lblAction);
+            grpDetails.Controls.Add(lblPosition);
+            grpDetails.Controls.Add(lblStudent);
+            grpDetails.Location = new Point(12, 12);
+            grpDetails.Name = "grpDetails";
+            grpDetails.Size = new Size(354, 116);
+            grpDetails.TabIndex = 0;
+            grpDetails.TabStop = false;
             // 
             // lblAction
             // 
@@ -79,15 +79,15 @@
             lblStudent.TabIndex = 0;
             lblStudent.Text = "Student:";
             // 
-            // groupBox2
+            // grpRemarks
             // 
-            groupBox2.Controls.Add(txtRemarks);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Location = new Point(12, 145);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(354, 143);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
+            grpRemarks.Controls.Add(txtRemarks);
+            grpRemarks.Controls.Add(lblRemarks);
+            grpRemarks.Location = new Point(12, 145);
+            grpRemarks.Name = "grpRemarks";
+            grpRemarks.Size = new Size(354, 143);
+            grpRemarks.TabIndex = 1;
+            grpRemarks.TabStop = false;
             // 
             // txtRemarks
             // 
@@ -97,14 +97,14 @@
             txtRemarks.Size = new Size(323, 100);
             txtRemarks.TabIndex = 1;
             // 
-            // label2
+            // lblRemarks
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(16, 14);
-            label2.Name = "label2";
-            label2.Size = new Size(140, 20);
-            label2.TabIndex = 0;
-            label2.Text = "Remarks (Optional):";
+            lblRemarks.AutoSize = true;
+            lblRemarks.Location = new Point(16, 14);
+            lblRemarks.Name = "lblRemarks";
+            lblRemarks.Size = new Size(140, 20);
+            lblRemarks.TabIndex = 0;
+            lblRemarks.Text = "Remarks (Optional):";
             // 
             // btnConfirm
             // 
@@ -133,27 +133,27 @@
             ClientSize = new Size(382, 342);
             Controls.Add(btnCancel);
             Controls.Add(btnConfirm);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(grpRemarks);
+            Controls.Add(grpDetails);
             Name = "frmAcceptApplication";
             Text = "Accept Application";
             Load += frmAcceptApplication_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            grpDetails.ResumeLayout(false);
+            grpDetails.PerformLayout();
+            grpRemarks.ResumeLayout(false);
+            grpRemarks.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox1;
+        private GroupBox grpDetails;
         private Label lblAction;
         private Label lblPosition;
         private Label lblStudent;
-        private GroupBox groupBox2;
+        private GroupBox grpRemarks;
         private TextBox txtRemarks;
-        private Label label2;
+        private Label lblRemarks;
         private Button btnConfirm;
         private Button btnCancel;
     }

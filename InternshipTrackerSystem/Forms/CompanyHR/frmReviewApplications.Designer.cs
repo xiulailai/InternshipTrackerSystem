@@ -30,11 +30,11 @@
         {
             lblCompanyName = new Label();
             cboStatusFilter = new ComboBox();
-            label1 = new Label();
-            label2 = new Label();
+            lblStatusFilter = new Label();
+            lblPositionFilter = new Label();
             cboPositionFilter = new ComboBox();
             dgvApplications = new DataGridView();
-            groupBox1 = new GroupBox();
+            grpApplicantDetails = new GroupBox();
             lblRemarks = new Label();
             lblSkills = new Label();
             lblAppliedDate = new Label();
@@ -50,7 +50,7 @@
             btnRefresh = new Button();
             btnBack = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvApplications).BeginInit();
-            groupBox1.SuspendLayout();
+            grpApplicantDetails.SuspendLayout();
             SuspendLayout();
             // 
             // lblCompanyName
@@ -71,23 +71,23 @@
             cboStatusFilter.TabIndex = 1;
             cboStatusFilter.SelectedIndexChanged += cboStatusFilter_SelectedIndexChanged;
             // 
-            // label1
+            // lblStatusFilter
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(26, 46);
-            label1.Name = "label1";
-            label1.Size = new Size(190, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Filter by Application Status:";
+            lblStatusFilter.AutoSize = true;
+            lblStatusFilter.Location = new Point(26, 46);
+            lblStatusFilter.Name = "lblStatusFilter";
+            lblStatusFilter.Size = new Size(190, 20);
+            lblStatusFilter.TabIndex = 2;
+            lblStatusFilter.Text = "Filter by Application Status:";
             // 
-            // label2
+            // lblPositionFilter
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(268, 46);
-            label2.Name = "label2";
-            label2.Size = new Size(148, 20);
-            label2.TabIndex = 3;
-            label2.Text = "Filter by Job Position:";
+            lblPositionFilter.AutoSize = true;
+            lblPositionFilter.Location = new Point(268, 46);
+            lblPositionFilter.Name = "lblPositionFilter";
+            lblPositionFilter.Size = new Size(148, 20);
+            lblPositionFilter.TabIndex = 3;
+            lblPositionFilter.Text = "Filter by Job Position:";
             // 
             // cboPositionFilter
             // 
@@ -109,24 +109,24 @@
             dgvApplications.CellDoubleClick += dgvApplications_CellDoubleClick;
             dgvApplications.SelectionChanged += dgvApplications_SelectionChanged;
             // 
-            // groupBox1
+            // grpApplicantDetails
             // 
-            groupBox1.Controls.Add(lblRemarks);
-            groupBox1.Controls.Add(lblSkills);
-            groupBox1.Controls.Add(lblAppliedDate);
-            groupBox1.Controls.Add(lblPositionApplied);
-            groupBox1.Controls.Add(lblEmail);
-            groupBox1.Controls.Add(lblCGPA);
-            groupBox1.Controls.Add(lblStudentID);
-            groupBox1.Controls.Add(lblContact);
-            groupBox1.Controls.Add(lblProgram);
-            groupBox1.Controls.Add(lblStudent);
-            groupBox1.Location = new Point(26, 297);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(673, 271);
-            groupBox1.TabIndex = 6;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Selected Applicant Details";
+            grpApplicantDetails.Controls.Add(lblRemarks);
+            grpApplicantDetails.Controls.Add(lblSkills);
+            grpApplicantDetails.Controls.Add(lblAppliedDate);
+            grpApplicantDetails.Controls.Add(lblPositionApplied);
+            grpApplicantDetails.Controls.Add(lblEmail);
+            grpApplicantDetails.Controls.Add(lblCGPA);
+            grpApplicantDetails.Controls.Add(lblStudentID);
+            grpApplicantDetails.Controls.Add(lblContact);
+            grpApplicantDetails.Controls.Add(lblProgram);
+            grpApplicantDetails.Controls.Add(lblStudent);
+            grpApplicantDetails.Location = new Point(26, 297);
+            grpApplicantDetails.Name = "grpApplicantDetails";
+            grpApplicantDetails.Size = new Size(673, 271);
+            grpApplicantDetails.TabIndex = 6;
+            grpApplicantDetails.TabStop = false;
+            grpApplicantDetails.Text = "Selected Applicant Details";
             // 
             // lblRemarks
             // 
@@ -267,19 +267,19 @@
             Controls.Add(btnRefresh);
             Controls.Add(btnReject);
             Controls.Add(btnAccept);
-            Controls.Add(groupBox1);
+            Controls.Add(grpApplicantDetails);
             Controls.Add(dgvApplications);
             Controls.Add(cboPositionFilter);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblPositionFilter);
+            Controls.Add(lblStatusFilter);
             Controls.Add(cboStatusFilter);
             Controls.Add(lblCompanyName);
             Name = "frmReviewApplications";
             Text = "Review Applications";
             Load += frmReviewApplications_Load;
             ((System.ComponentModel.ISupportInitialize)dgvApplications).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            grpApplicantDetails.ResumeLayout(false);
+            grpApplicantDetails.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -288,11 +288,11 @@
 
         private Label lblCompanyName;
         private ComboBox cboStatusFilter;
-        private Label label1;
-        private Label label2;
+        private Label lblStatusFilter;
+        private Label lblPositionFilter;
         private ComboBox cboPositionFilter;
         private DataGridView dgvApplications;
-        private GroupBox groupBox1;
+        private GroupBox grpApplicantDetails;
         private Label lblStudent;
         private Label lblSkills;
         private Label lblAppliedDate;

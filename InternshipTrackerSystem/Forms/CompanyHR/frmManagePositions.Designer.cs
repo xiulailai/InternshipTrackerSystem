@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            label1 = new Label();
+            lblManagePositions = new Label();
             lblCompanyName = new Label();
             btnCreateNew = new Button();
             btnRefresh = new Button();
@@ -45,14 +45,14 @@
             ((System.ComponentModel.ISupportInitialize)databaseHelperBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // lblManagePositions
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(36, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(208, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Manage Internship Positions - ";
+            lblManagePositions.AutoSize = true;
+            lblManagePositions.Location = new Point(36, 24);
+            lblManagePositions.Name = "lblManagePositions";
+            lblManagePositions.Size = new Size(208, 20);
+            lblManagePositions.TabIndex = 0;
+            lblManagePositions.Text = "Manage Internship Positions - ";
             // 
             // lblCompanyName
             // 
@@ -173,7 +173,7 @@
             Controls.Add(btnRefresh);
             Controls.Add(btnCreateNew);
             Controls.Add(lblCompanyName);
-            Controls.Add(label1);
+            Controls.Add(lblManagePositions);
             Name = "frmManagePositions";
             Text = "Manage Positions";
             Load += frmManagePositions_Load;
@@ -185,7 +185,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label lblManagePositions;
         private Label lblCompanyName;
         private Button btnCreateNew;
         private Button btnRefresh;

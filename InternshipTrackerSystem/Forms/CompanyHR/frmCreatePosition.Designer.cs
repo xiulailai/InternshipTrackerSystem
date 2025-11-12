@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             lblCompanyName = new Label();
-            label3 = new Label();
+            lblTitle = new Label();
             txtTitle = new TextBox();
-            label4 = new Label();
+            lblDescription = new Label();
             txtDescription = new TextBox();
-            label5 = new Label();
+            lblRequirements = new Label();
             txtRequirements = new TextBox();
-            label6 = new Label();
+            lblStatus = new Label();
             cboStatus = new ComboBox();
             btnSave = new Button();
             btnClear = new Button();
             btnCancel = new Button();
-            label2 = new Label();
+            lblLocation = new Label();
             txtLocation = new TextBox();
             txtStipend = new TextBox();
-            label7 = new Label();
-            label8 = new Label();
+            lblStipend = new Label();
+            lblStartDate = new Label();
             dtpStartDate = new DateTimePicker();
             dtpEndDate = new DateTimePicker();
-            label9 = new Label();
-            label10 = new Label();
+            lblEndDate = new Label();
+            lblApplicationDeadline = new Label();
             dtpApplicationDeadline = new DateTimePicker();
-            label11 = new Label();
+            lblAvailableSlots = new Label();
             numAvailableSlots = new NumericUpDown();
             numDuration = new NumericUpDown();
-            label1 = new Label();
+            lblDuration = new Label();
             ((System.ComponentModel.ISupportInitialize)numAvailableSlots).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDuration).BeginInit();
             SuspendLayout();
@@ -67,14 +67,14 @@
             lblCompanyName.TabIndex = 1;
             lblCompanyName.Text = "Company: ";
             // 
-            // label3
+            // lblTitle
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 53);
-            label3.Name = "label3";
-            label3.Size = new Size(97, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Position Title:";
+            lblTitle.AutoSize = true;
+            lblTitle.Location = new Point(12, 53);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(97, 20);
+            lblTitle.TabIndex = 2;
+            lblTitle.Text = "Position Title:";
             // 
             // txtTitle
             // 
@@ -83,14 +83,14 @@
             txtTitle.Size = new Size(503, 27);
             txtTitle.TabIndex = 3;
             // 
-            // label4
+            // lblDescription
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(12, 120);
-            label4.Name = "label4";
-            label4.Size = new Size(115, 20);
-            label4.TabIndex = 4;
-            label4.Text = "Job Description:";
+            lblDescription.AutoSize = true;
+            lblDescription.Location = new Point(12, 120);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(115, 20);
+            lblDescription.TabIndex = 4;
+            lblDescription.Text = "Job Description:";
             // 
             // txtDescription
             // 
@@ -100,14 +100,14 @@
             txtDescription.Size = new Size(503, 62);
             txtDescription.TabIndex = 5;
             // 
-            // label5
+            // lblRequirements
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(12, 220);
-            label5.Name = "label5";
-            label5.Size = new Size(103, 20);
-            label5.TabIndex = 6;
-            label5.Text = "Requirements:";
+            lblRequirements.AutoSize = true;
+            lblRequirements.Location = new Point(12, 220);
+            lblRequirements.Name = "lblRequirements";
+            lblRequirements.Size = new Size(103, 20);
+            lblRequirements.TabIndex = 6;
+            lblRequirements.Text = "Requirements:";
             // 
             // txtRequirements
             // 
@@ -117,14 +117,14 @@
             txtRequirements.Size = new Size(503, 63);
             txtRequirements.TabIndex = 7;
             // 
-            // label6
+            // lblStatus
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(364, 318);
-            label6.Name = "label6";
-            label6.Size = new Size(52, 20);
-            label6.TabIndex = 8;
-            label6.Text = "Status:";
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(364, 318);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(52, 20);
+            lblStatus.TabIndex = 8;
+            lblStatus.Text = "Status:";
             // 
             // cboStatus
             // 
@@ -166,14 +166,14 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
-            // label2
+            // lblLocation
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(14, 318);
-            label2.Name = "label2";
-            label2.Size = new Size(69, 20);
-            label2.TabIndex = 13;
-            label2.Text = "Location:";
+            lblLocation.AutoSize = true;
+            lblLocation.Location = new Point(14, 318);
+            lblLocation.Name = "lblLocation";
+            lblLocation.Size = new Size(69, 20);
+            lblLocation.TabIndex = 13;
+            lblLocation.Text = "Location:";
             // 
             // txtLocation
             // 
@@ -189,23 +189,23 @@
             txtStipend.Size = new Size(151, 27);
             txtStipend.TabIndex = 16;
             // 
-            // label7
+            // lblStipend
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(191, 318);
-            label7.Name = "label7";
-            label7.Size = new Size(63, 20);
-            label7.TabIndex = 15;
-            label7.Text = "Stipend:";
+            lblStipend.AutoSize = true;
+            lblStipend.Location = new Point(191, 318);
+            lblStipend.Name = "lblStipend";
+            lblStipend.Size = new Size(63, 20);
+            lblStipend.TabIndex = 15;
+            lblStipend.Text = "Stipend:";
             // 
-            // label8
+            // lblStartDate
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(14, 380);
-            label8.Name = "label8";
-            label8.Size = new Size(79, 20);
-            label8.TabIndex = 17;
-            label8.Text = "Start Date:";
+            lblStartDate.AutoSize = true;
+            lblStartDate.Location = new Point(14, 380);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(79, 20);
+            lblStartDate.TabIndex = 17;
+            lblStartDate.Text = "Start Date:";
             // 
             // dtpStartDate
             // 
@@ -221,23 +221,23 @@
             dtpEndDate.Size = new Size(242, 27);
             dtpEndDate.TabIndex = 20;
             // 
-            // label9
+            // lblEndDate
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(274, 380);
-            label9.Name = "label9";
-            label9.Size = new Size(73, 20);
-            label9.TabIndex = 19;
-            label9.Text = "End Date:";
+            lblEndDate.AutoSize = true;
+            lblEndDate.Location = new Point(274, 380);
+            lblEndDate.Name = "lblEndDate";
+            lblEndDate.Size = new Size(73, 20);
+            lblEndDate.TabIndex = 19;
+            lblEndDate.Text = "End Date:";
             // 
-            // label10
+            // lblApplicationDeadline
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(14, 453);
-            label10.Name = "label10";
-            label10.Size = new Size(153, 20);
-            label10.TabIndex = 21;
-            label10.Text = "Application Deadline:";
+            lblApplicationDeadline.AutoSize = true;
+            lblApplicationDeadline.Location = new Point(14, 453);
+            lblApplicationDeadline.Name = "lblApplicationDeadline";
+            lblApplicationDeadline.Size = new Size(153, 20);
+            lblApplicationDeadline.TabIndex = 21;
+            lblApplicationDeadline.Text = "Application Deadline:";
             // 
             // dtpApplicationDeadline
             // 
@@ -246,14 +246,14 @@
             dtpApplicationDeadline.Size = new Size(242, 27);
             dtpApplicationDeadline.TabIndex = 22;
             // 
-            // label11
+            // lblAvailableSlots
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(274, 453);
-            label11.Name = "label11";
-            label11.Size = new Size(110, 20);
-            label11.TabIndex = 23;
-            label11.Text = "Available Slots:";
+            lblAvailableSlots.AutoSize = true;
+            lblAvailableSlots.Location = new Point(274, 453);
+            lblAvailableSlots.Name = "lblAvailableSlots";
+            lblAvailableSlots.Size = new Size(110, 20);
+            lblAvailableSlots.TabIndex = 23;
+            lblAvailableSlots.Text = "Available Slots:";
             // 
             // numAvailableSlots
             // 
@@ -269,14 +269,14 @@
             numDuration.Size = new Size(110, 27);
             numDuration.TabIndex = 26;
             // 
-            // label1
+            // lblDuration
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(390, 453);
-            label1.Name = "label1";
-            label1.Size = new Size(124, 20);
-            label1.TabIndex = 25;
-            label1.Text = "Duration (weeks):";
+            lblDuration.AutoSize = true;
+            lblDuration.Location = new Point(390, 453);
+            lblDuration.Name = "lblDuration";
+            lblDuration.Size = new Size(124, 20);
+            lblDuration.TabIndex = 25;
+            lblDuration.Text = "Duration (weeks):";
             // 
             // frmCreatePosition
             // 
@@ -284,30 +284,30 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(527, 594);
             Controls.Add(numDuration);
-            Controls.Add(label1);
+            Controls.Add(lblDuration);
             Controls.Add(numAvailableSlots);
-            Controls.Add(label11);
+            Controls.Add(lblAvailableSlots);
             Controls.Add(dtpApplicationDeadline);
-            Controls.Add(label10);
+            Controls.Add(lblApplicationDeadline);
             Controls.Add(dtpEndDate);
-            Controls.Add(label9);
+            Controls.Add(lblEndDate);
             Controls.Add(dtpStartDate);
-            Controls.Add(label8);
+            Controls.Add(lblStartDate);
             Controls.Add(txtStipend);
-            Controls.Add(label7);
+            Controls.Add(lblStipend);
             Controls.Add(txtLocation);
-            Controls.Add(label2);
+            Controls.Add(lblLocation);
             Controls.Add(btnCancel);
             Controls.Add(btnClear);
             Controls.Add(btnSave);
             Controls.Add(cboStatus);
-            Controls.Add(label6);
+            Controls.Add(lblStatus);
             Controls.Add(txtRequirements);
-            Controls.Add(label5);
+            Controls.Add(lblRequirements);
             Controls.Add(txtDescription);
-            Controls.Add(label4);
+            Controls.Add(lblDescription);
             Controls.Add(txtTitle);
-            Controls.Add(label3);
+            Controls.Add(lblTitle);
             Controls.Add(lblCompanyName);
             Name = "frmCreatePosition";
             Text = "Create Position";
@@ -320,30 +320,30 @@
 
         #endregion
         private Label lblCompanyName;
-        private Label label3;
+        private Label lblTitle;
         private TextBox txtTitle;
-        private Label label4;
+        private Label lblDescription;
         private TextBox txtDescription;
-        private Label label5;
+        private Label lblRequirements;
         private TextBox txtRequirements;
-        private Label label6;
+        private Label lblStatus;
         private ComboBox cboStatus;
         private Button btnSave;
         private Button btnClear;
         private Button btnCancel;
-        private Label label2;
+        private Label lblLocation;
         private TextBox txtLocation;
         private TextBox txtStipend;
-        private Label label7;
-        private Label label8;
+        private Label lblStipend;
+        private Label lblStartDate;
         private DateTimePicker dtpStartDate;
         private DateTimePicker dtpEndDate;
-        private Label label9;
-        private Label label10;
+        private Label lblEndDate;
+        private Label lblApplicationDeadline;
         private DateTimePicker dtpApplicationDeadline;
-        private Label label11;
+        private Label lblAvailableSlots;
         private NumericUpDown numAvailableSlots;
         private NumericUpDown numDuration;
-        private Label label1;
+        private Label lblDuration;
     }
 }
