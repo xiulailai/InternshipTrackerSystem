@@ -19,8 +19,7 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-                    SELECT ch.hrid, ch.userid, ch.companyid, ch.fullname, ch.position,
-                           c.companyname, c.industry, c.location, u.email
+                    SELECT ch.hrid, ch.userid, ch.companyid, ch.fullname, ch.position, c.companyname, c.industry, c.location, u.email
                     FROM CompanyHR ch
                     INNER JOIN companies c ON ch.companyid = c.companyid
                     INNER JOIN users u ON ch.userid = u.userid
@@ -197,14 +196,7 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-                    SELECT 
-                        ip.positionid,
-                        ip.title,
-                        ip.description,
-                        ip.requirements,
-                        ip.status,
-                        ip.posteddate,
-                        COUNT(a.applicationid) AS applications
+                    SELECT ip.positionid, ip.title, ip.description, ip.requirements, ip.status, ip.posteddate, COUNT(a.applicationid) AS applications
                     FROM internshippositions ip
                     LEFT JOIN applications a ON ip.positionid = a.positionid
                     WHERE ip.companyid = @companyid";
@@ -215,8 +207,7 @@ namespace InternshipTrackerSystem.Class
                 }
 
                 query += @"
-                    GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, 
-                             ip.status, ip.posteddate
+                    GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, ip.status, ip.posteddate
                     ORDER BY ip.posteddate DESC";
 
                 var parameters = new Dictionary<string, object>
@@ -388,26 +379,7 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-                    SELECT 
-                        ip.positionid,
-                        ip.title,
-                        ip.description,
-                        ip.requirements,
-                        ip.status,
-                        ip.posteddate,
-                        ip.location,
-                        ip.duration,
-                        ip.stipend,
-                        ip.startdate,
-                        ip.enddate,
-                        ip.applicationdeadline,
-                        ip.availableslots,
-                        c.companyname,
-                        ch.fullname AS postedby,
-                        COUNT(a.applicationid) AS totalapplications,
-                        SUM(CASE WHEN a.status = 'Pending' THEN 1 ELSE 0 END) AS pendingapplications,
-                        SUM(CASE WHEN a.status = 'Accepted' THEN 1 ELSE 0 END) AS acceptedapplications,
-                        SUM(CASE WHEN a.status = 'Rejected' THEN 1 ELSE 0 END) AS rejectedapplications
+                    SELECT ip.positionid, ip.title, ip.description, ip.requirements, ip.status, ip.posteddate, ip.location, ip.duration, ip.stipend, ip.startdate, ip.enddate, ip.applicationdeadline, ip.availableslots, c.companyname, ch.fullname AS postedby, COUNT(a.applicationid) AS totalapplications, SUM(CASE WHEN a.status = 'Pending' THEN 1 ELSE 0 END) AS pendingapplications, SUM(CASE WHEN a.status = 'Accepted' THEN 1 ELSE 0 END) AS acceptedapplications, SUM(CASE WHEN a.status = 'Rejected' THEN 1 ELSE 0 END) AS rejectedapplications
                     FROM internshippositions ip
                     INNER JOIN companies c ON ip.companyid = c.companyid
                     INNER JOIN companyhr ch ON ip.postedbyhrid = ch.hrid
@@ -456,14 +428,7 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-                    SELECT 
-                        a.applicationid,
-                        a.studentid,
-                        s.fullname AS studentname,
-                        ip.positionid,
-                        ip.title AS positiontitle,
-                        a.applicationdate,
-                        a.status
+                    SELECT a.applicationid, a.studentid, s.fullname AS studentname, ip.positionid, ip.title AS positiontitle, a.applicationdate, a.status
                     FROM applications a
                     INNER JOIN students s ON a.studentid = s.studentid
                     INNER JOIN internshippositions ip ON a.positionid = ip.positionid
@@ -511,20 +476,7 @@ namespace InternshipTrackerSystem.Class
             try
             {
                 string query = @"
-                    SELECT 
-                        a.applicationid,
-                        a.applicationdate,
-                        a.status,
-                        a.reviewnotes,
-                        s.studentid,
-                        s.fullname AS studentname,
-                        s.studentidnumber,
-                        s.program,
-                        s.gpa,
-                        s.skills,
-                        s.contactnumber,
-                        u.email,
-                        ip.title AS positiontitle
+                    SELECT a.applicationid, a.applicationdate, a.status, a.reviewnotes, s.studentid, s.fullname AS studentname, s.studentidnumber, s.program, s.gpa, s.skills, s.contactnumber, u.email, ip.title AS positiontitle
                     FROM applications a
                     INNER JOIN students s ON a.studentid = s.studentid
                     INNER JOIN users u ON s.userid = u.userid
