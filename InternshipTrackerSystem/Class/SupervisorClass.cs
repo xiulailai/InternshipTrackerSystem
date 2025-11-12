@@ -7,17 +7,13 @@ using System.Linq;
 
 namespace InternshipTrackerSystem.Service
 {
-    /// <summary>
     /// Service class for Supervisor-related operations
     /// Handles supervisor profile, internship management, evaluations, and reports
-    /// </summary>
     public class SupervisorClass
     {
         #region Supervisor Profile Management
 
-        /// <summary>
         /// Retrieves supervisor details by user ID
-        /// </summary>
         /// <param name="userId">User ID of the supervisor</param>
         /// <returns>SupervisorModel object containing supervisor details</returns>
         public static SupervisorModel GetSupervisorByUserId(int userId)
@@ -25,9 +21,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT s.SupervisorID, s.UserID, s.FullName, s.Department, 
-                           s.ContactNumber, s.Specialization,
-                           u.Username, u.Email, u.UserRole, u.IsActive, u.CreatedDate
+                    SELECT s.SupervisorID, s.UserID, s.FullName, s.Department, s.ContactNumber, s.Specialization,u.Username, u.Email, u.UserRole, u.IsActive, u.CreatedDate
                     FROM Supervisors s
                     INNER JOIN Users u ON s.UserID = u.UserID
                     WHERE s.UserID = @UserId";
@@ -52,10 +46,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-
-        /// <summary>
         /// Updates supervisor profile information
-        /// </summary>
         /// <param name="supervisor">SupervisorModel with updated information</param>
         /// <returns>True if update successful, false otherwise</returns>
         public static bool UpdateSupervisorProfile(SupervisorModel supervisor)
@@ -92,9 +83,7 @@ namespace InternshipTrackerSystem.Service
 
         #region Internship Management
 
-        /// <summary>
         /// Retrieves all internships assigned to a specific supervisor
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <returns>List of InternshipModel objects</returns>
         public static List<InternshipModel> GetInternshipsBySupervisor(int supervisorId)
@@ -102,14 +91,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID, 
-                           i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate,
-                           s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram,
-                           s.ContactNumber AS StudentContact, s.GPA AS StudentGPA,
-                           u.Email AS StudentEmail,
-                           c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation,
-                           p.Title AS PositionTitle,
-                           sup.FullName AS SupervisorName
+                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID, i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate, s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram, s.ContactNumber AS StudentContact, s.GPA AS StudentGPA,  u.Email AS StudentEmail, c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation, p.Title AS PositionTitle, sup.FullName AS SupervisorName
                     FROM Internships i
                     INNER JOIN Students s ON i.StudentID = s.StudentID
                     INNER JOIN Users u ON s.UserID = u.UserID
@@ -141,9 +123,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Retrieves ongoing internships for a supervisor
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <returns>List of ongoing InternshipModel objects</returns>
         public static List<InternshipModel> GetOngoingInternships(int supervisorId)
@@ -151,14 +131,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID, 
-                           i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate,
-                           s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram,
-                           s.ContactNumber AS StudentContact, s.GPA AS StudentGPA,
-                           u.Email AS StudentEmail,
-                           c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation,
-                           p.Title AS PositionTitle,
-                           sup.FullName AS SupervisorName
+                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID,  i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate, s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram, s.ContactNumber AS StudentContact, s.GPA AS StudentGPA, u.Email AS StudentEmail,c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation,p.Title AS PositionTitle, sup.FullName AS SupervisorName
                     FROM Internships i
                     INNER JOIN Students s ON i.StudentID = s.StudentID
                     INNER JOIN Users u ON s.UserID = u.UserID
@@ -190,9 +163,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Retrieves a specific internship by ID
-        /// </summary>
         /// <param name="internshipId">Internship ID</param>
         /// <returns>InternshipModel object</returns>
         public static InternshipModel GetInternshipById(int internshipId)
@@ -200,14 +171,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID, 
-                           i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate,
-                           s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram,
-                           s.ContactNumber AS StudentContact, s.GPA AS StudentGPA,
-                           u.Email AS StudentEmail,
-                           c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation,
-                           p.Title AS PositionTitle,
-                           sup.FullName AS SupervisorName
+                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID,  i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate, s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram, s.ContactNumber AS StudentContact, s.GPA AS StudentGPA, u.Email AS StudentEmail, c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation, p.Title AS PositionTitle, sup.FullName AS SupervisorName
                     FROM Internships i
                     INNER JOIN Students s ON i.StudentID = s.StudentID
                     INNER JOIN Users u ON s.UserID = u.UserID
@@ -241,9 +205,7 @@ namespace InternshipTrackerSystem.Service
 
         #region Student Reports Management
 
-        /// <summary>
         /// Retrieves all reports for internships supervised by a specific supervisor
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <returns>List of StudentReportModel objects</returns>
         public static List<StudentReportModel> GetAllReportsBySupervisor(int supervisorId)
@@ -251,10 +213,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT sr.ReportID, sr.InternshipID, sr.StudentID, sr.ReportType,
-                           sr.SubmissionDate, sr.Content, sr.FilePath, sr.Status,
-                           s.FullName AS StudentName, s.StudentIDNumber,
-                           c.CompanyName
+                    SELECT sr.ReportID, sr.InternshipID, sr.StudentID, sr.ReportType, sr.SubmissionDate, sr.Content, sr.FilePath, sr.Status, s.FullName AS StudentName, s.StudentIDNumber,c.CompanyName
                     FROM StudentReports sr
                     INNER JOIN Internships i ON sr.InternshipID = i.InternshipID
                     INNER JOIN Students s ON sr.StudentID = s.StudentID
@@ -283,9 +242,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Retrieves pending reports (submitted but not reviewed)
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <returns>List of pending StudentReportModel objects</returns>
         public static List<StudentReportModel> GetPendingReports(int supervisorId)
@@ -293,10 +250,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT sr.ReportID, sr.InternshipID, sr.StudentID, sr.ReportType,
-                           sr.SubmissionDate, sr.Content, sr.FilePath, sr.Status,
-                           s.FullName AS StudentName, s.StudentIDNumber,
-                           c.CompanyName
+                    SELECT sr.ReportID, sr.InternshipID, sr.StudentID, sr.ReportType, sr.SubmissionDate, sr.Content, sr.FilePath, sr.Status, s.FullName AS StudentName, s.StudentIDNumber,c.CompanyName
                     FROM StudentReports sr
                     INNER JOIN Internships i ON sr.InternshipID = i.InternshipID
                     INNER JOIN Students s ON sr.StudentID = s.StudentID
@@ -325,9 +279,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Retrieves reports for a specific internship
-        /// </summary>
         /// <param name="internshipId">Internship ID</param>
         /// <returns>List of StudentReportModel objects</returns>
         public static List<StudentReportModel> GetReportsByInternship(int internshipId)
@@ -335,10 +287,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT sr.ReportID, sr.InternshipID, sr.StudentID, sr.ReportType,
-                           sr.SubmissionDate, sr.Content, sr.FilePath, sr.Status,
-                           s.FullName AS StudentName, s.StudentIDNumber,
-                           c.CompanyName
+                    SELECT sr.ReportID, sr.InternshipID, sr.StudentID, sr.ReportType, sr.SubmissionDate, sr.Content, sr.FilePath, sr.Status, s.FullName AS StudentName, s.StudentIDNumber, c.CompanyName
                     FROM StudentReports sr
                     INNER JOIN Students s ON sr.StudentID = s.StudentID
                     INNER JOIN Internships i ON sr.InternshipID = i.InternshipID
@@ -367,9 +316,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Updates the status of a student report
-        /// </summary>
         /// <param name="reportId">Report ID</param>
         /// <param name="status">New status (Reviewed, Approved, Rejected)</param>
         /// <returns>True if update successful</returns>
@@ -401,9 +348,7 @@ namespace InternshipTrackerSystem.Service
 
         #region Evaluation Management
 
-        /// <summary>
         /// Creates a new supervisor evaluation for an internship
-        /// </summary>
         /// <param name="evaluation">SupervisorEvaluationModel object</param>
         /// <returns>Evaluation ID if successful, -1 otherwise</returns>
         public static int CreateEvaluation(SupervisorEvaluationModel evaluation)
@@ -450,9 +395,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Updates an existing evaluation
-        /// </summary>
         /// <param name="evaluation">SupervisorEvaluationModel with updated information</param>
         /// <returns>True if update successful</returns>
         public static bool UpdateEvaluation(SupervisorEvaluationModel evaluation)
@@ -500,9 +443,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Retrieves evaluation for a specific internship
-        /// </summary>
         /// <param name="internshipId">Internship ID</param>
         /// <returns>SupervisorEvaluationModel object or null if not found</returns>
         public static SupervisorEvaluationModel GetEvaluationByInternship(int internshipId)
@@ -510,11 +451,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT se.EvaluationID, se.InternshipID, se.SupervisorID, se.EvaluationDate,
-                           se.PerformanceScore, se.PunctualityScore, se.CommunicationScore,
-                           se.OverallScore, se.Comments, se.Recommendations,
-                           s.FullName AS StudentName, s.StudentIDNumber,
-                           c.CompanyName, sup.FullName AS SupervisorName
+                    SELECT se.EvaluationID, se.InternshipID, se.SupervisorID, se.EvaluationDate, se.PerformanceScore, se.PunctualityScore, se.CommunicationScore, se.OverallScore, se.Comments, se.Recommendations, s.FullName AS StudentName, s.StudentIDNumber, c.CompanyName, sup.FullName AS SupervisorName
                     FROM SupervisorEvaluations se
                     INNER JOIN Internships i ON se.InternshipID = i.InternshipID
                     INNER JOIN Students s ON i.StudentID = s.StudentID
@@ -542,9 +479,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Retrieves all evaluations by a supervisor
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <returns>List of SupervisorEvaluationModel objects</returns>
         public static List<SupervisorEvaluationModel> GetAllEvaluationsBySupervisor(int supervisorId)
@@ -552,11 +487,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT se.EvaluationID, se.InternshipID, se.SupervisorID, se.EvaluationDate,
-                           se.PerformanceScore, se.PunctualityScore, se.CommunicationScore,
-                           se.OverallScore, se.Comments, se.Recommendations,
-                           s.FullName AS StudentName, s.StudentIDNumber,
-                           c.CompanyName, sup.FullName AS SupervisorName
+                    SELECT se.EvaluationID, se.InternshipID, se.SupervisorID, se.EvaluationDate, se.PerformanceScore, se.PunctualityScore, se.CommunicationScore, se.OverallScore, se.Comments, se.Recommendations, s.FullName AS StudentName, s.StudentIDNumber, c.CompanyName, sup.FullName AS SupervisorName
                     FROM SupervisorEvaluations se
                     INNER JOIN Internships i ON se.InternshipID = i.InternshipID
                     INNER JOIN Students s ON i.StudentID = s.StudentID
@@ -586,9 +517,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Checks if an evaluation already exists for an internship
-        /// </summary>
         /// <param name="internshipId">Internship ID</param>
         /// <returns>True if evaluation exists, false otherwise</returns>
         public static bool HasEvaluation(int internshipId)
@@ -618,9 +547,7 @@ namespace InternshipTrackerSystem.Service
 
         #region Statistics and Dashboard
 
-        /// <summary>
         /// Retrieves statistics for supervisor dashboard
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <returns>SupervisorStatisticsModel object with summary data</returns>
         public static SupervisorStatisticsModel GetSupervisorStatistics(int supervisorId)
@@ -704,9 +631,7 @@ namespace InternshipTrackerSystem.Service
 
         #region Notifications
 
-        /// <summary>
         /// Retrieves notifications for a supervisor
-        /// </summary>
         /// <param name="userId">User ID of the supervisor</param>
         /// <param name="unreadOnly">If true, returns only unread notifications</param>
         /// <returns>List of NotificationModel objects</returns>
@@ -747,9 +672,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Marks a notification as read
-        /// </summary>
         /// <param name="notificationId">Notification ID</param>
         /// <returns>True if successful</returns>
         public static bool MarkNotificationAsRead(int notificationId)
@@ -775,9 +698,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Marks all notifications as read for a user
-        /// </summary>
         /// <param name="userId">User ID</param>
         /// <returns>True if successful</returns>
         public static bool MarkAllNotificationsAsRead(int userId)
@@ -803,9 +724,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Gets count of unread notifications
-        /// </summary>
         /// <param name="userId">User ID</param>
         /// <returns>Count of unread notifications</returns>
         public static int GetUnreadNotificationCount(int userId)
@@ -835,9 +754,7 @@ namespace InternshipTrackerSystem.Service
 
         #region Helper/Mapping Methods
 
-        /// <summary>
         /// Maps DataRow to SupervisorModel object
-        /// </summary>
         private static SupervisorModel MapToSupervisorModel(DataRow row)
         {
             return new SupervisorModel
@@ -886,9 +803,7 @@ namespace InternshipTrackerSystem.Service
             };
         }
 
-        /// <summary>
         /// Maps DataRow to StudentReportModel object
-        /// </summary>
         private static StudentReportModel MapToStudentReportModel(DataRow row)
         {
             return new StudentReportModel
@@ -951,9 +866,7 @@ namespace InternshipTrackerSystem.Service
 
         #region Additional Utility Methods
 
-        /// <summary>
         /// Retrieves student details by student ID
-        /// </summary>
         /// <param name="studentId">Student ID</param>
         /// <returns>StudentModel object</returns>
         public static StudentModel GetStudentById(int studentId)
@@ -961,9 +874,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT s.StudentID, s.UserID, s.StudentIDNumber, s.FullName, 
-                           s.Program, s.ContactNumber, s.Address, s.GPA, s.Skills, s.Resume,
-                           u.Email, u.Username
+                    SELECT s.StudentID, s.UserID, s.StudentIDNumber, s.FullName, s.Program, s.ContactNumber, s.Address, s.GPA, s.Skills, s.Resume, u.Email, u.Username
                     FROM Students s
                     INNER JOIN Users u ON s.UserID = u.UserID
                     WHERE s.StudentID = @StudentId";
@@ -1003,18 +914,14 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Gets list of all supervisors (useful for admin or reports)
-        /// </summary>
         /// <returns>List of SupervisorModel objects</returns>
         public static List<SupervisorModel> GetAllSupervisors()
         {
             try
             {
                 string query = @"
-                    SELECT s.SupervisorID, s.UserID, s.FullName, s.Department, 
-                           s.ContactNumber, s.Specialization,
-                           u.Username, u.Email, u.UserRole, u.IsActive, u.CreatedDate
+                    SELECT s.SupervisorID, s.UserID, s.FullName, s.Department, s.ContactNumber, s.Specialization,u.Username, u.Email, u.UserRole, u.IsActive, u.CreatedDate
                     FROM Supervisors s
                     INNER JOIN Users u ON s.UserID = u.UserID
                     WHERE u.IsActive = 1
@@ -1036,9 +943,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Searches internships by student name or ID number
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <param name="searchTerm">Search term (student name or ID)</param>
         /// <returns>List of matching InternshipModel objects</returns>
@@ -1047,14 +952,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID, 
-                           i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate,
-                           s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram,
-                           s.ContactNumber AS StudentContact, s.GPA AS StudentGPA,
-                           u.Email AS StudentEmail,
-                           c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation,
-                           p.Title AS PositionTitle,
-                           sup.FullName AS SupervisorName
+                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID, i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate,s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram,s.ContactNumber AS StudentContact, s.GPA AS StudentGPA,u.Email AS StudentEmail,c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation,p.Title AS PositionTitle,sup.FullName AS SupervisorName
                     FROM Internships i
                     INNER JOIN Students s ON i.StudentID = s.StudentID
                     INNER JOIN Users u ON s.UserID = u.UserID
@@ -1088,9 +986,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Gets internships that need evaluation (ongoing without evaluation)
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <returns>List of InternshipModel objects needing evaluation</returns>
         public static List<InternshipModel> GetInternshipsNeedingEvaluation(int supervisorId)
@@ -1098,14 +994,7 @@ namespace InternshipTrackerSystem.Service
             try
             {
                 string query = @"
-                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID, 
-                           i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate,
-                           s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram,
-                           s.ContactNumber AS StudentContact, s.GPA AS StudentGPA,
-                           u.Email AS StudentEmail,
-                           c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation,
-                           p.Title AS PositionTitle,
-                           sup.FullName AS SupervisorName
+                    SELECT i.InternshipID, i.ApplicationID, i.StudentID, i.CompanyID, i.SupervisorID, i.StartDate, i.EndDate, i.Status, i.CompletionDate,s.FullName AS StudentName, s.StudentIDNumber, s.Program AS StudentProgram, s.ContactNumber AS StudentContact, s.GPA AS StudentGPA,u.Email AS StudentEmail,c.CompanyName, c.Industry AS CompanyIndustry, c.Location AS CompanyLocation, p.Title AS PositionTitle, sup.FullName AS SupervisorName
                     FROM Internships i
                     INNER JOIN Students s ON i.StudentID = s.StudentID
                     INNER JOIN Users u ON s.UserID = u.UserID
@@ -1140,9 +1029,7 @@ namespace InternshipTrackerSystem.Service
             }
         }
 
-        /// <summary>
         /// Validates if a supervisor can access a specific internship
-        /// </summary>
         /// <param name="supervisorId">Supervisor ID</param>
         /// <param name="internshipId">Internship ID</param>
         /// <returns>True if supervisor is assigned to this internship</returns>
