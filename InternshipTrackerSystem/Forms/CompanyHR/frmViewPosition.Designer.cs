@@ -84,7 +84,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(20, 23);
+            label2.Location = new Point(20, 18);
             label2.Name = "label2";
             label2.Size = new Size(83, 20);
             label2.TabIndex = 1;
@@ -102,7 +102,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(20, 63);
+            label4.Location = new Point(20, 68);
             label4.Name = "label4";
             label4.Size = new Size(75, 20);
             label4.TabIndex = 3;
@@ -111,16 +111,17 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(20, 83);
+            label5.Location = new Point(20, 93);
             label5.Name = "label5";
             label5.Size = new Size(52, 20);
             label5.TabIndex = 4;
             label5.Text = "Status:";
+            label5.Click += this.label5_Click;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(20, 103);
+            label6.Location = new Point(20, 118);
             label6.Name = "label6";
             label6.Size = new Size(76, 20);
             label6.TabIndex = 5;
@@ -129,7 +130,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(20, 123);
+            label7.Location = new Point(20, 143);
             label7.Name = "label7";
             label7.Size = new Size(92, 20);
             label7.TabIndex = 6;
@@ -138,7 +139,7 @@
             // lblPositionIdValue
             // 
             lblPositionIdValue.AutoSize = true;
-            lblPositionIdValue.Location = new Point(183, 23);
+            lblPositionIdValue.Location = new Point(183, 18);
             lblPositionIdValue.Name = "lblPositionIdValue";
             lblPositionIdValue.Size = new Size(69, 20);
             lblPositionIdValue.TabIndex = 7;
@@ -156,7 +157,7 @@
             // lblCompanyValue
             // 
             lblCompanyValue.AutoSize = true;
-            lblCompanyValue.Location = new Point(183, 63);
+            lblCompanyValue.Location = new Point(183, 68);
             lblCompanyValue.Name = "lblCompanyValue";
             lblCompanyValue.Size = new Size(69, 20);
             lblCompanyValue.TabIndex = 9;
@@ -165,16 +166,17 @@
             // lblStatusValue
             // 
             lblStatusValue.AutoSize = true;
-            lblStatusValue.Location = new Point(183, 83);
+            lblStatusValue.Location = new Point(183, 93);
             lblStatusValue.Name = "lblStatusValue";
             lblStatusValue.Size = new Size(69, 20);
             lblStatusValue.TabIndex = 10;
             lblStatusValue.Text = "loading...";
+            lblStatusValue.Click += lblStatusValue_Click;
             // 
             // lblPostedByValue
             // 
             lblPostedByValue.AutoSize = true;
-            lblPostedByValue.Location = new Point(183, 103);
+            lblPostedByValue.Location = new Point(183, 118);
             lblPostedByValue.Name = "lblPostedByValue";
             lblPostedByValue.Size = new Size(69, 20);
             lblPostedByValue.TabIndex = 11;
@@ -183,7 +185,7 @@
             // lblPostedDateValue
             // 
             lblPostedDateValue.AutoSize = true;
-            lblPostedDateValue.Location = new Point(183, 123);
+            lblPostedDateValue.Location = new Point(183, 143);
             lblPostedDateValue.Name = "lblPostedDateValue";
             lblPostedDateValue.Size = new Size(69, 20);
             lblPostedDateValue.TabIndex = 12;
@@ -192,7 +194,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(28, 354);
+            label8.Location = new Point(28, 395);
             label8.Name = "label8";
             label8.Size = new Size(115, 20);
             label8.TabIndex = 13;
@@ -200,7 +202,7 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(28, 377);
+            txtDescription.Location = new Point(28, 418);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(373, 61);
@@ -208,7 +210,7 @@
             // 
             // txtRequirements
             // 
-            txtRequirements.Location = new Point(28, 473);
+            txtRequirements.Location = new Point(28, 514);
             txtRequirements.Multiline = true;
             txtRequirements.Name = "txtRequirements";
             txtRequirements.Size = new Size(373, 61);
@@ -217,7 +219,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(28, 450);
+            label9.Location = new Point(28, 491);
             label9.Name = "label9";
             label9.Size = new Size(103, 20);
             label9.TabIndex = 15;
@@ -226,7 +228,7 @@
             // lblAcceptedValue
             // 
             lblAcceptedValue.AutoSize = true;
-            lblAcceptedValue.Location = new Point(259, 585);
+            lblAcceptedValue.Location = new Point(259, 630);
             lblAcceptedValue.Name = "lblAcceptedValue";
             lblAcceptedValue.Size = new Size(69, 20);
             lblAcceptedValue.TabIndex = 22;
@@ -235,7 +237,7 @@
             // lblPendingValue
             // 
             lblPendingValue.AutoSize = true;
-            lblPendingValue.Location = new Point(259, 565);
+            lblPendingValue.Location = new Point(259, 610);
             lblPendingValue.Name = "lblPendingValue";
             lblPendingValue.Size = new Size(69, 20);
             lblPendingValue.TabIndex = 21;
@@ -244,7 +246,7 @@
             // lblTotalApplicationsValue
             // 
             lblTotalApplicationsValue.AutoSize = true;
-            lblTotalApplicationsValue.Location = new Point(259, 545);
+            lblTotalApplicationsValue.Location = new Point(259, 590);
             lblTotalApplicationsValue.Name = "lblTotalApplicationsValue";
             lblTotalApplicationsValue.Size = new Size(69, 20);
             lblTotalApplicationsValue.TabIndex = 20;
@@ -253,7 +255,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(109, 585);
+            label11.Location = new Point(109, 630);
             label11.Name = "label11";
             label11.Size = new Size(75, 20);
             label11.TabIndex = 19;
@@ -262,7 +264,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(109, 565);
+            label16.Location = new Point(109, 610);
             label16.Name = "label16";
             label16.Size = new Size(65, 20);
             label16.TabIndex = 18;
@@ -271,7 +273,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(109, 545);
+            label15.Location = new Point(109, 590);
             label15.Name = "label15";
             label15.Size = new Size(132, 20);
             label15.TabIndex = 17;
@@ -280,7 +282,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(110, 605);
+            label13.Location = new Point(110, 650);
             label13.Name = "label13";
             label13.Size = new Size(70, 20);
             label13.TabIndex = 23;
@@ -289,7 +291,7 @@
             // lblRejectedValue
             // 
             lblRejectedValue.AutoSize = true;
-            lblRejectedValue.Location = new Point(259, 605);
+            lblRejectedValue.Location = new Point(259, 650);
             lblRejectedValue.Name = "lblRejectedValue";
             lblRejectedValue.Size = new Size(69, 20);
             lblRejectedValue.TabIndex = 24;
@@ -297,7 +299,7 @@
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(170, 639);
+            btnClose.Location = new Point(170, 684);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(94, 29);
             btnClose.TabIndex = 25;
@@ -308,7 +310,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(20, 143);
+            label10.Location = new Point(20, 168);
             label10.Name = "label10";
             label10.Size = new Size(69, 20);
             label10.TabIndex = 26;
@@ -317,7 +319,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(20, 183);
+            label12.Location = new Point(20, 219);
             label12.Name = "label12";
             label12.Size = new Size(63, 20);
             label12.TabIndex = 27;
@@ -326,7 +328,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(20, 203);
+            label14.Location = new Point(20, 244);
             label14.Name = "label14";
             label14.Size = new Size(79, 20);
             label14.TabIndex = 28;
@@ -335,7 +337,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(20, 223);
+            label17.Location = new Point(20, 269);
             label17.Name = "label17";
             label17.Size = new Size(73, 20);
             label17.TabIndex = 29;
@@ -344,7 +346,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(20, 243);
+            label18.Location = new Point(20, 294);
             label18.Name = "label18";
             label18.Size = new Size(153, 20);
             label18.TabIndex = 30;
@@ -353,7 +355,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(20, 263);
+            label19.Location = new Point(20, 319);
             label19.Name = "label19";
             label19.Size = new Size(110, 20);
             label19.TabIndex = 31;
@@ -362,7 +364,7 @@
             // lblLocationValue
             // 
             lblLocationValue.AutoSize = true;
-            lblLocationValue.Location = new Point(183, 143);
+            lblLocationValue.Location = new Point(183, 168);
             lblLocationValue.Name = "lblLocationValue";
             lblLocationValue.Size = new Size(69, 20);
             lblLocationValue.TabIndex = 33;
@@ -371,7 +373,7 @@
             // lblStipendValue
             // 
             lblStipendValue.AutoSize = true;
-            lblStipendValue.Location = new Point(183, 183);
+            lblStipendValue.Location = new Point(183, 219);
             lblStipendValue.Name = "lblStipendValue";
             lblStipendValue.Size = new Size(69, 20);
             lblStipendValue.TabIndex = 34;
@@ -380,7 +382,7 @@
             // lblStartDateValue
             // 
             lblStartDateValue.AutoSize = true;
-            lblStartDateValue.Location = new Point(183, 203);
+            lblStartDateValue.Location = new Point(183, 244);
             lblStartDateValue.Name = "lblStartDateValue";
             lblStartDateValue.Size = new Size(69, 20);
             lblStartDateValue.TabIndex = 35;
@@ -389,7 +391,7 @@
             // lblEndDateValue
             // 
             lblEndDateValue.AutoSize = true;
-            lblEndDateValue.Location = new Point(183, 223);
+            lblEndDateValue.Location = new Point(183, 269);
             lblEndDateValue.Name = "lblEndDateValue";
             lblEndDateValue.Size = new Size(69, 20);
             lblEndDateValue.TabIndex = 36;
@@ -398,7 +400,7 @@
             // lblApplicationDeadlineValue
             // 
             lblApplicationDeadlineValue.AutoSize = true;
-            lblApplicationDeadlineValue.Location = new Point(183, 243);
+            lblApplicationDeadlineValue.Location = new Point(183, 294);
             lblApplicationDeadlineValue.Name = "lblApplicationDeadlineValue";
             lblApplicationDeadlineValue.Size = new Size(69, 20);
             lblApplicationDeadlineValue.TabIndex = 37;
@@ -407,7 +409,7 @@
             // lblAvailableSlotsValue
             // 
             lblAvailableSlotsValue.AutoSize = true;
-            lblAvailableSlotsValue.Location = new Point(183, 263);
+            lblAvailableSlotsValue.Location = new Point(183, 319);
             lblAvailableSlotsValue.Name = "lblAvailableSlotsValue";
             lblAvailableSlotsValue.Size = new Size(69, 20);
             lblAvailableSlotsValue.TabIndex = 38;
@@ -441,16 +443,16 @@
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(lblPostedDateValue);
             groupBox1.Controls.Add(label10);
-            groupBox1.Location = new Point(28, 42);
+            groupBox1.Location = new Point(28, 28);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(373, 295);
+            groupBox1.Size = new Size(373, 355);
             groupBox1.TabIndex = 39;
             groupBox1.TabStop = false;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(20, 163);
+            label20.Location = new Point(20, 193);
             label20.Name = "label20";
             label20.Size = new Size(70, 20);
             label20.TabIndex = 40;
@@ -459,7 +461,7 @@
             // lblDurationValue
             // 
             lblDurationValue.AutoSize = true;
-            lblDurationValue.Location = new Point(183, 163);
+            lblDurationValue.Location = new Point(183, 193);
             lblDurationValue.Name = "lblDurationValue";
             lblDurationValue.Size = new Size(69, 20);
             lblDurationValue.TabIndex = 39;
@@ -469,7 +471,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(427, 680);
+            ClientSize = new Size(427, 720);
             Controls.Add(groupBox1);
             Controls.Add(btnClose);
             Controls.Add(lblRejectedValue);

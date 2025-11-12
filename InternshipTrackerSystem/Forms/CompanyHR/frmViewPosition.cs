@@ -133,5 +133,10 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 this.Close();
             }
         }
+
+        private void lblStatusValue_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
