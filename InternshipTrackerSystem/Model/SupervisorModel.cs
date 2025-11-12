@@ -27,35 +27,6 @@ namespace InternshipTrackerSystem.Models
             UserRole = "Supervisor";
             CreatedDate = DateTime.Now;
         }
-
-        /// Constructor with essential parameters
-        public SupervisorModel(int supervisorId, int userId, string fullName, string email)
-        {
-            SupervisorId = supervisorId;
-            UserId = userId;
-            FullName = fullName;
-            Email = email;
-            IsActive = true;
-            UserRole = "Supervisor";
-        }
-
-        /// Returns supervisor's display name with department
-        public string DisplayName
-        {
-            get
-            {
-                return string.IsNullOrEmpty(Department)
-                    ? FullName
-                    : $"{FullName} ({Department})";
-            }
-        }
-
-        /// Validates if all required fields are filled
-        public bool IsValid()
-        {
-            return !string.IsNullOrWhiteSpace(FullName) &&
-                   !string.IsNullOrWhiteSpace(Email);
-        }
     }
 
     /// Represents an Internship with student and company details
@@ -98,16 +69,6 @@ namespace InternshipTrackerSystem.Models
             get { return (EndDate - StartDate).Days; }
         }
 
-        public bool IsOngoing
-        {
-            get { return Status == "Ongoing"; }
-        }
-
-        public bool IsCompleted
-        {
-            get { return Status == "Completed"; }
-        }
-
         /// Default constructor
         public InternshipModel()
         {
@@ -137,27 +98,6 @@ namespace InternshipTrackerSystem.Models
         {
             SubmissionDate = DateTime.Now;
             Status = "Submitted";
-        }
-
-        /// Checks if report is pending review
-        public bool IsPendingReview
-        {
-            get { return Status == "Submitted"; }
-        }
-
-        /// Gets report type display name
-        public string ReportTypeDisplay
-        {
-            get
-            {
-                return ReportType switch
-                {
-                    "Weekly" => "Weekly Report",
-                    "Monthly" => "Monthly Report",
-                    "Final" => "Final Report",
-                    _ => "Report"
-                };
-            }
         }
     }
 
@@ -235,16 +175,6 @@ namespace InternshipTrackerSystem.Models
         /// Default constructor
         public NotificationModel()
         {
-            IsRead = false;
-            CreatedDate = DateTime.Now;
-        }
-
-        /// Constructor with message
-        public NotificationModel(int userId, string message, string type)
-        {
-            UserId = userId;
-            Message = message;
-            NotificationType = type;
             IsRead = false;
             CreatedDate = DateTime.Now;
         }
