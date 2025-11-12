@@ -45,7 +45,6 @@
             lblStatus.Size = new Size(78, 32);
             lblStatus.TabIndex = 0;
             lblStatus.Text = "Status";
-            
             // 
             // lblSearch
             // 
@@ -103,6 +102,7 @@
             Controls.Add(lblStatus);
             Name = "frmTrackInterns";
             Text = "frmTrackInterns";
+            Load += frmTrackInterns_Load_1;
             ((System.ComponentModel.ISupportInitialize)dgvInterns).EndInit();
             ResumeLayout(false);
             PerformLayout();

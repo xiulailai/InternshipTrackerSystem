@@ -34,7 +34,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                // Get HR -> CompanyID using your existing CompanyHRClass
+                // Get HR -> CompanyID using existing CompanyHRClass
                 var hr = CompanyHRClass.GetHRByUserId(_userId);
                 if (hr == null)
                 {
@@ -46,7 +46,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
                 _companyId = hr.CompanyId;
 
-                // Load company record directly from the database (matches your schema)
+                // Load company record directly from the database (matches schema)
                 _company = GetCompanyById(_companyId);
                 if (_company == null)
                 {
@@ -75,7 +75,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Simple validations aligned with your table lengths
+            // Simple validations aligned with table lengths
             if (string.IsNullOrWhiteSpace(txtCompanyName.Text))
             {
                 Warn("Company Name is required.");
@@ -107,7 +107,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
             try
             {
-                // Update Companies table — columns match your script exactly
+                // Update Companies table — columns match script exactly
                 const string sql = @"
 UPDATE dbo.Companies
 SET CompanyName  = @CompanyName,
