@@ -116,7 +116,6 @@
             label5.Size = new Size(52, 20);
             label5.TabIndex = 4;
             label5.Text = "Status:";
-            label5.Click += this.label5_Click;
             // 
             // label6
             // 
