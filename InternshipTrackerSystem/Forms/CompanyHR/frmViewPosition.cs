@@ -1,4 +1,5 @@
 ﻿using InternshipTrackerSystem.Class;
+using InternshipTrackerSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
     public partial class frmViewPosition : Form
     {
         private int positionId;
+        private PositionDetailsModel positionDetails;
 
         public frmViewPosition(int positionId)
         {
@@ -31,46 +33,43 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                // Fetch position details
-                DataTable dt = CompanyHRClass.GetPositionDetails(positionId);
+                // Fetch position details using model
+                positionDetails = CompanyHRClass.GetPositionDetails(positionId);
 
-                if (dt.Rows.Count > 0)
+                if (positionDetails != null)
                 {
-                    DataRow row = dt.Rows[0];
-
                     // Position Information
-                    lblPositionIdValue.Text = row["positionid"].ToString();
-                    lblTitleValue.Text = row["title"].ToString();
-                    lblCompanyValue.Text = row["companyname"].ToString();
-                    lblPostedByValue.Text = row["postedby"].ToString();
-                    lblPostedDateValue.Text = Convert.ToDateTime(row["posteddate"]).ToString("dd/MM/yyyy hh:mm tt");
-                    lblLocationValue.Text = row["location"].ToString();
-                    lblDurationValue.Text = row["duration"].ToString();
-                    lblStipendValue.Text = row["stipend"].ToString();
-                    lblStartDateValue.Text = Convert.ToDateTime(row["startdate"]).ToString("dd/MM/yyyy hh:mm tt");
-                    lblEndDateValue.Text = Convert.ToDateTime(row["enddate"]).ToString("dd/MM/yyyy hh:mm tt");
-                    lblApplicationDeadlineValue.Text = Convert.ToDateTime(row["applicationdeadline"]).ToString("dd/MM/yyyy hh:mm tt");
-                    lblAvailableSlotsValue.Text = row["availableslots"].ToString();
+                    lblPositionIdValue.Text = positionDetails.PositionId.ToString();
+                    lblTitleValue.Text = positionDetails.Title;
+                    lblCompanyValue.Text = positionDetails.CompanyName;
+                    lblPostedByValue.Text = positionDetails.PostedBy;
+                    lblPostedDateValue.Text = positionDetails.PostedDate.ToString("dd/MM/yyyy hh:mm tt");
+                    lblLocationValue.Text = positionDetails.Location;
+                    lblDurationValue.Text = positionDetails.Duration.ToString() + " weeks";
+                    lblStipendValue.Text = positionDetails.Stipend;
+                    lblStartDateValue.Text = positionDetails.StartDate.ToString("dd/MM/yyyy");
+                    lblEndDateValue.Text = positionDetails.EndDate.ToString("dd/MM/yyyy");
+                    lblApplicationDeadlineValue.Text = positionDetails.ApplicationDeadline.ToString("dd/MM/yyyy");
+                    lblAvailableSlotsValue.Text = positionDetails.AvailableSlots.ToString();
 
                     // Status with color coding
-                    string status = row["status"].ToString();
-                    lblStatusValue.Text = status;
-                    if (status == "Open")
+                    lblStatusValue.Text = positionDetails.Status;
+                    if (positionDetails.Status == "Open")
                     {
                         lblStatusValue.ForeColor = Color.Green;
                         lblStatusValue.Font = new Font(lblStatusValue.Font, FontStyle.Bold);
-                        lblStatusValue.Text = "● " + status;
+                        lblStatusValue.Text = "● " + positionDetails.Status;
                     }
-                    else if (status == "Closed")
+                    else if (positionDetails.Status == "Closed")
                     {
                         lblStatusValue.ForeColor = Color.Red;
                         lblStatusValue.Font = new Font(lblStatusValue.Font, FontStyle.Bold);
-                        lblStatusValue.Text = "● " + status;
+                        lblStatusValue.Text = "● " + positionDetails.Status;
                     }
 
                     // Description and Requirements (read-only textboxes)
-                    txtDescription.Text = row["description"].ToString();
-                    txtRequirements.Text = row["requirements"].ToString();
+                    txtDescription.Text = positionDetails.Description;
+                    txtRequirements.Text = positionDetails.Requirements;
 
                     // Make textboxes read-only
                     txtDescription.ReadOnly = true;
@@ -79,21 +78,20 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     txtRequirements.BackColor = SystemColors.Control;
 
                     // Application Statistics
-                    lblTotalApplicationsValue.Text = row["totalapplications"].ToString();
-                    lblPendingValue.Text = row["pendingapplications"].ToString();
-                    lblAcceptedValue.Text = row["acceptedapplications"].ToString();
-                    lblRejectedValue.Text = row["rejectedapplications"].ToString();
+                    lblTotalApplicationsValue.Text = positionDetails.TotalApplications.ToString();
+                    lblPendingValue.Text = positionDetails.PendingApplications.ToString();
+                    lblAcceptedValue.Text = positionDetails.AcceptedApplications.ToString();
+                    lblRejectedValue.Text = positionDetails.RejectedApplications.ToString();
 
                     // Highlight pending applications if any
-                    int pending = Convert.ToInt32(row["pendingapplications"]);
-                    if (pending > 0)
+                    if (positionDetails.PendingApplications > 0)
                     {
                         lblPendingValue.ForeColor = Color.Orange;
                         lblPendingValue.Font = new Font(lblPendingValue.Font, FontStyle.Bold);
                     }
 
                     // Update form title
-                    this.Text = $"View Position - {row["title"]}";
+                    this.Text = $"View Position - {positionDetails.Title}";
                 }
                 else
                 {

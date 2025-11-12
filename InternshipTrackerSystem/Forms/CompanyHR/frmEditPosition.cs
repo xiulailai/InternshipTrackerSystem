@@ -1,4 +1,5 @@
 ﻿using InternshipTrackerSystem.Class;
+using InternshipTrackerSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,19 +18,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         private int hrId;
         private int companyId;
         private string companyName;
-        private string originalTitle;
-        private string originalDescription;
-        private string originalRequirements;
-        private string originalLocation;
-        private int originalDuration;
-        private string originalStipend;
-        private DateTime originalStartDate;
-        private DateTime originalEndDate;
-        private DateTime originalApplicationDeadline;
-        private int originalAvailableSlots;
-        private string originalStatus;
-        private DateTime postedDate;
-
+        private InternshipPositionModel originalPosition;
         public frmEditPosition(int positionId, int hrId, int companyId)
         {
             InitializeComponent();
@@ -93,40 +82,25 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                DataTable dt = CompanyHRClass.GetPositionById(positionId);
+                // Load position using model
+                originalPosition = CompanyHRClass.GetPositionById(positionId);
 
-                if (dt.Rows.Count > 0)
+                if (originalPosition != null)
                 {
-                    DataRow row = dt.Rows[0];
-
-                    // Store original values for comparison
-                    originalTitle = row["title"].ToString();
-                    originalDescription = row["description"].ToString();
-                    originalRequirements = row["requirements"].ToString();
-                    originalLocation = row["location"].ToString();
-                    originalDuration = Convert.ToInt32(row["duration"]);
-                    originalStipend = row["stipend"].ToString();
-                    originalStartDate = Convert.ToDateTime(row["startdate"]);
-                    originalEndDate = Convert.ToDateTime(row["enddate"]);
-                    originalApplicationDeadline = Convert.ToDateTime(row["applicationdeadline"]);
-                    originalAvailableSlots = Convert.ToInt32(row["availableslots"]);
-                    originalStatus = row["status"].ToString();
-                    postedDate = Convert.ToDateTime(row["posteddate"]);
-
-                    // Populate form fields
-                    txtPositionId.Text = positionId.ToString();
-                    txtTitle.Text = originalTitle;
-                    txtDescription.Text = originalDescription;
-                    txtRequirements.Text = originalRequirements;
-                    txtLocation.Text = originalLocation;
-                    numDuration.Value = originalDuration;
-                    txtStipend.Text = originalStipend;
-                    dtpStartDate.Value = originalStartDate;
-                    dtpEndDate.Value = originalEndDate;
-                    dtpApplicationDeadline.Value = originalApplicationDeadline;
-                    numAvailableSlots.Value = originalAvailableSlots;
-                    cboStatus.SelectedItem = originalStatus;
-                    lblPostedDate.Text = $"Posted Date: {postedDate:dd/MM/yyyy hh:mm tt}";
+                    // Populate form fields from model
+                    txtPositionId.Text = originalPosition.PositionId.ToString();
+                    txtTitle.Text = originalPosition.Title;
+                    txtDescription.Text = originalPosition.Description;
+                    txtRequirements.Text = originalPosition.Requirements;
+                    txtLocation.Text = originalPosition.Location;
+                    numDuration.Value = originalPosition.Duration;
+                    txtStipend.Text = originalPosition.Stipend;
+                    dtpStartDate.Value = originalPosition.StartDate;
+                    dtpEndDate.Value = originalPosition.EndDate;
+                    dtpApplicationDeadline.Value = originalPosition.ApplicationDeadline;
+                    numAvailableSlots.Value = originalPosition.AvailableSlots;
+                    cboStatus.SelectedItem = originalPosition.Status;
+                    lblPostedDate.Text = $"Posted Date: {originalPosition.PostedDate:dd/MM/yyyy hh:mm tt}";
 
                     // Disable position ID field
                     txtPositionId.Enabled = false;
@@ -223,17 +197,17 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         private bool HasChanges()
         {
             // Check if any field has been modified
-            return txtTitle.Text.Trim() != originalTitle ||
-                   txtDescription.Text.Trim() != originalDescription ||
-                   txtRequirements.Text.Trim() != originalRequirements ||
-                   txtLocation.Text.Trim() != originalLocation ||
-                   (int)numDuration.Value != originalDuration ||
-                   txtStipend.Text.Trim() != originalStipend ||
-                   dtpStartDate.Value.Date != originalStartDate.Date ||
-                   dtpEndDate.Value.Date != originalEndDate.Date ||
-                   dtpApplicationDeadline.Value.Date != originalApplicationDeadline.Date ||
-                   (int)numAvailableSlots.Value != originalAvailableSlots ||
-                   (cboStatus.SelectedItem != null && cboStatus.SelectedItem.ToString() != originalStatus);
+            return txtTitle.Text.Trim() != originalPosition.Title ||
+                   txtDescription.Text.Trim() != originalPosition.Description ||
+                   txtRequirements.Text.Trim() != originalPosition.Requirements ||
+                   txtLocation.Text.Trim() != originalPosition.Location ||
+                   (int)numDuration.Value != originalPosition.Duration ||
+                   txtStipend.Text.Trim() != originalPosition.Stipend ||
+                   dtpStartDate.Value.Date != originalPosition.StartDate.Date ||
+                   dtpEndDate.Value.Date != originalPosition.EndDate.Date ||
+                   dtpApplicationDeadline.Value.Date != originalPosition.ApplicationDeadline.Date ||
+                   (int)numAvailableSlots.Value != originalPosition.AvailableSlots ||
+                   (cboStatus.SelectedItem != null && cboStatus.SelectedItem.ToString() != originalPosition.Status);
         }
 
         private void frmEditPosition_Load(object sender, EventArgs e)

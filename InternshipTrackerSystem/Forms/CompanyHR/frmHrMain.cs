@@ -79,7 +79,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 companyId = hrModel.CompanyId;
 
                 // Display HR information
-                lblHRName.Text = hrModel.FullName;
+                lblHRName.Text = $"Welcome, {hrModel.FullName}";
                 txtCompany.Text = hrModel.CompanyName;
                 txtEmail.Text = hrModel.Email;
 

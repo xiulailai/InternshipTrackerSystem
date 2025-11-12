@@ -1,4 +1,5 @@
 ﻿using InternshipTrackerSystem.Class;
+using InternshipTrackerSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         private int companyId;
         private string companyName;
         private int selectedApplicationId = 0;
+        private ApplicationDetailsModel selectedApplication;
 
         public frmReviewApplications(int hrId, int companyId)
         {
@@ -216,30 +218,29 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             {
                 selectedApplicationId = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["applicationid"].Value);
 
-                DataTable dt = CompanyHRClass.GetApplicationDetails(selectedApplicationId);
+                // Load application details using model
+                selectedApplication = CompanyHRClass.GetApplicationDetails(selectedApplicationId);
 
-                if (dt.Rows.Count > 0)
+                if (selectedApplication != null)
                 {
-                    DataRow row = dt.Rows[0];
-
                     // Student information
-                    lblStudent.Text = $"Student: {row["studentname"]}";
-                    lblStudentID.Text = $"Student ID: {row["studentidnumber"]}";
-                    lblProgram.Text = $"Program: {row["program"]}";
-                    lblCGPA.Text = $"CGPA: {row["gpa"]}";
-                    lblContact.Text = $"Contact: {row["contactnumber"]}";
-                    lblEmail.Text = $"Email: {row["email"]}";
+                    lblStudent.Text = $"Student: {selectedApplication.StudentName}";
+                    lblStudentID.Text = $"Student ID: {selectedApplication.StudentIdNumber}";
+                    lblProgram.Text = $"Program: {selectedApplication.Program}";
+                    lblCGPA.Text = $"CGPA: {selectedApplication.GPA}";
+                    lblContact.Text = $"Contact: {selectedApplication.ContactNumber}";
+                    lblEmail.Text = $"Email: {selectedApplication.Email}";
 
                     // Application information
-                    lblPositionApplied.Text = $"Position Applied: {row["positiontitle"]}";
-                    lblAppliedDate.Text = $"Applied Date: {Convert.ToDateTime(row["applicationdate"]):dd/MM/yyyy hh:mm tt}";
+                    lblPositionApplied.Text = $"Position Applied: {selectedApplication.PositionTitle}";
+                    lblAppliedDate.Text = $"Applied Date: {selectedApplication.ApplicationDate:dd/MM/yyyy hh:mm tt}";
 
                     // Skills
-                    lblSkills.Text = $"Skills: {row["skills"]}";
+                    lblSkills.Text = $"Skills: {selectedApplication.Skills}";
 
                     // Previous remarks
-                    lblRemarks.Text = row["reviewnotes"] != DBNull.Value ?
-                        $"Remarks: {row["reviewnotes"]}" :
+                    lblRemarks.Text = !string.IsNullOrEmpty(selectedApplication.ReviewNotes) ?
+                        $"Remarks: {selectedApplication.ReviewNotes}" :
                         "Remarks: No previous remarks";
                 }
             }
@@ -253,6 +254,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         }
         private void ClearDetailsPanel()
         {
+            selectedApplication = null; // Add this line
             lblStudent.Text = "Student: -";
             lblStudentID.Text = "Student ID: -";
             lblProgram.Text = "Program: -";
@@ -278,7 +280,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                if (selectedApplicationId == 0)
+                if (selectedApplicationId == 0 || selectedApplication == null)
                 {
                     MessageBox.Show("Please select an application to accept.",
                         "No Selection",
@@ -287,16 +289,12 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     return;
                 }
 
-                // Get current application data
-                string studentName = lblStudent.Text.Replace("Student: ", "");
-                string positionTitle = lblPositionApplied.Text.Replace("Position Applied: ", "");
-
                 // Open the accept application popup form
                 frmAcceptApplication acceptForm = new frmAcceptApplication(
-                    selectedApplicationId,
+                    selectedApplication.ApplicationId,
                     hrId,
-                    studentName,
-                    positionTitle);
+                    selectedApplication.StudentName,
+                    selectedApplication.PositionTitle);
 
                 DialogResult result = acceptForm.ShowDialog();
 
@@ -326,7 +324,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         {
             try
             {
-                if (selectedApplicationId == 0)
+                if (selectedApplicationId == 0 || selectedApplication == null)
                 {
                     MessageBox.Show("Please select an application to reject.",
                         "No Selection",
@@ -335,16 +333,12 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     return;
                 }
 
-                // Get current application data
-                string studentName = lblStudent.Text.Replace("Student: ", "");
-                string positionTitle = lblPositionApplied.Text.Replace("Position Applied: ", "");
-
-                // Open the reject application popup form
+                // Open the reject application popup form 
                 frmRejectApplication rejectForm = new frmRejectApplication(
-                    selectedApplicationId,
+                    selectedApplication.ApplicationId,
                     hrId,
-                    studentName,
-                    positionTitle);
+                    selectedApplication.StudentName,
+                    selectedApplication.PositionTitle);
 
                 DialogResult result = rejectForm.ShowDialog();
 

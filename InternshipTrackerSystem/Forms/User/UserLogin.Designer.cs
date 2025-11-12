@@ -59,7 +59,7 @@
             txtEmail.Location = new Point(167, 35);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(107, 27);
-            txtEmail.TabIndex = 2;
+            txtEmail.TabIndex = 0;
             // 
             // txtPassword
             // 
@@ -102,6 +102,7 @@
             Name = "frmUserLogin";
             Text = "Internship Tracker System";
             FormClosed += frmUserLogin_FormClosed;
+            Load += frmUserLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

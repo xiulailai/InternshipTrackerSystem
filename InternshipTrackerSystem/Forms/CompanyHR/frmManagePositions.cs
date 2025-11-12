@@ -1,4 +1,5 @@
 ﻿using InternshipTrackerSystem.Class;
+using InternshipTrackerSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         private int hrId;
         private int companyId;
         private string companyName;
+        private InternshipPositionModel selectedPosition;
 
         public frmManagePositions(int hrId, int companyId)
         {
@@ -101,6 +103,9 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     FormatStatusColumn();
                 }
 
+                // Clear selected position
+                selectedPosition = null;
+
                 // Enable/disable buttons based on selection
                 UpdateButtonStates();
             }
@@ -142,16 +147,35 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             btnDelete.Enabled = hasSelection;
 
             // Update toggle button text based on selected status
-            if (hasSelection)
+            if (hasSelection && selectedPosition != null)
             {
-                string status = dgvPositions.SelectedRows[0].Cells["status"].Value.ToString();
-                btnToggleStatus.Text = status == "Open" ? "Close Position" : "Open Position";
+                btnToggleStatus.Text = selectedPosition.Status == "Open" ? "Close Position" : "Open Position";
             }
             else
             {
                 btnToggleStatus.Text = "Toggle Status";
             }
         }
+        private void LoadSelectedPosition()
+        {
+            try
+            {
+                if (dgvPositions.SelectedRows.Count > 0)
+                {
+                    int positionId = Convert.ToInt32(dgvPositions.SelectedRows[0].Cells["positionid"].Value);
+                    selectedPosition = CompanyHRClass.GetPositionById(positionId);
+                    UpdateButtonStates();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading position details: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
 
         private void frmManagePositions_Load(object sender, EventArgs e)
         {
@@ -216,9 +240,11 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
             try
             {
-                int positionId = Convert.ToInt32(dgvPositions.SelectedRows[0].Cells["positionid"].Value);
-                frmViewPosition viewForm = new frmViewPosition(positionId);
-                viewForm.ShowDialog();
+                if (selectedPosition != null)
+                {
+                    frmViewPosition viewForm = new frmViewPosition(selectedPosition.PositionId);
+                    viewForm.ShowDialog();
+                }
             }
             catch (Exception ex)
             {
@@ -242,17 +268,19 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
             try
             {
-                int positionId = Convert.ToInt32(dgvPositions.SelectedRows[0].Cells["positionid"].Value);
-                frmEditPosition editForm = new frmEditPosition(positionId, hrId, companyId);
-                DialogResult result = editForm.ShowDialog();
-
-                if (result == DialogResult.OK)
+                if (selectedPosition != null)
                 {
-                    LoadPositions();
-                    MessageBox.Show("Position updated successfully!",
-                        "Success",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    frmEditPosition editForm = new frmEditPosition(selectedPosition.PositionId, hrId, companyId);
+                    DialogResult result = editForm.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        LoadPositions();
+                        MessageBox.Show("Position updated successfully!",
+                            "Success",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception ex)
@@ -266,7 +294,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
         private void btnToggleStatus_Click(object sender, EventArgs e)
         {
-            if (dgvPositions.SelectedRows.Count == 0)
+            if (dgvPositions.SelectedRows.Count == 0 || selectedPosition == null)
             {
                 MessageBox.Show("Please select a position to toggle status.",
                     "No Selection",
@@ -277,20 +305,17 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
             try
             {
-                int positionId = Convert.ToInt32(dgvPositions.SelectedRows[0].Cells["positionid"].Value);
-                string currentStatus = dgvPositions.SelectedRows[0].Cells["status"].Value.ToString();
-                string newStatus = currentStatus == "Open" ? "Closed" : "Open";
-                string title = dgvPositions.SelectedRows[0].Cells["title"].Value.ToString();
+                string newStatus = selectedPosition.Status == "Open" ? "Closed" : "Open";
 
                 DialogResult confirmResult = MessageBox.Show(
-                    $"Are you sure you want to {newStatus.ToLower()} the position:\n\"{title}\"?",
+                    $"Are you sure you want to {newStatus.ToLower()} the position:\n\"{selectedPosition.Title}\"?",
                     "Confirm Status Change",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
                 if (confirmResult == DialogResult.Yes)
                 {
-                    bool success = CompanyHRClass.UpdatePositionStatus(positionId, newStatus);
+                    bool success = CompanyHRClass.UpdatePositionStatus(selectedPosition.PositionId, newStatus);
 
                     if (success)
                     {
@@ -320,7 +345,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvPositions.SelectedRows.Count == 0)
+            if (dgvPositions.SelectedRows.Count == 0 || selectedPosition == null)
             {
                 MessageBox.Show("Please select a position to delete.",
                     "No Selection",
@@ -331,8 +356,6 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
             try
             {
-                int positionId = Convert.ToInt32(dgvPositions.SelectedRows[0].Cells["positionid"].Value);
-                string title = dgvPositions.SelectedRows[0].Cells["title"].Value.ToString();
                 int applicationCount = Convert.ToInt32(dgvPositions.SelectedRows[0].Cells["applications"].Value);
 
                 // Warn if position has applications
@@ -341,7 +364,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     DialogResult warningResult = MessageBox.Show(
                         $"This position has {applicationCount} application(s).\n" +
                         $"Deleting it will also remove all related applications.\n\n" +
-                        $"Are you sure you want to delete \"{title}\"?",
+                        $"Are you sure you want to delete \"{selectedPosition.Title}\"?",
                         "Warning - Applications Exist",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Warning);
@@ -352,7 +375,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                 else
                 {
                     DialogResult confirmResult = MessageBox.Show(
-                        $"Are you sure you want to delete the position:\n\"{title}\"?",
+                        $"Are you sure you want to delete the position:\n\"{selectedPosition.Title}\"?",
                         "Confirm Delete",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question);
@@ -361,7 +384,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                         return;
                 }
 
-                bool success = CompanyHRClass.DeletePosition(positionId);
+                bool success = CompanyHRClass.DeletePosition(selectedPosition.PositionId);
 
                 if (success)
                 {
@@ -405,7 +428,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
         private void dgvPositions_SelectionChanged(object sender, EventArgs e)
         {
-            UpdateButtonStates();
+            LoadSelectedPosition();
         }
 
         private void dgvPositions_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

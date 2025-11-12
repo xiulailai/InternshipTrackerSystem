@@ -288,12 +288,12 @@ namespace InternshipTrackerSystem.Class
             }
         }
 
-        public static DataTable GetPositionById(int positionId)
+        public static InternshipPositionModel GetPositionById(int positionId)
         {
             try
             {
                 string query = @"
-                    SELECT positionid, title, description, requirements, location, duration, stipend, startdate, enddate, applicationdeadline, availableslots, status, posteddate
+                    SELECT positionid, companyid, postedbyhrid, title, description, requirements, location, duration, stipend, startdate, enddate, applicationdeadline, availableslots, status, posteddate
                     FROM internshippositions
                     WHERE positionid = @positionid";
 
@@ -302,7 +302,32 @@ namespace InternshipTrackerSystem.Class
                     { "@positionid", positionId }
                 };
 
-                return DatabaseHelper.ExecuteQuery(query, parameters);
+                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    return new InternshipPositionModel
+                    {
+                        PositionId = Convert.ToInt32(row["positionid"]),
+                        CompanyId = Convert.ToInt32(row["companyid"]),
+                        PostedByHRId = Convert.ToInt32(row["postedbyhrid"]),
+                        Title = row["title"].ToString(),
+                        Description = row["description"].ToString(),
+                        Requirements = row["requirements"].ToString(),
+                        Location = row["location"].ToString(),
+                        Duration = Convert.ToInt32(row["duration"]),
+                        Stipend = row["stipend"].ToString(),
+                        StartDate = Convert.ToDateTime(row["startdate"]),
+                        EndDate = Convert.ToDateTime(row["enddate"]),
+                        ApplicationDeadline = Convert.ToDateTime(row["applicationdeadline"]),
+                        AvailableSlots = Convert.ToInt32(row["availableslots"]),
+                        Status = row["status"].ToString(),
+                        PostedDate = Convert.ToDateTime(row["posteddate"])
+                    };
+                }
+
+                return null;
             }
             catch (Exception ex)
             {
@@ -352,6 +377,7 @@ namespace InternshipTrackerSystem.Class
 
                 var parameters = new Dictionary<string, object>
                 {
+                    { "@positionid", positionId },
                     { "@title", title },
                     { "@description", description },
                     { "@requirements", requirements },
@@ -374,25 +400,56 @@ namespace InternshipTrackerSystem.Class
             }
         }
 
-        public static DataTable GetPositionDetails(int positionId)
+        public static PositionDetailsModel GetPositionDetails(int positionId)
         {
             try
             {
                 string query = @"
-                    SELECT ip.positionid, ip.title, ip.description, ip.requirements, ip.status, ip.posteddate, ip.location, ip.duration, ip.stipend, ip.startdate, ip.enddate, ip.applicationdeadline, ip.availableslots, c.companyname, ch.fullname AS postedby, COUNT(a.applicationid) AS totalapplications, SUM(CASE WHEN a.status = 'Pending' THEN 1 ELSE 0 END) AS pendingapplications, SUM(CASE WHEN a.status = 'Accepted' THEN 1 ELSE 0 END) AS acceptedapplications, SUM(CASE WHEN a.status = 'Rejected' THEN 1 ELSE 0 END) AS rejectedapplications
+                    SELECT ip.positionid, ip.companyid, ip.postedbyhrid, ip.title, ip.description, ip.requirements, ip.status, ip.posteddate, ip.location, ip.duration, ip.stipend, ip.startdate, ip.enddate, ip.applicationdeadline, ip.availableslots, c.companyname, ch.fullname AS postedby, COUNT(a.applicationid) AS totalapplications, SUM(CASE WHEN a.status = 'Pending' THEN 1 ELSE 0 END) AS pendingapplications, SUM(CASE WHEN a.status = 'Accepted' THEN 1 ELSE 0 END) AS acceptedapplications, SUM(CASE WHEN a.status = 'Rejected' THEN 1 ELSE 0 END) AS rejectedapplications
                     FROM internshippositions ip
                     INNER JOIN companies c ON ip.companyid = c.companyid
                     INNER JOIN companyhr ch ON ip.postedbyhrid = ch.hrid
                     LEFT JOIN applications a ON ip.positionid = a.positionid
                     WHERE ip.positionid = @positionid
-                    GROUP BY ip.positionid, ip.title, ip.description, ip.requirements, ip.status, ip.posteddate, ip.location, ip.duration, ip.stipend, ip.startdate, ip.enddate, ip.applicationdeadline, ip.availableslots, c.companyname, ch.fullname";
+                    GROUP BY ip.positionid, ip.companyid, ip.postedbyhrid, ip.title, ip.description, ip.requirements, ip.status, ip.posteddate, ip.location, ip.duration, ip.stipend, ip.startdate, ip.enddate, ip.applicationdeadline, ip.availableslots, c.companyname, ch.fullname";
 
                 var parameters = new Dictionary<string, object>
                 {
                     { "@positionid", positionId }
                 };
 
-                return DatabaseHelper.ExecuteQuery(query, parameters);
+                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    return new PositionDetailsModel
+                    {
+                        PositionId = Convert.ToInt32(row["positionid"]),
+                        CompanyId = Convert.ToInt32(row["companyid"]),
+                        PostedByHRId = Convert.ToInt32(row["postedbyhrid"]),
+                        Title = row["title"].ToString(),
+                        Description = row["description"].ToString(),
+                        Requirements = row["requirements"].ToString(),
+                        Location = row["location"].ToString(),
+                        Duration = Convert.ToInt32(row["duration"]),
+                        Stipend = row["stipend"].ToString(),
+                        StartDate = Convert.ToDateTime(row["startdate"]),
+                        EndDate = Convert.ToDateTime(row["enddate"]),
+                        ApplicationDeadline = Convert.ToDateTime(row["applicationdeadline"]),
+                        AvailableSlots = Convert.ToInt32(row["availableslots"]),
+                        Status = row["status"].ToString(),
+                        PostedDate = Convert.ToDateTime(row["posteddate"]),
+                        CompanyName = row["companyname"].ToString(),
+                        PostedBy = row["postedby"].ToString(),
+                        TotalApplications = Convert.ToInt32(row["totalapplications"]),
+                        PendingApplications = Convert.ToInt32(row["pendingapplications"]),
+                        AcceptedApplications = Convert.ToInt32(row["acceptedapplications"]),
+                        RejectedApplications = Convert.ToInt32(row["rejectedapplications"])
+                    };
+                }
+
+                return null;
             }
             catch (Exception ex)
             {
@@ -471,7 +528,7 @@ namespace InternshipTrackerSystem.Class
             }
         }
 
-        public static DataTable GetApplicationDetails(int applicationId)
+        public static ApplicationDetailsModel GetApplicationDetails(int applicationId)
         {
             try
             {
@@ -488,7 +545,30 @@ namespace InternshipTrackerSystem.Class
                     { "@applicationid", applicationId }
                 };
 
-                return DatabaseHelper.ExecuteQuery(query, parameters);
+                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    return new ApplicationDetailsModel
+                    {
+                        ApplicationId = Convert.ToInt32(row["applicationid"]),
+                        ApplicationDate = Convert.ToDateTime(row["applicationdate"]),
+                        Status = row["status"].ToString(),
+                        ReviewNotes = row["reviewnotes"] != DBNull.Value ? row["reviewnotes"].ToString() : string.Empty,
+                        StudentId = Convert.ToInt32(row["studentid"]),
+                        StudentName = row["studentname"].ToString(),
+                        StudentIdNumber = row["studentidnumber"].ToString(),
+                        Program = row["program"].ToString(),
+                        GPA = Convert.ToDecimal(row["gpa"]),
+                        Skills = row["skills"].ToString(),
+                        ContactNumber = row["contactnumber"].ToString(),
+                        Email = row["email"].ToString(),
+                        PositionTitle = row["positiontitle"].ToString()
+                    };
+                }
+
+                return null;
             }
             catch (Exception ex)
             {
@@ -510,7 +590,7 @@ namespace InternshipTrackerSystem.Class
                     UPDATE applications 
                     SET status = @status,
                         reviewedbyhrid = @hrid,
-                        remarks = @remarks
+                        reviewnotes = @remarks
                     WHERE applicationid = @applicationid";
 
                 var parameters = new Dictionary<string, object>
