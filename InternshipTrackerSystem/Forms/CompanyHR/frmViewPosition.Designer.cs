@@ -170,7 +170,6 @@
             lblStatusValue.Size = new Size(69, 20);
             lblStatusValue.TabIndex = 10;
             lblStatusValue.Text = "loading...";
-            lblStatusValue.Click += lblStatusValue_Click;
             // 
             // lblPostedByValue
             // 
