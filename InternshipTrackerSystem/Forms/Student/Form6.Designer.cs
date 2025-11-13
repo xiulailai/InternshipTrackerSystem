@@ -142,7 +142,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form6";
-            Text = "Form6";
+            Text = "Submit Report";
             Load += ReportForm_Load;
             ResumeLayout(false);
             PerformLayout();
