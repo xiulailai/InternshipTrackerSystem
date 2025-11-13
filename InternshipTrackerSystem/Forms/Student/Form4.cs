@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternshipTrackerSystem.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,7 +46,7 @@ namespace assignment_student
 
                 this.Hide();
                                
-                frmStuLogin loginForm = new frmStuLogin();
+                frmUserLogin loginForm = new frmUserLogin();
                 loginForm.Show();
             }
         }
