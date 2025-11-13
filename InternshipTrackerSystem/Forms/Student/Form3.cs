@@ -1,7 +1,9 @@
-﻿using Npgsql;
+﻿using InternshipTrackerSystem.Data;
 using System;
+using System.Collections.Generic; 
 using System.Data;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace assignment_student
 {
@@ -14,14 +16,14 @@ namespace assignment_student
 
         private void LoadStudentsData()
         {
-            if (Session.StudentId == 0)
+            
+            if (Students.StudentId == 0)
             {
-                MessageBox.Show("ERROR: login expired", "Session Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR: Login expired. Please log in again.", "Session Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string connStr = "Host=localhost;Port=5432;Username=postgres;Password=Password123!;Database=InternshipTracker;";
-
+           
             string query = @"
                 SELECT 
                     p.Title AS PositionTitle, 
@@ -33,30 +35,21 @@ namespace assignment_student
                 WHERE a.studentid = @studentid;
             ";
 
-            try
+            var parameters = new Dictionary<string, object>
             {
-                using (var conn = new NpgsqlConnection(connStr))
-                {
-                    conn.Open();
-                    using (var cmd = new NpgsqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@studentid", Session.StudentId);
+                { "@studentid", Students.StudentId }
+            };
 
-                        using (var adapter = new NpgsqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
+            try
+            {                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
 
-                            dgvStudents.AutoGenerateColumns = true;
-                            dgvStudents.DataSource = dt;
-                            dgvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        }
-                    }
-                }
+                dgvStudents.AutoGenerateColumns = true;
+                dgvStudents.DataSource = dt;
+                dgvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
-            {
-                MessageBox.Show("Loading error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {              
+                MessageBox.Show("Loading error: " + ex.Message, "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

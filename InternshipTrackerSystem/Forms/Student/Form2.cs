@@ -1,12 +1,6 @@
-﻿using Npgsql;
+﻿using InternshipTrackerSystem.Data;
+using InternshipTrackerSystem.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace assignment_student
@@ -20,6 +14,7 @@ namespace assignment_student
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
+           
             string studentId = txtStudentID.Text.Trim();
             string username = txtUserName.Text.Trim();
             string fullName = txtFullName.Text.Trim();
@@ -30,90 +25,62 @@ namespace assignment_student
             string password = txtPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();
 
-            string connStr = "Host=localhost;Port=5432;Username=postgres;Password=Password123!;Database=InternshipTracker;";
-
+           
             if (studentId == "" || fullName == "" || program == "" || contact == "" ||
-                address == "" || email == "" || password == "" || confirmPassword == "")
+                address == "" || email == "" || password == "" || confirmPassword == "" || username == "")
             {
-                MessageBox.Show("Please Write Down All The Blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (password != confirmPassword)
             {
-                MessageBox.Show("Password are Not Same！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Passwords do not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            Student newStudent = new Student
+            {
+                StudentIdNumber = studentId,
+                Username = username,
+                FullName = fullName,
+                Program = program,
+                ContactNumber = contact,
+                Address = address,
+                Email = email
+            };
+
             try
             {
-                using (var conn = new NpgsqlConnection(connStr))
+                
+                RegistrationResult result = DatabaseHelper.RegisterStudent(newStudent, password);
+
+                switch (result)
                 {
-                    conn.Open();
+                    case RegistrationResult.Success:
+                        MessageBox.Show("Successfully Signed Up. Please Login.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        frmStuLogin loginForm = new frmStuLogin();
+                        loginForm.Show();
+                        break;
 
-                    string checkEmailSql = "SELECT COUNT(*) FROM users WHERE email = @em;";
-                    using (var checkCmd = new NpgsqlCommand(checkEmailSql, conn))
-                    {
-                        checkCmd.Parameters.AddWithValue("@em", email);
-                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
-                        if (count > 0)
-                        {
-                            MessageBox.Show("Already Have Exixting Accounr", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
+                    case RegistrationResult.EmailExists:
+                        MessageBox.Show("This email address is already in use.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
 
-                    string checkStudentSql = "SELECT COUNT(*) FROM students WHERE studentidnumber = @id;";
-                    using (var checkCmd = new NpgsqlCommand(checkStudentSql, conn))
-                    {
-                        checkCmd.Parameters.AddWithValue("@id", studentId);
-                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
-                        if (count > 0)
-                        {
-                            MessageBox.Show("This Student ID Number already exists!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
+                    case RegistrationResult.StudentIdExists:
+                        MessageBox.Show("This Student ID Number already exists!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
 
-                    int newUserId;
-                    string insertUserSql = @"INSERT INTO users (username, email, passwordhash, userrole)
-                         VALUES (@user, @em, @pass, @role)
-                         RETURNING userid;";
-
-                    using (var cmd2 = new NpgsqlCommand(insertUserSql, conn))
-                    {
-                        cmd2.Parameters.AddWithValue("@user", username);
-                        cmd2.Parameters.AddWithValue("@em", email);
-                        cmd2.Parameters.AddWithValue("@pass", password);
-                        cmd2.Parameters.AddWithValue("@role", "Student");
-                        newUserId = Convert.ToInt32(cmd2.ExecuteScalar());
-                    }
-
-                    string insertStudentSql = @"INSERT INTO students 
-                        (studentidnumber, fullname, program, contactnumber, address, userid)
-                        VALUES (@id, @name, @prog, @contact, @addr, @uid);";
-
-                    using (var cmd1 = new NpgsqlCommand(insertStudentSql, conn))
-                    {
-                        cmd1.Parameters.AddWithValue("@id", studentId);
-                        cmd1.Parameters.AddWithValue("@name", fullName);
-                        cmd1.Parameters.AddWithValue("@prog", program);
-                        cmd1.Parameters.AddWithValue("@contact", contact);
-                        cmd1.Parameters.AddWithValue("@addr", address);
-                        cmd1.Parameters.AddWithValue("@uid", newUserId); 
-                        cmd1.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Succefully Sign Up. Please Login Again", "Succeful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    this.Hide();
-                    frmStuLogin loginForm = new frmStuLogin();
-                    loginForm.Show();
+                    case RegistrationResult.UnknownError:
+                        MessageBox.Show("An unexpected database error occurred. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("404 NOtfound：" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              
+                MessageBox.Show("An application error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
