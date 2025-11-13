@@ -49,21 +49,6 @@ namespace InternshipTrackerSystem.Model
         public int ApplicationCount { get; set; }
     }
 
-    public class ApplicationModel
-    {
-        public int ApplicationId { get; set; }
-        public int StudentId { get; set; }
-        public int PositionId { get; set; }
-        public DateTime ApplicationDate { get; set; }
-        public string Status { get; set; }
-        public int? ReviewedByHRId { get; set; }
-        public string Remarks { get; set; }
-
-        // Additional properties for display
-        public string StudentName { get; set; }
-        public string PositionTitle { get; set; }
-    }
-
     public class ApplicationDetailsModel
     {
         public int ApplicationId { get; set; }
