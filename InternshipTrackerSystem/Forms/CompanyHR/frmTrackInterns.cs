@@ -161,5 +161,15 @@ ORDER BY
             dgvInterns.RowHeadersVisible = false;
             dgvInterns.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmTrackInterns_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -40,7 +40,7 @@
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(25, 29);
+            lblStatus.Location = new Point(25, 34);
             lblStatus.Margin = new Padding(2, 0, 2, 0);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(39, 15);
@@ -50,7 +50,7 @@
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(234, 29);
+            lblSearch.Location = new Point(234, 34);
             lblSearch.Margin = new Padding(2, 0, 2, 0);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(42, 15);
@@ -76,6 +76,7 @@
             btnRefresh.TabIndex = 3;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // cboStatus
             // 
@@ -89,7 +90,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(280, 29);
+            txtSearch.Location = new Point(280, 31);
             txtSearch.Margin = new Padding(2, 1, 2, 1);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(390, 23);
@@ -109,6 +110,7 @@
             Margin = new Padding(2, 1, 2, 1);
             Name = "frmTrackInterns";
             Text = "frmTrackInterns";
+            Load += frmTrackInterns_Load_1;
             ((System.ComponentModel.ISupportInitialize)dgvInterns).EndInit();
             ResumeLayout(false);
             PerformLayout();
