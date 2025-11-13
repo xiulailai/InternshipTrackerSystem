@@ -166,13 +166,14 @@
             // 
             txtDescription.Location = new Point(127, 278);
             txtDescription.Margin = new Padding(2, 1, 2, 1);
+            txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(316, 23);
+            txtDescription.Size = new Size(316, 68);
             txtDescription.TabIndex = 12;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(187, 330);
+            btnSave.Location = new Point(19, 314);
             btnSave.Margin = new Padding(2, 1, 2, 1);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(81, 22);
