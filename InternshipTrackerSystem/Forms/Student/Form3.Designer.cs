@@ -72,7 +72,7 @@
             Controls.Add(btnBack);
             Controls.Add(dgvStudents);
             Name = "Form3";
-            Text = "Form3";
+            Text = "Application Page";
             Load += Form3_Load;
             ((System.ComponentModel.ISupportInitialize)dgvStudents).EndInit();
             ResumeLayout(false);

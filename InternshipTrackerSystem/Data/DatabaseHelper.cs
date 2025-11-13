@@ -178,5 +178,35 @@ namespace InternshipTrackerSystem.Data
                 // Silently fail if logging doesn't work
             }
         }
+
+        // Submit a report with file upload
+        public static bool SubmitReport(int applicationId, int studentId, string reportType, byte[] fileData, string fileName)
+        {
+            string query = @"
+        INSERT INTO reports (applicationid, studentid, reporttype, filedata, filename, submissiondate, status)
+        VALUES (@applicationid, @studentid, @reporttype, @filedata, @filename, @submissiondate, @status)";
+
+            var parameters = new Dictionary<string, object>
+    {
+        { "@applicationid", applicationId },
+        { "@studentid", studentId },
+        { "@reporttype", reportType },
+        { "@filedata", fileData },
+        { "@filename", fileName },
+        { "@submissiondate", DateTime.Now },
+        { "@status", "Submitted" }
+    };
+
+            try
+            {
+                int rowsAffected = ExecuteNonQuery(query, parameters);
+                return rowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+                LogError($"Error in SubmitReport: {ex.Message}");
+                return false;
+            }
+        }
     }
 }

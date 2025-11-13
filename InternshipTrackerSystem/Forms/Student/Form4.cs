@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InternshipTrackerSystem.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,19 +31,23 @@ namespace assignment_student
             mainPage.Show();
             this.Hide();
         }
-
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-              "Are you sure you want to exit the application?",
-              "Exit",
-              MessageBoxButtons.YesNo,
-              MessageBoxIcon.Question
-             );
+                "Are you sure you want to log out?", 
+                "Log Out",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
             if (result == DialogResult.Yes)
-            {
-                Application.Exit();
+            {                
+                Students.Clear();
+
+                this.Hide();
+                               
+                frmUserLogin loginForm = new frmUserLogin();
+                loginForm.Show();
             }
         }
 
@@ -54,4 +59,3 @@ namespace assignment_student
         }
     }
 }
-

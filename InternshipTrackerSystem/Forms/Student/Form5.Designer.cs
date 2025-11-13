@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dgvInternPosition = new DataGridView();
             btnBack = new Button();
             label1 = new Label();
@@ -40,14 +40,14 @@
             dgvInternPosition.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvInternPosition.ColumnHeadersHeight = 29;
             dgvInternPosition.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvInternPosition.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvInternPosition.DefaultCellStyle = dataGridViewCellStyle1;
             dgvInternPosition.Location = new Point(12, 47);
             dgvInternPosition.Name = "dgvInternPosition";
             dgvInternPosition.RowHeadersWidth = 51;
@@ -84,7 +84,7 @@
             Controls.Add(btnBack);
             Controls.Add(dgvInternPosition);
             Name = "frmInternshipposition";
-            Text = "Form5";
+            Text = "Internship Positions";
             Load += Form5_Load;
             ((System.ComponentModel.ISupportInitialize)dgvInternPosition).EndInit();
             ResumeLayout(false);

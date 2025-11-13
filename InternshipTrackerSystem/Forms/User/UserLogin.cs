@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InternshipTrackerSystem.Forms.Admin;
+using assignment_student;
 
 namespace InternshipTrackerSystem.Forms
 {
@@ -18,10 +20,6 @@ namespace InternshipTrackerSystem.Forms
         public frmUserLogin()
         {
             InitializeComponent();
-        }
-        private void frmUserLogin_Load(object sender, EventArgs e)
-        {
-            txtEmail.Focus();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -54,7 +52,9 @@ namespace InternshipTrackerSystem.Forms
                 }
                 else if (role == "Student")
                 {
-                    MessageBox.Show("Student dashboard under construction.");
+                    this.Hide();
+                    frmHomePage studentForm = new frmHomePage();
+                    studentForm.ShowDialog();
                 }
                 else if (role == "CompanyHR")
                 {
@@ -64,7 +64,9 @@ namespace InternshipTrackerSystem.Forms
                 }
                 else if (role == "Admin")
                 {
-                    MessageBox.Show("Admin dashboard under construction.");
+                    this.Hide();
+                    frmAdminMain adminForm = new frmAdminMain();
+                    adminForm.ShowDialog();
                 }
 
                 this.Hide(); // hide login form
@@ -83,6 +85,12 @@ namespace InternshipTrackerSystem.Forms
         private void frmUserLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit(); // Ensure the application exits when the login form is closed
+        }
+
+        private void frmUserLogin_Load(object sender, EventArgs e)
+        {
+            txtEmail.Focus();
+            txtPassword.UseSystemPasswordChar = true;
         }
     }
 }

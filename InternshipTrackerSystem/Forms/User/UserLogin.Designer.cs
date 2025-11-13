@@ -34,45 +34,47 @@
             txtPassword = new TextBox();
             btnLogin = new Button();
             btnExit = new Button();
+            lblTitle = new Label();
             SuspendLayout();
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(79, 38);
+            lblEmail.Location = new Point(50, 75);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(53, 20);
+            lblEmail.Size = new Size(60, 23);
             lblEmail.TabIndex = 0;
             lblEmail.Text = "Email: ";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(79, 89);
+            lblPassword.Location = new Point(50, 125);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(73, 20);
+            lblPassword.Size = new Size(84, 23);
             lblPassword.TabIndex = 1;
             lblPassword.Text = "Password:";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(167, 35);
+            txtEmail.Location = new Point(150, 70);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(107, 27);
+            txtEmail.Size = new Size(150, 30);
             txtEmail.TabIndex = 0;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(167, 86);
+            txtPassword.Location = new Point(150, 120);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(107, 27);
+            txtPassword.Size = new Size(150, 30);
             txtPassword.TabIndex = 2;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(79, 145);
+            btnLogin.Location = new Point(50, 170);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(94, 29);
+            btnLogin.Size = new Size(94, 30);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -80,26 +82,42 @@
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(79, 180);
+            btnExit.Location = new Point(160, 170);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(94, 29);
+            btnExit.Size = new Size(94, 30);
             btnExit.TabIndex = 4;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle.Location = new Point(50, 30);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(207, 23);
+            lblTitle.TabIndex = 5;
+            lblTitle.Text = "Internship Tracker System";
+            // 
             // frmUserLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(361, 241);
+            AutoSize = true;
+            BackColor = Color.FromArgb(245, 248, 250);
+            ClientSize = new Size(362, 233);
+            Controls.Add(lblTitle);
             Controls.Add(btnExit);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtEmail);
             Controls.Add(lblPassword);
             Controls.Add(lblEmail);
+            Font = new Font("Segoe UI", 10F);
+            MaximizeBox = false;
             Name = "frmUserLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Internship Tracker System";
             FormClosed += frmUserLogin_FormClosed;
             Load += frmUserLogin_Load;
@@ -115,5 +133,6 @@
         private TextBox txtPassword;
         private Button btnLogin;
         private Button btnExit;
+        private Label lblTitle;
     }
 }
