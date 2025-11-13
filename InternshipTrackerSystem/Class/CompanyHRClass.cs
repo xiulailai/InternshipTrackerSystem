@@ -128,7 +128,6 @@ namespace InternshipTrackerSystem.Class
         {
             try
             {
-                // Add new validations
                 if (string.IsNullOrWhiteSpace(location))
                 {
                     throw new Exception("Location is required");
@@ -159,7 +158,6 @@ namespace InternshipTrackerSystem.Class
                     throw new Exception("End date must be after start date");
                 }
 
-                // Update the INSERT query
                 string query = @"
                     INSERT INTO internshippositions 
                     (companyid, postedbyhrid, title, description, requirements, location, duration, stipend, startdate, enddate, applicationdeadline, availableslots, status, posteddate)
