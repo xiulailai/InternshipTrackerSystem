@@ -96,7 +96,7 @@
             Controls.Add(btnInternPosition);
             Controls.Add(btnApplication);
             Name = "frmHomePage";
-            Text = "Form4";
+            Text = "Student Home Page";
             ResumeLayout(false);
             PerformLayout();
         }
