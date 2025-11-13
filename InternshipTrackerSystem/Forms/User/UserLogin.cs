@@ -86,6 +86,12 @@ namespace InternshipTrackerSystem.Forms
         {
             Application.Exit(); // Ensure the application exits when the login form is closed
         }
+
+        private void frmUserLogin_Load(object sender, EventArgs e)
+        {
+            txtEmail.Focus();
+            txtPassword.UseSystemPasswordChar = true;
+        }
     }
 }
 

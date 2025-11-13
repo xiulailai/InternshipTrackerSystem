@@ -68,6 +68,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(150, 30);
             txtPassword.TabIndex = 2;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
@@ -119,6 +120,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Internship Tracker System";
             FormClosed += frmUserLogin_FormClosed;
+            Load += frmUserLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
