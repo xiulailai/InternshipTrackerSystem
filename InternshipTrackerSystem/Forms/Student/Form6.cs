@@ -1,8 +1,9 @@
-﻿using InternshipTrackerSystem.Data;
+﻿
+using InternshipTrackerSystem.Data;
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 using System.Data;
-using System.IO; 
+using System.IO;
 using System.Windows.Forms;
 
 namespace assignment_student
@@ -20,7 +21,6 @@ namespace assignment_student
             cmbReportType.Items.Add("Monthly");
             cmbReportType.Items.Add("Final");
             cmbReportType.SelectedIndex = 0;
-
             LoadApprovedInternships();
         }
 
@@ -45,18 +45,12 @@ namespace assignment_student
 
                 cmbInternship.DataSource = dt;
                 cmbInternship.DisplayMember = "Title";
-                cmbInternship.ValueMember = "applicationid";
+                cmbInternship.ValueMember = "applicationid"; 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading internship list: " + ex.Message);
             }
-        }
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            frmHomePage mainPage = new frmHomePage();
-            mainPage.Show();
-            this.Hide();
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -64,7 +58,6 @@ namespace assignment_student
             ofdReport.Title = "Select Report File";
             ofdReport.Filter = "PDF Files (*.pdf)|*.pdf|Word Documents (*.docx)|*.docx|All Files (*.*)|*.*";
             ofdReport.FileName = "";
-
             if (ofdReport.ShowDialog() == DialogResult.OK)
             {
                 txtFilePath.Text = ofdReport.FileName;
@@ -95,7 +88,9 @@ namespace assignment_student
                 return;
             }
 
-            int internshipId = (int)cmbInternship.SelectedValue; 
+           
+            int applicationId = (int)cmbInternship.SelectedValue;
+            int studentId = Students.StudentId;
             string reportType = cmbReportType.SelectedItem.ToString();
             string filePath = txtFilePath.Text;
             string fileName = Path.GetFileName(filePath);
@@ -113,24 +108,31 @@ namespace assignment_student
 
             try
             {
-                bool success = DatabaseHelper.SubmitReport(internshipId, Students.StudentId, reportType, fileData, fileName);
+                bool success = DatabaseHelper.SubmitReport(applicationId, studentId, reportType, fileData, fileName);
 
                 if (success)
                 {
                     lblStatus.Text = $"Success: '{fileName}' submitted.";
                     MessageBox.Show("Report submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtFilePath.Text = "";
                 }
                 else
                 {
                     lblStatus.Text = "Error: Upload failed.";
+                    MessageBox.Show("Database upload error: Report was not saved.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
                 lblStatus.Text = "Error: Upload failed.";
-                MessageBox.Show("Application upload error: " + ex.Message, "App Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database upload error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            frmHomePage mainPage = new frmHomePage();
+            mainPage.Show();
+            this.Hide();
         }
     }
 }

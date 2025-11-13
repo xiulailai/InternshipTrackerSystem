@@ -1,9 +1,8 @@
 ﻿using InternshipTrackerSystem.Data;
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using static System.Collections.Specialized.BitVector32;
 
 namespace assignment_student
 {
@@ -16,14 +15,12 @@ namespace assignment_student
 
         private void LoadStudentsData()
         {
-            
             if (Students.StudentId == 0)
             {
                 MessageBox.Show("ERROR: Login expired. Please log in again.", "Session Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-           
             string query = @"
                 SELECT 
                     p.Title AS PositionTitle, 
@@ -41,14 +38,15 @@ namespace assignment_student
             };
 
             try
-            {                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+            {
+                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
 
                 dgvStudents.AutoGenerateColumns = true;
                 dgvStudents.DataSource = dt;
                 dgvStudents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
-            {              
+            {
                 MessageBox.Show("Loading error: " + ex.Message, "Application Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
