@@ -40,36 +40,39 @@
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(47, 62);
+            lblStatus.Location = new Point(25, 29);
+            lblStatus.Margin = new Padding(2, 0, 2, 0);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(78, 32);
+            lblStatus.Size = new Size(39, 15);
             lblStatus.TabIndex = 0;
             lblStatus.Text = "Status";
-            
             // 
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(435, 62);
+            lblSearch.Location = new Point(234, 29);
+            lblSearch.Margin = new Padding(2, 0, 2, 0);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(85, 32);
+            lblSearch.Size = new Size(42, 15);
             lblSearch.TabIndex = 1;
             lblSearch.Text = "Search";
             // 
             // dgvInterns
             // 
             dgvInterns.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInterns.Location = new Point(59, 162);
+            dgvInterns.Location = new Point(25, 72);
+            dgvInterns.Margin = new Padding(2, 1, 2, 1);
             dgvInterns.Name = "dgvInterns";
             dgvInterns.RowHeadersWidth = 82;
-            dgvInterns.Size = new Size(1038, 442);
+            dgvInterns.Size = new Size(740, 348);
             dgvInterns.TabIndex = 2;
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(961, 66);
+            btnRefresh.Location = new Point(686, 31);
+            btnRefresh.Margin = new Padding(2, 1, 2, 1);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(146, 54);
+            btnRefresh.Size = new Size(79, 25);
             btnRefresh.TabIndex = 3;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = true;
@@ -78,29 +81,32 @@
             // 
             cboStatus.FormattingEnabled = true;
             cboStatus.Items.AddRange(new object[] { "All", "ongoing", "Completed", "Terminated" });
-            cboStatus.Location = new Point(171, 66);
+            cboStatus.Location = new Point(92, 31);
+            cboStatus.Margin = new Padding(2, 1, 2, 1);
             cboStatus.Name = "cboStatus";
-            cboStatus.Size = new Size(186, 40);
+            cboStatus.Size = new Size(102, 23);
             cboStatus.TabIndex = 4;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(533, 66);
+            txtSearch.Location = new Point(280, 29);
+            txtSearch.Margin = new Padding(2, 1, 2, 1);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(400, 39);
+            txtSearch.Size = new Size(217, 23);
             txtSearch.TabIndex = 5;
             // 
             // frmTrackInterns
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1142, 690);
+            ClientSize = new Size(816, 544);
             Controls.Add(txtSearch);
             Controls.Add(cboStatus);
             Controls.Add(btnRefresh);
             Controls.Add(dgvInterns);
             Controls.Add(lblSearch);
             Controls.Add(lblStatus);
+            Margin = new Padding(2, 1, 2, 1);
             Name = "frmTrackInterns";
             Text = "frmTrackInterns";
             ((System.ComponentModel.ISupportInitialize)dgvInterns).EndInit();
