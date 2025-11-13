@@ -64,12 +64,12 @@
             dgvInterns.Margin = new Padding(2, 1, 2, 1);
             dgvInterns.Name = "dgvInterns";
             dgvInterns.RowHeadersWidth = 82;
-            dgvInterns.Size = new Size(740, 348);
+            dgvInterns.Size = new Size(937, 348);
             dgvInterns.TabIndex = 2;
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(686, 31);
+            btnRefresh.Location = new Point(883, 31);
             btnRefresh.Margin = new Padding(2, 1, 2, 1);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(79, 25);
@@ -92,14 +92,14 @@
             txtSearch.Location = new Point(280, 29);
             txtSearch.Margin = new Padding(2, 1, 2, 1);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(217, 23);
+            txtSearch.Size = new Size(390, 23);
             txtSearch.TabIndex = 5;
             // 
             // frmTrackInterns
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(816, 544);
+            ClientSize = new Size(988, 699);
             Controls.Add(txtSearch);
             Controls.Add(cboStatus);
             Controls.Add(btnRefresh);

@@ -168,11 +168,11 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            /*
+            
             try
             {
-                // frmHRProfile profileForm = new frmHRProfile(userId);
-                // profileForm.ShowDialog();
+                 frmHRProfile profileForm = new frmHRProfile(userId);
+                 profileForm.ShowDialog();
 
                 // Refresh HR data when returning (in case profile was updated)
                 LoadHRData();
@@ -184,7 +184,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-            */
+            
         }
 
 
@@ -210,11 +210,11 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
         
         private void btnTrackInterns_Click(object sender, EventArgs e)
         {
-            /*
+            
             try
             {
-                // frmTrackInterns trackInternsForm = new frmTrackInterns(companyId);
-                // trackInternsForm.ShowDialog();
+                frmTrackInterns trackInternsForm = new frmTrackInterns(companyId);
+                trackInternsForm.ShowDialog();
 
                 LoadStatistics();
             }
@@ -225,7 +225,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-            */
+            
         }
         
 

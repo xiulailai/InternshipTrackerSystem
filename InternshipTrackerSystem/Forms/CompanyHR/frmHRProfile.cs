@@ -183,7 +183,7 @@ WHERE CompanyID = @CompanyID;";
         private static void Set(TextBox tb, string value) => tb.Text = value ?? string.Empty;
         private static string NullIfEmpty(string s) => string.IsNullOrWhiteSpace(s) ? null : s.Trim();
         private static void Warn(string msg) => MessageBox.Show(msg, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-    
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -210,6 +210,11 @@ WHERE CompanyID = @CompanyID;";
         }
 
         private void btnSave_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtContactEmail_TextChanged(object sender, EventArgs e)
         {
 
         }
