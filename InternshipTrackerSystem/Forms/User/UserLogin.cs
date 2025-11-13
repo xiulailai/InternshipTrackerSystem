@@ -21,10 +21,6 @@ namespace InternshipTrackerSystem.Forms
         {
             InitializeComponent();
         }
-        private void frmUserLogin_Load(object sender, EventArgs e)
-        {
-            txtEmail.Focus();
-        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
