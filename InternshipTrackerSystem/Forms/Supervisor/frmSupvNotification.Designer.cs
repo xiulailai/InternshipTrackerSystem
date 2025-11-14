@@ -52,7 +52,7 @@
             dgvNotifications.Name = "dgvNotifications";
             dgvNotifications.ReadOnly = true;
             dgvNotifications.RowHeadersWidth = 51;
-            dgvNotifications.Size = new Size(548, 188);
+            dgvNotifications.Size = new Size(820, 188);
             dgvNotifications.TabIndex = 0;
             dgvNotifications.CellContentClick += dgvNotifications_CellContentClick;
             dgvNotifications.CellDoubleClick += dgvNotifications_CellDoubleClick;
@@ -126,7 +126,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(612, 353);
+            ClientSize = new Size(882, 353);
             Controls.Add(btnBack);
             Controls.Add(lblUnreadCount);
             Controls.Add(chkUnreadOnly);

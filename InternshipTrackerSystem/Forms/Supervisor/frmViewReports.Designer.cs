@@ -63,7 +63,7 @@
             dgvReports.Name = "dgvReports";
             dgvReports.ReadOnly = true;
             dgvReports.RowHeadersWidth = 51;
-            dgvReports.Size = new Size(553, 188);
+            dgvReports.Size = new Size(770, 188);
             dgvReports.TabIndex = 1;
             dgvReports.CellDoubleClick += dgvReports_CellDoubleClick;
             dgvReports.CellFormatting += dgvReports_CellFormatting;
@@ -147,7 +147,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(617, 353);
+            ClientSize = new Size(832, 353);
             Controls.Add(lblStatus);
             Controls.Add(btnViewContents);
             Controls.Add(btnLoad);

@@ -161,7 +161,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                     Name = "ReportType",
                     DataPropertyName = "ReportType",
                     HeaderText = "Report Type",
-                    Width = 100,
+                    Width = 90,
                     FillWeight = 13
                 });
 
@@ -181,9 +181,10 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                     Name = "SubmissionDate",
                     DataPropertyName = "SubmissionDate",
                     HeaderText = "Submission Date",
-                    Width = 120,
+                    Width = 150,
                     FillWeight = 17,
                     DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy HH:mm" }
+                    
                 });
 
                 // Status
