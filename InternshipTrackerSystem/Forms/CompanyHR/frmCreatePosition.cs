@@ -1,4 +1,5 @@
 ﻿using InternshipTrackerSystem.Class;
+using InternshipTrackerSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -180,28 +181,31 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     return;
                 }
 
-                // Get values
-                string title = txtTitle.Text.Trim();
-                string description = txtDescription.Text.Trim();
-                string requirements = txtRequirements.Text.Trim();
-                string location = txtLocation.Text.Trim();
-                int duration = (int)numDuration.Value;
-                string stipend = txtStipend.Text.Trim();
-                DateTime startDate = dtpStartDate.Value;
-                DateTime endDate = dtpEndDate.Value;
-                DateTime applicationDeadline = dtpApplicationDeadline.Value;
-                int availableSlots = (int)numAvailableSlots.Value;
-                string status = cboStatus.SelectedItem.ToString();
+                // Create position model from form inputs
+                InternshipPositionModel newPosition = new InternshipPositionModel
+                {
+                    Title = txtTitle.Text.Trim(),
+                    Description = txtDescription.Text.Trim(),
+                    Requirements = txtRequirements.Text.Trim(),
+                    Location = txtLocation.Text.Trim(),
+                    Duration = (int)numDuration.Value,
+                    Stipend = txtStipend.Text.Trim(),
+                    StartDate = dtpStartDate.Value,
+                    EndDate = dtpEndDate.Value,
+                    ApplicationDeadline = dtpApplicationDeadline.Value,
+                    AvailableSlots = (int)numAvailableSlots.Value,
+                    Status = cboStatus.SelectedItem.ToString()
+                };
 
                 // Confirm creation
                 DialogResult confirmResult = MessageBox.Show(
                     $"Create new position:\n\n" +
-                    $"Title: {title}\n" +
-                    $"Location: {location}\n" +
-                    $"Duration: {duration} weeks\n" +
-                    $"Stipend: {stipend}\n" +
-                    $"Available Slots: {availableSlots}\n" +
-                    $"Status: {status}\n\n" +
+                    $"Title: {newPosition.Title}\n" +
+                    $"Location: {newPosition.Location}\n" +
+                    $"Duration: {newPosition.Duration} weeks\n" +
+                    $"Stipend: {newPosition.Stipend}\n" +
+                    $"Available Slots: {newPosition.AvailableSlots}\n" +
+                    $"Status: {newPosition.Status}\n\n" +
                     $"Are you sure you want to create this position?",
                     "Confirm Creation",
                     MessageBoxButtons.YesNo,
@@ -213,21 +217,8 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     btnSave.Enabled = false;
                     Cursor = Cursors.WaitCursor;
 
-                    // Call the method to create position
-                    bool success = CompanyHRClass.CreatePosition(
-                        companyId,
-                        hrId,
-                        title,
-                        description,
-                        requirements,
-                        location,
-                        duration,
-                        stipend,
-                        startDate,
-                        endDate,
-                        applicationDeadline,
-                        availableSlots,
-                        status);
+                    // Call the method to create position with model
+                    bool success = CompanyHRClass.CreatePosition(companyId, hrId, newPosition);
 
                     Cursor = Cursors.Default;
                     btnSave.Enabled = true;

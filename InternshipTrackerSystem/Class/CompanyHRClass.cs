@@ -123,41 +123,42 @@ namespace InternshipTrackerSystem.Class
                 throw new Exception($"Error fetching company name: {ex.Message}");
             }
         }
-
-        public static bool CreatePosition(int companyId, int hrId, string title, string description, string requirements, string location, int duration, string stipend, DateTime startDate, DateTime endDate, DateTime applicationDeadline, int availableSlots, string status)
+        public static bool CreatePosition(int companyId, int hrId, InternshipPositionModel position)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(location))
+                // Add new validations
+                if (string.IsNullOrWhiteSpace(position.Location))
                 {
                     throw new Exception("Location is required");
                 }
 
-                if (string.IsNullOrWhiteSpace(stipend))
+                if (string.IsNullOrWhiteSpace(position.Stipend))
                 {
                     throw new Exception("Stipend is required");
                 }
 
-                if (duration <= 0)
+                if (position.Duration <= 0)
                 {
                     throw new Exception("Duration must be greater than 0");
                 }
 
-                if (availableSlots <= 0)
+                if (position.AvailableSlots <= 0)
                 {
                     throw new Exception("Available slots must be greater than 0");
                 }
 
-                if (applicationDeadline >= startDate)
+                if (position.ApplicationDeadline >= position.StartDate)
                 {
                     throw new Exception("Application deadline must be before start date");
                 }
 
-                if (startDate >= endDate)
+                if (position.StartDate >= position.EndDate)
                 {
                     throw new Exception("End date must be after start date");
                 }
 
+                // Update the INSERT query
                 string query = @"
                     INSERT INTO internshippositions 
                     (companyid, postedbyhrid, title, description, requirements, location, duration, stipend, startdate, enddate, applicationdeadline, availableslots, status, posteddate)
@@ -167,17 +168,17 @@ namespace InternshipTrackerSystem.Class
                 {
                     { "@companyid", companyId },
                     { "@hrid", hrId },
-                    { "@title", title },
-                    { "@description", description },
-                    { "@requirements", requirements },
-                    { "@location", location },
-                    { "@duration", duration },
-                    { "@stipend", stipend },
-                    { "@startdate", startDate },
-                    { "@enddate", endDate },
-                    { "@applicationdeadline", applicationDeadline },
-                    { "@availableslots", availableSlots },
-                    { "@status", status }
+                    { "@title", position.Title },
+                    { "@description", position.Description },
+                    { "@requirements", position.Requirements },
+                    { "@location", position.Location },
+                    { "@duration", position.Duration },
+                    { "@stipend", position.Stipend },
+                    { "@startdate", position.StartDate },
+                    { "@enddate", position.EndDate },
+                    { "@applicationdeadline", position.ApplicationDeadline },
+                    { "@availableslots", position.AvailableSlots },
+                    { "@status", position.Status }
                 };
 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
@@ -333,29 +334,59 @@ namespace InternshipTrackerSystem.Class
             }
         }
 
-        public static bool UpdatePosition(int positionId, string title, string description, string requirements, string location, int duration, string stipend, DateTime startDate, DateTime endDate, DateTime applicationDeadline, int availableSlots, string status)
+        public static bool UpdatePosition(int positionId, InternshipPositionModel position)
         {
             try
             {
                 // Validate inputs
-                if (string.IsNullOrWhiteSpace(title) || title.Length < 5)
+                if (string.IsNullOrWhiteSpace(position.Title) || position.Title.Length < 5)
                 {
                     throw new Exception("Position title must be at least 5 characters long");
                 }
 
-                if (string.IsNullOrWhiteSpace(description) || description.Length < 20)
+                if (string.IsNullOrWhiteSpace(position.Description) || position.Description.Length < 10)
                 {
-                    throw new Exception("Description must be at least 20 characters long");
+                    throw new Exception("Description must be at least 10 characters long");
                 }
 
-                if (string.IsNullOrWhiteSpace(requirements) || requirements.Length < 10)
+                if (string.IsNullOrWhiteSpace(position.Requirements) || position.Requirements.Length < 10)
                 {
                     throw new Exception("Requirements must be at least 10 characters long");
                 }
 
-                if (status != "Open" && status != "Closed")
+                if (string.IsNullOrWhiteSpace(position.Location))
+                {
+                    throw new Exception("Location is required");
+                }
+
+                if (string.IsNullOrWhiteSpace(position.Stipend))
+                {
+                    throw new Exception("Stipend is required");
+                }
+
+                if (position.Status != "Open" && position.Status != "Closed")
                 {
                     throw new Exception("Invalid status. Must be 'Open' or 'Closed'");
+                }
+
+                if (position.Duration <= 0)
+                {
+                    throw new Exception("Duration must be greater than 0");
+                }
+
+                if (position.AvailableSlots <= 0)
+                {
+                    throw new Exception("Available slots must be greater than 0");
+                }
+
+                if (position.ApplicationDeadline >= position.StartDate)
+                {
+                    throw new Exception("Application deadline must be before start date");
+                }
+
+                if (position.StartDate >= position.EndDate)
+                {
+                    throw new Exception("End date must be after start date");
                 }
 
                 string query = @"
@@ -376,17 +407,17 @@ namespace InternshipTrackerSystem.Class
                 var parameters = new Dictionary<string, object>
                 {
                     { "@positionid", positionId },
-                    { "@title", title },
-                    { "@description", description },
-                    { "@requirements", requirements },
-                    { "@location", location },
-                    { "@duration", duration },
-                    { "@stipend", stipend },
-                    { "@startdate", startDate },
-                    { "@enddate", endDate },
-                    { "@applicationdeadline", applicationDeadline },
-                    { "@availableslots", availableSlots },
-                    { "@status", status }
+                    { "@title", position.Title },
+                    { "@description", position.Description },
+                    { "@requirements", position.Requirements },
+                    { "@location", position.Location },
+                    { "@duration", position.Duration },
+                    { "@stipend", position.Stipend },
+                    { "@startdate", position.StartDate },
+                    { "@enddate", position.EndDate },
+                    { "@applicationdeadline", position.ApplicationDeadline },
+                    { "@availableslots", position.AvailableSlots },
+                    { "@status", position.Status }
                 };
 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);

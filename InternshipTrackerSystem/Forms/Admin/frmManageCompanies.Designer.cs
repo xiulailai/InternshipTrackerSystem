@@ -73,7 +73,7 @@
             btnEditCompany.TabIndex = 3;
             btnEditCompany.Text = "Edit";
             btnEditCompany.UseVisualStyleBackColor = true;
-            btnEditCompany.Click += btnEditCompany_Click_1;
+
             // 
             // btnDeleteCompany
             // 
