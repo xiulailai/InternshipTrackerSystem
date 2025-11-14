@@ -7,13 +7,12 @@ namespace InternshipTrackerSystem.Forms.Admin
 {
     public partial class frmManageCompanies : Form
     {
-        private string connectionString;
-        private int adminUserID = 1; // 可以改成登录用户ID
+        private string connectionString = @"Server=localhost\SQLEXPRESS;Database=InternshipTracker;Trusted_Connection=True;";
+        private int adminUserID = 1;
 
-        public frmManageCompanies(string connStr)
+        public frmManageCompanies()
         {
             InitializeComponent();
-            connectionString = connStr;
         }
 
         private void frmManageCompanies_Load(object sender, EventArgs e)
@@ -28,7 +27,8 @@ namespace InternshipTrackerSystem.Forms.Admin
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT CompanyID, CompanyName, Industry, Location FROM Companies";
+                    string query = "SELECT CompanyID, CompanyName, Industry, Location, ContactEmail, ContactPhone FROM Companies";
+
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -51,6 +51,7 @@ namespace InternshipTrackerSystem.Forms.Admin
             {
                 SqlCommand cmd = new SqlCommand("sp_AdminAddCompany", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
+
                 cmd.Parameters.AddWithValue("@CompanyName", name);
                 cmd.Parameters.AddWithValue("@Industry", industry);
                 cmd.Parameters.AddWithValue("@Location", location);
@@ -89,6 +90,7 @@ namespace InternshipTrackerSystem.Forms.Admin
             {
                 string updateQuery = "UPDATE Companies SET CompanyName=@Name, Industry=@Industry, Location=@Location WHERE CompanyID=@CompanyID";
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
+
                 cmd.Parameters.AddWithValue("@Name", newName);
                 cmd.Parameters.AddWithValue("@Industry", newIndustry);
                 cmd.Parameters.AddWithValue("@Location", newLocation);
@@ -116,28 +118,24 @@ namespace InternshipTrackerSystem.Forms.Admin
                 return;
             }
 
-            DataGridViewRow row = dgvCompanies.SelectedRows[0];
-            int companyID = Convert.ToInt32(row.Cells["CompanyID"].Value);
+            int companyID = Convert.ToInt32(dgvCompanies.SelectedRows[0].Cells["CompanyID"].Value);
 
-            if (MessageBox.Show($"Are you sure you want to delete CompanyID {companyID}?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    string deleteQuery = "DELETE FROM Companies WHERE CompanyID=@CompanyID";
-                    SqlCommand cmd = new SqlCommand(deleteQuery, conn);
-                    cmd.Parameters.AddWithValue("@CompanyID", companyID);
+                string query = "DELETE FROM Companies WHERE CompanyID=@CompanyID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CompanyID", companyID);
 
-                    try
-                    {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Company deleted successfully!");
-                        LoadCompanies();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error deleting company: " + ex.Message);
-                    }
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Company deleted successfully!");
+                    LoadCompanies();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting company: " + ex.Message);
                 }
             }
         }

@@ -30,10 +30,10 @@
         {
             lblTitle = new Label();
             dgvUsers = new DataGridView();
-            btnViewUsers = new Button();
+            btnManageUsers = new Button();
             btnLogout = new Button();
             btnManageCompanies = new Button();
-            btnViewReports = new Button();
+            btnViewReport = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
@@ -56,15 +56,14 @@
             dgvUsers.Size = new Size(1020, 489);
             dgvUsers.TabIndex = 1;
             // 
-            // btnViewUsers
+            // btnManageUsers
             // 
-            btnViewUsers.Location = new Point(83, 582);
-            btnViewUsers.Name = "btnViewUsers";
-            btnViewUsers.Size = new Size(112, 34);
-            btnViewUsers.TabIndex = 2;
-            btnViewUsers.Text = "View Users";
-            btnViewUsers.UseVisualStyleBackColor = true;
-
+            btnManageUsers.Location = new Point(83, 582);
+            btnManageUsers.Name = "btnManageUsers";
+            btnManageUsers.Size = new Size(147, 34);
+            btnManageUsers.TabIndex = 2;
+            btnManageUsers.Text = "Manage Users";
+            btnManageUsers.UseVisualStyleBackColor = true;
             // 
             // btnLogout
             // 
@@ -84,25 +83,25 @@
             btnManageCompanies.Text = "Manage Companies";
             btnManageCompanies.UseVisualStyleBackColor = true;
             // 
-            // btnViewReports
+            // btnViewReport
             // 
-            btnViewReports.Location = new Point(292, 582);
-            btnViewReports.Name = "btnViewReports";
-            btnViewReports.Size = new Size(154, 34);
-            btnViewReports.TabIndex = 9;
-            btnViewReports.Text = "View Reports";
-            btnViewReports.UseVisualStyleBackColor = true;
-            btnViewReports.Click += btnViewReports_Click;
+            btnViewReport.Location = new Point(292, 582);
+            btnViewReport.Name = "btnViewReport";
+            btnViewReport.Size = new Size(154, 34);
+            btnViewReport.TabIndex = 9;
+            btnViewReport.Text = "View Reports";
+            btnViewReport.UseVisualStyleBackColor = true;
+            btnViewReport.Click += btnViewReports_Click;
             // 
             // frmAdminMain
             // 
             AutoScaleDimensions = new SizeF(11F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1020, 628);
-            Controls.Add(btnViewReports);
+            Controls.Add(btnViewReport);
             Controls.Add(btnManageCompanies);
             Controls.Add(btnLogout);
-            Controls.Add(btnViewUsers);
+            Controls.Add(btnManageUsers);
             Controls.Add(dgvUsers);
             Controls.Add(lblTitle);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -119,9 +118,9 @@
 
         private Label lblTitle;
         private DataGridView dgvUsers;
-        private Button btnViewUsers;
+        private Button btnManageUsers;
         private Button btnLogout;
         private Button btnManageCompanies;
-        private Button btnViewReports;
+        private Button btnViewReport;
     }
 }

@@ -7,17 +7,16 @@ namespace InternshipTrackerSystem.Forms.Admin
 {
     public partial class frmViewReports : Form
     {
-        private string connectionString;
+        private string connectionString = @"Server=localhost\SQLEXPRESS;Database=InternshipTracker;Trusted_Connection=True;";
 
-        public frmViewReports(string connStr)
+        public frmViewReports()
         {
             InitializeComponent();
-            connectionString = connStr;
         }
 
         private void frmViewReports_Load(object sender, EventArgs e)
         {
-            lblReportsTitle.Text = "View Reports";
+            lblReportsTitle.Text = "Reports";
             LoadReports();
         }
 
@@ -27,15 +26,13 @@ namespace InternshipTrackerSystem.Forms.Admin
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    // 使用视图 vw_AllStudents / vw_AllCompaniesWithPositions / vw_AllApplications
-                    DataTable report = new DataTable();
+                    string query = "SELECT * FROM vw_ApplicationStatistics";
 
-                    // 示例：统计学生总数
-                    string studentQuery = "SELECT COUNT(*) AS TotalStudents FROM Students";
-                    SqlDataAdapter da = new SqlDataAdapter(studentQuery, conn);
-                    da.Fill(report);
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                    dgvReports.DataSource = report;
+                    dgvReports.DataSource = dt;
                 }
             }
             catch (Exception ex)
