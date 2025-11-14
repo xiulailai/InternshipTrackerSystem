@@ -1,6 +1,4 @@
-﻿using assignment_student;
-using InternshipTrackerSystem.Forms.Admin;
-using InternshipTrackerSystem.Forms.CompanyHR;
+﻿using InternshipTrackerSystem.Forms.CompanyHR;
 using InternshipTrackerSystem.Forms.Student_Lai;
 using InternshipTrackerSystem.Forms.Supervisor;
 using System;
@@ -63,13 +61,6 @@ namespace InternshipTrackerSystem.Forms
                     frmHrMain hrForm = new frmHrMain(userID);
                     hrForm.ShowDialog();
                 }
-                else if (role == "Admin")
-                {
-                    this.Hide();
-                    frmAdminMain adminForm = new frmAdminMain();
-                    adminForm.ShowDialog();
-                }
-
                 this.Hide(); // hide login form
             }
             else
