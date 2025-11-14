@@ -58,7 +58,7 @@
             dgvInterns.Name = "dgvInterns";
             dgvInterns.ReadOnly = true;
             dgvInterns.RowHeadersWidth = 51;
-            dgvInterns.Size = new Size(553, 188);
+            dgvInterns.Size = new Size(820, 188);
             dgvInterns.TabIndex = 0;
             dgvInterns.CellFormatting += dgvInterns_CellFormatting;
             dgvInterns.SelectionChanged += dgvInterns_SelectionChanged;
@@ -146,7 +146,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(617, 353);
+            ClientSize = new Size(882, 353);
             Controls.Add(lblStatus);
             Controls.Add(btnRefresh);
             Controls.Add(label1);
