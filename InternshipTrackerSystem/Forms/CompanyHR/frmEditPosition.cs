@@ -262,28 +262,31 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     return;
                 }
 
-                // Get values
-                string title = txtTitle.Text.Trim();
-                string description = txtDescription.Text.Trim();
-                string requirements = txtRequirements.Text.Trim();
-                string location = txtLocation.Text.Trim();
-                int duration = (int)numDuration.Value;
-                string stipend = txtStipend.Text.Trim();
-                DateTime startDate = dtpStartDate.Value;
-                DateTime endDate = dtpEndDate.Value;
-                DateTime applicationDeadline = dtpApplicationDeadline.Value;
-                int availableSlots = (int)numAvailableSlots.Value;
-                string status = cboStatus.SelectedItem.ToString();
+                // Create updated position model from form inputs
+                InternshipPositionModel updatedPosition = new InternshipPositionModel
+                {
+                    Title = txtTitle.Text.Trim(),
+                    Description = txtDescription.Text.Trim(),
+                    Requirements = txtRequirements.Text.Trim(),
+                    Location = txtLocation.Text.Trim(),
+                    Duration = (int)numDuration.Value,
+                    Stipend = txtStipend.Text.Trim(),
+                    StartDate = dtpStartDate.Value,
+                    EndDate = dtpEndDate.Value,
+                    ApplicationDeadline = dtpApplicationDeadline.Value,
+                    AvailableSlots = (int)numAvailableSlots.Value,
+                    Status = cboStatus.SelectedItem.ToString()
+                };
 
                 // Confirm update
                 DialogResult confirmResult = MessageBox.Show(
                     $"Update position:\n\n" +
-                    $"Title: {title}\n" +
-                    $"Location: {location}\n" +
-                    $"Duration: {duration} weeks\n" +
-                    $"Stipend: {stipend}\n" +
-                    $"Available Slots: {availableSlots}\n" +
-                    $"Status: {status}\n\n" +
+                    $"Title: {updatedPosition.Title}\n" +
+                    $"Location: {updatedPosition.Location}\n" +
+                    $"Duration: {updatedPosition.Duration} weeks\n" +
+                    $"Stipend: {updatedPosition.Stipend}\n" +
+                    $"Available Slots: {updatedPosition.AvailableSlots}\n" +
+                    $"Status: {updatedPosition.Status}\n\n" +
                     $"Are you sure you want to update this position?",
                     "Confirm Update",
                     MessageBoxButtons.YesNo,
@@ -295,8 +298,8 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
                     btnUpdate.Enabled = false;
                     Cursor = Cursors.WaitCursor;
 
-                    // Call the method to update position with new parameters
-                    bool success = CompanyHRClass.UpdatePosition(positionId, title, description, requirements, location, duration, stipend, startDate, endDate, applicationDeadline, availableSlots, status);
+                    // Call the method to update position with model
+                    bool success = CompanyHRClass.UpdatePosition(positionId, updatedPosition);
 
                     Cursor = Cursors.Default;
                     btnUpdate.Enabled = true;
