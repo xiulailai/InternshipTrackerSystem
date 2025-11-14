@@ -179,7 +179,7 @@ namespace InternshipTrackerSystem.Data
             }
         }
 
-        // Submit a report with file upload
+        //Submit a report with file upload
         public static bool SubmitReport(int applicationId, int studentId, string reportType, byte[] fileData, string fileName)
         {
             string query = @"
@@ -208,5 +208,6 @@ namespace InternshipTrackerSystem.Data
                 return false;
             }
         }
+        
     }
 }
