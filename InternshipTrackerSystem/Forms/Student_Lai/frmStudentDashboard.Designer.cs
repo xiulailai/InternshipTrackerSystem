@@ -42,6 +42,7 @@
             btnMyApplications = new Button();
             btnMyReports = new Button();
             btnEvaluations = new Button();
+            btnSubmission = new Button();
             SuspendLayout();
             // 
             // lblTitle
@@ -169,6 +170,7 @@
             btnSearchInternships.TabIndex = 10;
             btnSearchInternships.Text = "Search Internships";
             btnSearchInternships.UseVisualStyleBackColor = true;
+            btnSearchInternships.Click += btnSearchInternships_Click;
             // 
             // btnMyApplications
             // 
@@ -180,6 +182,7 @@
             btnMyApplications.TabIndex = 11;
             btnMyApplications.Text = "My Applications";
             btnMyApplications.UseVisualStyleBackColor = true;
+            btnMyApplications.Click += btnMyApplications_Click;
             // 
             // btnMyReports
             // 
@@ -191,6 +194,7 @@
             btnMyReports.TabIndex = 12;
             btnMyReports.Text = "My Reports";
             btnMyReports.UseVisualStyleBackColor = true;
+            btnMyReports.Click += btnMyReports_Click;
             // 
             // btnEvaluations
             // 
@@ -198,16 +202,28 @@
             btnEvaluations.Location = new Point(267, 354);
             btnEvaluations.Margin = new Padding(4, 5, 4, 5);
             btnEvaluations.Name = "btnEvaluations";
-            btnEvaluations.Size = new Size(200, 62);
+            btnEvaluations.Size = new Size(240, 62);
             btnEvaluations.TabIndex = 13;
             btnEvaluations.Text = "Evaluations";
             btnEvaluations.UseVisualStyleBackColor = true;
+            btnEvaluations.Click += btnEvaluations_Click;
+            // 
+            // btnSubmission
+            // 
+            btnSubmission.Location = new Point(533, 354);
+            btnSubmission.Name = "btnSubmission";
+            btnSubmission.Size = new Size(213, 62);
+            btnSubmission.TabIndex = 14;
+            btnSubmission.Text = "Submit Applications";
+            btnSubmission.UseVisualStyleBackColor = true;
+            btnSubmission.Click += btnSubmission_Click;
             // 
             // frmStudentDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1067, 492);
+            Controls.Add(btnSubmission);
             Controls.Add(btnEvaluations);
             Controls.Add(btnMyReports);
             Controls.Add(btnMyApplications);
@@ -226,6 +242,7 @@
             Name = "frmStudentDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Student Dashboard";
+            FormClosed += frmStudentDashboard_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -244,6 +261,7 @@
         private System.Windows.Forms.Button btnMyApplications;
         private System.Windows.Forms.Button btnMyReports;
         private System.Windows.Forms.Button btnEvaluations;
+        private Button btnSubmission;
     }
 
     #endregion

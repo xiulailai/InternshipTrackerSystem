@@ -54,7 +54,7 @@ namespace InternshipTrackerSystem.Forms
                 else if (role == "Student")
                 {
                     this.Hide();
-                    frmStudentDashboard studentForm = new frmStudentDashboard();
+                    frmStudentDashboard studentForm = new frmStudentDashboard(userID);
                     studentForm.ShowDialog();
                 }
                 else if (role == "CompanyHR")
