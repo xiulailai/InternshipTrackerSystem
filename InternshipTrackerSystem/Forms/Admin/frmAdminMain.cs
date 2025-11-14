@@ -12,6 +12,9 @@ namespace InternshipTrackerSystem.Forms.Admin
 {
     public partial class frmAdminMain : Form
     {
+        // 数据库连接字符串
+        private string connectionString = @"Server=localhost\SQLEXPRESS;Database=InternshipDB;Trusted_Connection=True";
+
         public frmAdminMain()
         {
             InitializeComponent();
@@ -24,43 +27,20 @@ namespace InternshipTrackerSystem.Forms.Admin
 
         private void btnViewUsers_Click(object sender, EventArgs e)
         {
-            frmManageUsers form = new frmManageUsers();
-            form.Show();
-        }
-
-        private void btnAddUser_Click(object sender, EventArgs e)
-        {
-            frmManageUsers form = new frmManageUsers();
-            form.Show();
-        }
-
-        private void btnDeleteUser_Click(object sender, EventArgs e)
-        {
-            frmManageUsers form = new frmManageUsers();
+            frmManageUsers form = new frmManageUsers(@"Server=localhost\SQLEXPRESS;Database=InternshipDB;Trusted_Connection=True");
             form.Show();
         }
 
         private void btnManageCompanies_Click(object sender, EventArgs e)
         {
-            frmManageCompanies form = new frmManageCompanies();
+            frmManageCompanies form = new frmManageCompanies(@"Server=localhost\SQLEXPRESS;Database=InternshipDB;Trusted_Connection=True");
             form.Show();
         }
 
         private void btnViewReports_Click(object sender, EventArgs e)
         {
-            frmViewReports form = new frmViewReports();
+            frmViewReports form = new frmViewReports(@"Server=localhost\SQLEXPRESS;Database=InternshipDB;Trusted_Connection=True");
             form.Show();
-        }
-
-        private void btnGenerateReport_Click(object sender, EventArgs e)
-        {
-            frmViewReports form = new frmViewReports();
-            form.Show();
-        }
-
-        private void btnResetPassword_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Reset Password clicked - feature not implemented yet.");
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -68,7 +48,6 @@ namespace InternshipTrackerSystem.Forms.Admin
             MessageBox.Show("Logging out...");
             this.Close();
         }
-
 
     }
 }

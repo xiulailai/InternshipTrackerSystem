@@ -64,7 +64,7 @@
             btnViewUsers.TabIndex = 2;
             btnViewUsers.Text = "View Users";
             btnViewUsers.UseVisualStyleBackColor = true;
-            btnViewUsers.Click += btnViewUsers_Click;
+
             // 
             // btnLogout
             // 

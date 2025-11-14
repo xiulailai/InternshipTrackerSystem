@@ -1,49 +1,57 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace InternshipTrackerSystem.Forms.Admin
 {
     public partial class frmViewReports : Form
     {
-        public frmViewReports()
+        private string connectionString;
+
+        public frmViewReports(string connStr)
         {
             InitializeComponent();
+            connectionString = connStr;
         }
 
         private void frmViewReports_Load(object sender, EventArgs e)
         {
             lblReportsTitle.Text = "View Reports";
+            LoadReports();
+        }
 
-            // Create demo table (no database yet)
-            var table = new System.Data.DataTable();
-            table.Columns.Add("Category");
-            table.Columns.Add("Count");
+        private void LoadReports()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    // 使用视图 vw_AllStudents / vw_AllCompaniesWithPositions / vw_AllApplications
+                    DataTable report = new DataTable();
 
-            table.Rows.Add("Total Students", "120");
-            table.Rows.Add("Total Companies", "35");
-            table.Rows.Add("Total Applications", "210");
-            table.Rows.Add("Approved Applications", "180");
+                    // 示例：统计学生总数
+                    string studentQuery = "SELECT COUNT(*) AS TotalStudents FROM Students";
+                    SqlDataAdapter da = new SqlDataAdapter(studentQuery, conn);
+                    da.Fill(report);
 
-            dgvReports.DataSource = table;
+                    dgvReports.DataSource = report;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading reports: " + ex.Message);
+            }
         }
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Report generated (demo only).");
-            // TODO: Generate actual report from database
         }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Exported to CSV (demo only).");
-            // TODO: Export logic when database available
         }
 
         private void btnBack_Click(object sender, EventArgs e)
