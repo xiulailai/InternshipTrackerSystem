@@ -14,7 +14,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Forms\Student_Lai\" />
 	  <Folder Include="Forms\Student_Wilson\" />
 	</ItemGroup>
 

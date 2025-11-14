@@ -1,5 +1,8 @@
-﻿using InternshipTrackerSystem.Forms.Supervisor;
+﻿using assignment_student;
+using InternshipTrackerSystem.Forms.Admin;
 using InternshipTrackerSystem.Forms.CompanyHR;
+using InternshipTrackerSystem.Forms.Student_Lai;
+using InternshipTrackerSystem.Forms.Supervisor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using InternshipTrackerSystem.Forms.Admin;
-using assignment_student;
 
 namespace InternshipTrackerSystem.Forms
 {
@@ -53,7 +54,7 @@ namespace InternshipTrackerSystem.Forms
                 else if (role == "Student")
                 {
                     this.Hide();
-                    frmHomePage studentForm = new frmHomePage();
+                    frmStudentDashboard studentForm = new frmStudentDashboard();
                     studentForm.ShowDialog();
                 }
                 else if (role == "CompanyHR")
