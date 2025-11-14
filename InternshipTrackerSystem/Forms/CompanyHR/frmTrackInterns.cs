@@ -17,7 +17,7 @@ namespace InternshipTrackerSystem.Forms.CompanyHR
             InitializeComponent();
             _companyId = companyId;
 
-            // If you did NOT add columns in the designer, build them now:
+            
             BuildGridColumns();
 
             // wire events
