@@ -86,7 +86,7 @@
             txtPosition.Margin = new Padding(4, 5, 4, 5);
             txtPosition.Name = "txtPosition";
             txtPosition.ReadOnly = true;
-            txtPosition.Size = new Size(799, 30);
+            txtPosition.Size = new Size(499, 30);
             txtPosition.TabIndex = 2;
             // 
             // lblCompany
@@ -298,14 +298,14 @@
             txtDescription.Name = "txtDescription";
             txtDescription.ReadOnly = true;
             txtDescription.ScrollBars = ScrollBars.Vertical;
-            txtDescription.Size = new Size(959, 182);
+            txtDescription.Size = new Size(959, 120);
             txtDescription.TabIndex = 22;
             // 
             // lblCoverLetter
             // 
             lblCoverLetter.AutoSize = true;
             lblCoverLetter.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblCoverLetter.Location = new Point(40, 862);
+            lblCoverLetter.Location = new Point(40, 800);
             lblCoverLetter.Margin = new Padding(4, 0, 4, 0);
             lblCoverLetter.Name = "lblCoverLetter";
             lblCoverLetter.Size = new Size(115, 23);
@@ -315,12 +315,12 @@
             // txtCoverLetter
             // 
             txtCoverLetter.Font = new Font("Segoe UI", 9F);
-            txtCoverLetter.Location = new Point(40, 900);
+            txtCoverLetter.Location = new Point(40, 830);
             txtCoverLetter.Margin = new Padding(4, 5, 4, 5);
             txtCoverLetter.Multiline = true;
             txtCoverLetter.Name = "txtCoverLetter";
             txtCoverLetter.ScrollBars = ScrollBars.Vertical;
-            txtCoverLetter.Size = new Size(959, 152);
+            txtCoverLetter.Size = new Size(959, 80);
             txtCoverLetter.TabIndex = 24;
             // 
             // btnApply
@@ -350,7 +350,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1045, 1055);
+            ClientSize = new Size(1045, 953);
             Controls.Add(btnBack);
             Controls.Add(btnApply);
             Controls.Add(txtCoverLetter);

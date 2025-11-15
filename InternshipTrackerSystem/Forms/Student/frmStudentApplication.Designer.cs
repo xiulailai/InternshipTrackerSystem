@@ -100,7 +100,7 @@
             dgvApplications.RowHeadersVisible = false;
             dgvApplications.RowHeadersWidth = 51;
             dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvApplications.Size = new Size(1227, 646);
+            dgvApplications.Size = new Size(1227, 500);
             dgvApplications.TabIndex = 4;
             // 
             // colTitle
@@ -145,7 +145,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1312, 863);
+            ClientSize = new Size(1312, 733);
             Controls.Add(dgvApplications);
             Controls.Add(btnRefresh);
             Controls.Add(cmbFilterStatus);

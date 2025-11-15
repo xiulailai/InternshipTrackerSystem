@@ -48,10 +48,10 @@
             // lblTitle
             // 
             lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitle.Location = new Point(16, 14);
+            lblTitle.Location = new Point(13, 14);
             lblTitle.Margin = new Padding(4, 0, 4, 0);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(1035, 62);
+            lblTitle.Size = new Size(721, 62);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "STUDENT DASHBOARD";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
@@ -86,14 +86,14 @@
             lblPending.Location = new Point(373, 108);
             lblPending.Margin = new Padding(4, 0, 4, 0);
             lblPending.Name = "lblPending";
-            lblPending.Size = new Size(76, 23);
+            lblPending.Size = new Size(167, 23);
             lblPending.TabIndex = 3;
-            lblPending.Text = "Pending:";
+            lblPending.Text = "Pending Application:";
             // 
             // txtPending
             // 
             txtPending.Font = new Font("Segoe UI", 10F);
-            txtPending.Location = new Point(468, 103);
+            txtPending.Location = new Point(559, 103);
             txtPending.Margin = new Padding(4, 5, 4, 5);
             txtPending.Name = "txtPending";
             txtPending.ReadOnly = true;
@@ -151,7 +151,7 @@
             // btnViewProfile
             // 
             btnViewProfile.Font = new Font("Segoe UI", 10F);
-            btnViewProfile.Location = new Point(40, 262);
+            btnViewProfile.Location = new Point(40, 240);
             btnViewProfile.Margin = new Padding(4, 5, 4, 5);
             btnViewProfile.Name = "btnViewProfile";
             btnViewProfile.Size = new Size(200, 62);
@@ -163,10 +163,10 @@
             // btnSearchInternships
             // 
             btnSearchInternships.Font = new Font("Segoe UI", 10F);
-            btnSearchInternships.Location = new Point(267, 262);
+            btnSearchInternships.Location = new Point(270, 240);
             btnSearchInternships.Margin = new Padding(4, 5, 4, 5);
             btnSearchInternships.Name = "btnSearchInternships";
-            btnSearchInternships.Size = new Size(240, 62);
+            btnSearchInternships.Size = new Size(200, 62);
             btnSearchInternships.TabIndex = 10;
             btnSearchInternships.Text = "Search Internships";
             btnSearchInternships.UseVisualStyleBackColor = true;
@@ -175,10 +175,10 @@
             // btnMyApplications
             // 
             btnMyApplications.Font = new Font("Segoe UI", 10F);
-            btnMyApplications.Location = new Point(533, 262);
+            btnMyApplications.Location = new Point(500, 240);
             btnMyApplications.Margin = new Padding(4, 5, 4, 5);
             btnMyApplications.Name = "btnMyApplications";
-            btnMyApplications.Size = new Size(213, 62);
+            btnMyApplications.Size = new Size(200, 62);
             btnMyApplications.TabIndex = 11;
             btnMyApplications.Text = "My Applications";
             btnMyApplications.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             // btnMyReports
             // 
             btnMyReports.Font = new Font("Segoe UI", 10F);
-            btnMyReports.Location = new Point(40, 354);
+            btnMyReports.Location = new Point(40, 320);
             btnMyReports.Margin = new Padding(4, 5, 4, 5);
             btnMyReports.Name = "btnMyReports";
             btnMyReports.Size = new Size(200, 62);
@@ -199,10 +199,10 @@
             // btnEvaluations
             // 
             btnEvaluations.Font = new Font("Segoe UI", 10F);
-            btnEvaluations.Location = new Point(267, 354);
+            btnEvaluations.Location = new Point(270, 320);
             btnEvaluations.Margin = new Padding(4, 5, 4, 5);
             btnEvaluations.Name = "btnEvaluations";
-            btnEvaluations.Size = new Size(240, 62);
+            btnEvaluations.Size = new Size(200, 62);
             btnEvaluations.TabIndex = 13;
             btnEvaluations.Text = "Evaluations";
             btnEvaluations.UseVisualStyleBackColor = true;
@@ -210,9 +210,9 @@
             // 
             // btnSubmission
             // 
-            btnSubmission.Location = new Point(533, 354);
+            btnSubmission.Location = new Point(500, 320);
             btnSubmission.Name = "btnSubmission";
-            btnSubmission.Size = new Size(213, 62);
+            btnSubmission.Size = new Size(200, 62);
             btnSubmission.TabIndex = 14;
             btnSubmission.Text = "Submit Applications";
             btnSubmission.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1067, 492);
+            ClientSize = new Size(747, 403);
             Controls.Add(btnSubmission);
             Controls.Add(btnEvaluations);
             Controls.Add(btnMyReports);
