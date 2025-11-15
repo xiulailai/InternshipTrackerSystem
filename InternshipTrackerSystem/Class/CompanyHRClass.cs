@@ -638,5 +638,123 @@ namespace InternshipTrackerSystem.Class
                 throw new Exception($"Error updating application status: {ex.Message}");
             }
         }
+        public static CompanyModel GetCompanyById(int companyId)
+        {
+            try
+            {
+                const string sql = @"SELECT CompanyID,
+                                       CompanyName,
+                                       Industry,
+                                       Location,
+                                       ContactEmail,
+                                       ContactPhone,
+                                       Description,
+                                       Website,
+                                       IsActive,
+                                       CreatedDate
+                                FROM dbo.Companies
+                                WHERE CompanyID = @CompanyID;";
+
+                var p = new Dictionary<string, object>
+        {
+            { "@CompanyID", companyId }
+        };
+
+                var dt = DatabaseHelper.ExecuteQuery(sql, p);
+                if (dt.Rows.Count == 0)
+                    return null;
+
+                var r = dt.Rows[0];
+
+                return new CompanyModel
+                {
+                    CompanyId = companyId,
+                    CompanyName = r["CompanyName"] as string,
+                    Industry = r["Industry"] as string,
+                    Location = r["Location"] as string,
+                    ContactEmail = r["ContactEmail"] as string,
+                    ContactPhone = r["ContactPhone"] as string,
+                    Description = r["Description"] as string,
+                    Website = r["Website"] as string,
+                    IsActive = r["IsActive"] != DBNull.Value && Convert.ToBoolean(r["IsActive"]),
+                    CreatedDate = r["CreatedDate"] == DBNull.Value
+                                    ? DateTime.MinValue
+                                    : Convert.ToDateTime(r["CreatedDate"])
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error fetching company by ID: {ex.Message}");
+            }
+        }
+
+        public static bool UpdateCompanyProfile(CompanyModel company)
+        {
+            const string sql = @"UPDATE dbo.Companies
+                               SET CompanyName  = @CompanyName,
+                                 Industry     = @Industry,
+                                 Location     = @Location,
+                                 ContactEmail = @ContactEmail,
+                                 ContactPhone = @ContactPhone,
+                                 Website      = @Website,
+                                 Description  = @Description
+                               WHERE CompanyID  = @CompanyID;";
+
+            var p = new Dictionary<string, object>
+    {
+        { "@CompanyID",   company.CompanyId },
+        { "@CompanyName", (object)(company.CompanyName ?? (object)DBNull.Value) },
+        { "@Industry",    (object)(company.Industry ?? (object)DBNull.Value) },
+        { "@Location",    (object)(company.Location ?? (object)DBNull.Value) },
+        { "@ContactEmail",(object)(company.ContactEmail ?? (object)DBNull.Value) },
+        { "@ContactPhone",(object)(company.ContactPhone ?? (object)DBNull.Value) },
+        { "@Website",     (object)(company.Website ?? (object)DBNull.Value) },
+        { "@Description", (object)(company.Description ?? (object)DBNull.Value) },
+    };
+
+            var rows = DatabaseHelper.ExecuteNonQuery(sql, p);
+            return rows > 0;
+        }
+        public static DataTable GetInternsForHR(int companyId, string statusFilter, string searchText)
+        {
+            string status = string.IsNullOrWhiteSpace(statusFilter) ? "All" : statusFilter.Trim();
+            string search = (searchText ?? string.Empty).Trim();
+
+           
+             const string sql = @"  SELECT i.InternshipID,s.FullName AS StudentName,s.StudentIDNumber AS StudentIDNumber,s.Program AS Program,ip.Title AS PositionTitle,
+                                    i.Status AS Status,i.StartDate AS StartDate,i.EndDate AS EndDate,ISNULL(sup.FullName, '') AS SupervisorName
+                                    FROM Internships i
+                                    JOIN Applications a          ON i.ApplicationID = a.ApplicationID
+                                    JOIN InternshipPositions ip  ON a.PositionID   = ip.PositionID
+                                    JOIN Students s              ON i.StudentID    = s.StudentID
+                                    LEFT JOIN Supervisors sup    ON i.SupervisorID = sup.SupervisorID
+                                    WHERE 
+                                        i.CompanyID = @companyId
+                                        AND (@status = 'All' OR i.Status = @status)
+                                        AND (
+                                                @q = '' 
+                                                OR s.FullName        LIKE @like 
+                                                OR s.StudentIDNumber LIKE @like
+                                                OR ip.Title          LIKE @like
+                                            )
+                                    ORDER BY 
+                                        CASE i.Status 
+                                            WHEN 'Ongoing'  THEN 0 
+                                            WHEN 'Completed' THEN 1 
+                                            ELSE 2 
+                                        END,
+                                        i.StartDate DESC;";
+
+            var p = new Dictionary<string, object>
+    {
+        { "@companyId", companyId },
+        { "@status",    status },
+        { "@q",         search },
+        { "@like",      $"%{search}%" }
+    };
+
+            return DatabaseHelper.ExecuteQuery(sql, p);
+        }
+
     }
 }
