@@ -161,7 +161,7 @@ namespace InternshipTrackerSystem.Forms.Supervisor
                     Name = "ReportType",
                     DataPropertyName = "ReportType",
                     HeaderText = "Report Type",
-                    Width = 90,
+                    Width = 100,
                     FillWeight = 13
                 });
 
