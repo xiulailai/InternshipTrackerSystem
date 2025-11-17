@@ -72,7 +72,7 @@
             // 
             lblPosition.AutoSize = true;
             lblPosition.Font = new Font("Segoe UI", 10F);
-            lblPosition.Location = new Point(40, 108);
+            lblPosition.Location = new Point(38, 86);
             lblPosition.Margin = new Padding(4, 0, 4, 0);
             lblPosition.Name = "lblPosition";
             lblPosition.Size = new Size(46, 23);
@@ -82,7 +82,7 @@
             // txtPosition
             // 
             txtPosition.Font = new Font("Segoe UI", 10F);
-            txtPosition.Location = new Point(200, 103);
+            txtPosition.Location = new Point(198, 81);
             txtPosition.Margin = new Padding(4, 5, 4, 5);
             txtPosition.Name = "txtPosition";
             txtPosition.ReadOnly = true;
@@ -93,7 +93,7 @@
             // 
             lblCompany.AutoSize = true;
             lblCompany.Font = new Font("Segoe UI", 10F);
-            lblCompany.Location = new Point(40, 162);
+            lblCompany.Location = new Point(38, 140);
             lblCompany.Margin = new Padding(4, 0, 4, 0);
             lblCompany.Name = "lblCompany";
             lblCompany.Size = new Size(87, 23);
@@ -103,7 +103,7 @@
             // txtCompany
             // 
             txtCompany.Font = new Font("Segoe UI", 10F);
-            txtCompany.Location = new Point(200, 157);
+            txtCompany.Location = new Point(198, 135);
             txtCompany.Margin = new Padding(4, 5, 4, 5);
             txtCompany.Name = "txtCompany";
             txtCompany.ReadOnly = true;
@@ -114,7 +114,7 @@
             // 
             lblIndustry.AutoSize = true;
             lblIndustry.Font = new Font("Segoe UI", 10F);
-            lblIndustry.Location = new Point(40, 215);
+            lblIndustry.Location = new Point(38, 193);
             lblIndustry.Margin = new Padding(4, 0, 4, 0);
             lblIndustry.Name = "lblIndustry";
             lblIndustry.Size = new Size(76, 23);
@@ -124,7 +124,7 @@
             // txtIndustry
             // 
             txtIndustry.Font = new Font("Segoe UI", 10F);
-            txtIndustry.Location = new Point(200, 211);
+            txtIndustry.Location = new Point(198, 189);
             txtIndustry.Margin = new Padding(4, 5, 4, 5);
             txtIndustry.Name = "txtIndustry";
             txtIndustry.ReadOnly = true;
@@ -135,7 +135,7 @@
             // 
             lblLocation.AutoSize = true;
             lblLocation.Font = new Font("Segoe UI", 10F);
-            lblLocation.Location = new Point(40, 269);
+            lblLocation.Location = new Point(38, 247);
             lblLocation.Margin = new Padding(4, 0, 4, 0);
             lblLocation.Name = "lblLocation";
             lblLocation.Size = new Size(79, 23);
@@ -145,7 +145,7 @@
             // txtLocation
             // 
             txtLocation.Font = new Font("Segoe UI", 10F);
-            txtLocation.Location = new Point(200, 265);
+            txtLocation.Location = new Point(198, 243);
             txtLocation.Margin = new Padding(4, 5, 4, 5);
             txtLocation.Name = "txtLocation";
             txtLocation.ReadOnly = true;
@@ -156,7 +156,7 @@
             // 
             lblDuration.AutoSize = true;
             lblDuration.Font = new Font("Segoe UI", 10F);
-            lblDuration.Location = new Point(40, 323);
+            lblDuration.Location = new Point(38, 301);
             lblDuration.Margin = new Padding(4, 0, 4, 0);
             lblDuration.Name = "lblDuration";
             lblDuration.Size = new Size(81, 23);
@@ -166,7 +166,7 @@
             // txtDuration
             // 
             txtDuration.Font = new Font("Segoe UI", 10F);
-            txtDuration.Location = new Point(200, 318);
+            txtDuration.Location = new Point(198, 296);
             txtDuration.Margin = new Padding(4, 5, 4, 5);
             txtDuration.Name = "txtDuration";
             txtDuration.ReadOnly = true;
@@ -177,7 +177,7 @@
             // 
             lblStipend.AutoSize = true;
             lblStipend.Font = new Font("Segoe UI", 10F);
-            lblStipend.Location = new Point(40, 377);
+            lblStipend.Location = new Point(38, 355);
             lblStipend.Margin = new Padding(4, 0, 4, 0);
             lblStipend.Name = "lblStipend";
             lblStipend.Size = new Size(71, 23);
@@ -187,7 +187,7 @@
             // txtStipend
             // 
             txtStipend.Font = new Font("Segoe UI", 10F);
-            txtStipend.Location = new Point(200, 372);
+            txtStipend.Location = new Point(198, 350);
             txtStipend.Margin = new Padding(4, 5, 4, 5);
             txtStipend.Name = "txtStipend";
             txtStipend.ReadOnly = true;
@@ -198,7 +198,7 @@
             // 
             lblStartDate.AutoSize = true;
             lblStartDate.Font = new Font("Segoe UI", 10F);
-            lblStartDate.Location = new Point(40, 431);
+            lblStartDate.Location = new Point(38, 409);
             lblStartDate.Margin = new Padding(4, 0, 4, 0);
             lblStartDate.Name = "lblStartDate";
             lblStartDate.Size = new Size(95, 23);
@@ -208,7 +208,7 @@
             // txtStartDate
             // 
             txtStartDate.Font = new Font("Segoe UI", 10F);
-            txtStartDate.Location = new Point(200, 426);
+            txtStartDate.Location = new Point(198, 404);
             txtStartDate.Margin = new Padding(4, 5, 4, 5);
             txtStartDate.Name = "txtStartDate";
             txtStartDate.ReadOnly = true;
@@ -219,7 +219,7 @@
             // 
             lblEndDate.AutoSize = true;
             lblEndDate.Font = new Font("Segoe UI", 10F);
-            lblEndDate.Location = new Point(373, 431);
+            lblEndDate.Location = new Point(371, 409);
             lblEndDate.Margin = new Padding(4, 0, 4, 0);
             lblEndDate.Name = "lblEndDate";
             lblEndDate.Size = new Size(25, 23);
@@ -229,7 +229,7 @@
             // txtEndDate
             // 
             txtEndDate.Font = new Font("Segoe UI", 10F);
-            txtEndDate.Location = new Point(413, 426);
+            txtEndDate.Location = new Point(411, 404);
             txtEndDate.Margin = new Padding(4, 5, 4, 5);
             txtEndDate.Name = "txtEndDate";
             txtEndDate.ReadOnly = true;
@@ -240,7 +240,7 @@
             // 
             lblDeadline.AutoSize = true;
             lblDeadline.Font = new Font("Segoe UI", 10F);
-            lblDeadline.Location = new Point(40, 485);
+            lblDeadline.Location = new Point(38, 463);
             lblDeadline.Margin = new Padding(4, 0, 4, 0);
             lblDeadline.Name = "lblDeadline";
             lblDeadline.Size = new Size(81, 23);
@@ -250,7 +250,7 @@
             // txtDeadline
             // 
             txtDeadline.Font = new Font("Segoe UI", 10F);
-            txtDeadline.Location = new Point(200, 480);
+            txtDeadline.Location = new Point(198, 458);
             txtDeadline.Margin = new Padding(4, 5, 4, 5);
             txtDeadline.Name = "txtDeadline";
             txtDeadline.ReadOnly = true;
@@ -261,7 +261,7 @@
             // 
             lblSlots.AutoSize = true;
             lblSlots.Font = new Font("Segoe UI", 10F);
-            lblSlots.Location = new Point(40, 538);
+            lblSlots.Location = new Point(38, 516);
             lblSlots.Margin = new Padding(4, 0, 4, 0);
             lblSlots.Name = "lblSlots";
             lblSlots.Size = new Size(50, 23);
@@ -271,7 +271,7 @@
             // txtSlots
             // 
             txtSlots.Font = new Font("Segoe UI", 10F);
-            txtSlots.Location = new Point(200, 534);
+            txtSlots.Location = new Point(198, 512);
             txtSlots.Margin = new Padding(4, 5, 4, 5);
             txtSlots.Name = "txtSlots";
             txtSlots.ReadOnly = true;
@@ -282,17 +282,17 @@
             // 
             lblDescription.AutoSize = true;
             lblDescription.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblDescription.Location = new Point(40, 608);
+            lblDescription.Location = new Point(38, 568);
             lblDescription.Margin = new Padding(4, 0, 4, 0);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(228, 23);
+            lblDescription.Size = new Size(258, 23);
             lblDescription.TabIndex = 21;
-            lblDescription.Text = "Description & Requirements:";
+            lblDescription.Text = "Description and Requirements:";
             // 
             // txtDescription
             // 
             txtDescription.Font = new Font("Segoe UI", 9F);
-            txtDescription.Location = new Point(40, 646);
+            txtDescription.Location = new Point(38, 600);
             txtDescription.Margin = new Padding(4, 5, 4, 5);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
@@ -305,7 +305,7 @@
             // 
             lblCoverLetter.AutoSize = true;
             lblCoverLetter.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblCoverLetter.Location = new Point(40, 800);
+            lblCoverLetter.Location = new Point(38, 740);
             lblCoverLetter.Margin = new Padding(4, 0, 4, 0);
             lblCoverLetter.Name = "lblCoverLetter";
             lblCoverLetter.Size = new Size(115, 23);
@@ -315,7 +315,7 @@
             // txtCoverLetter
             // 
             txtCoverLetter.Font = new Font("Segoe UI", 9F);
-            txtCoverLetter.Location = new Point(40, 830);
+            txtCoverLetter.Location = new Point(38, 770);
             txtCoverLetter.Margin = new Padding(4, 5, 4, 5);
             txtCoverLetter.Multiline = true;
             txtCoverLetter.Name = "txtCoverLetter";
@@ -326,7 +326,7 @@
             // btnApply
             // 
             btnApply.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnApply.Location = new Point(333, 1092);
+            btnApply.Location = new Point(331, 865);
             btnApply.Margin = new Padding(4, 5, 4, 5);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(200, 69);
@@ -337,7 +337,7 @@
             // btnBack
             // 
             btnBack.Font = new Font("Segoe UI", 10F);
-            btnBack.Location = new Point(573, 1092);
+            btnBack.Location = new Point(571, 865);
             btnBack.Margin = new Padding(4, 5, 4, 5);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(133, 69);

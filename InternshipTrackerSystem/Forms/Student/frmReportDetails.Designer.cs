@@ -69,7 +69,7 @@
             // 
             lblReportID.AutoSize = true;
             lblReportID.Font = new Font("Segoe UI", 10F);
-            lblReportID.Location = new Point(40, 108);
+            lblReportID.Location = new Point(45, 86);
             lblReportID.Margin = new Padding(4, 0, 4, 0);
             lblReportID.Name = "lblReportID";
             lblReportID.Size = new Size(87, 23);
@@ -79,7 +79,7 @@
             // txtReportID
             // 
             txtReportID.Font = new Font("Segoe UI", 10F);
-            txtReportID.Location = new Point(240, 103);
+            txtReportID.Location = new Point(245, 81);
             txtReportID.Margin = new Padding(4, 5, 4, 5);
             txtReportID.Name = "txtReportID";
             txtReportID.ReadOnly = true;
@@ -90,7 +90,7 @@
             // 
             lblInternship.AutoSize = true;
             lblInternship.Font = new Font("Segoe UI", 10F);
-            lblInternship.Location = new Point(40, 169);
+            lblInternship.Location = new Point(45, 147);
             lblInternship.Margin = new Padding(4, 0, 4, 0);
             lblInternship.Name = "lblInternship";
             lblInternship.Size = new Size(91, 23);
@@ -100,7 +100,7 @@
             // txtInternship
             // 
             txtInternship.Font = new Font("Segoe UI", 10F);
-            txtInternship.Location = new Point(240, 165);
+            txtInternship.Location = new Point(245, 143);
             txtInternship.Margin = new Padding(4, 5, 4, 5);
             txtInternship.Name = "txtInternship";
             txtInternship.ReadOnly = true;
@@ -111,7 +111,7 @@
             // 
             lblReportType.AutoSize = true;
             lblReportType.Font = new Font("Segoe UI", 10F);
-            lblReportType.Location = new Point(40, 231);
+            lblReportType.Location = new Point(45, 209);
             lblReportType.Margin = new Padding(4, 0, 4, 0);
             lblReportType.Name = "lblReportType";
             lblReportType.Size = new Size(105, 23);
@@ -121,7 +121,7 @@
             // txtReportType
             // 
             txtReportType.Font = new Font("Segoe UI", 10F);
-            txtReportType.Location = new Point(240, 226);
+            txtReportType.Location = new Point(245, 204);
             txtReportType.Margin = new Padding(4, 5, 4, 5);
             txtReportType.Name = "txtReportType";
             txtReportType.ReadOnly = true;
@@ -132,7 +132,7 @@
             // 
             lblSubmissionDate.AutoSize = true;
             lblSubmissionDate.Font = new Font("Segoe UI", 10F);
-            lblSubmissionDate.Location = new Point(40, 292);
+            lblSubmissionDate.Location = new Point(45, 270);
             lblSubmissionDate.Margin = new Padding(4, 0, 4, 0);
             lblSubmissionDate.Name = "lblSubmissionDate";
             lblSubmissionDate.Size = new Size(141, 23);
@@ -142,7 +142,7 @@
             // txtSubmissionDate
             // 
             txtSubmissionDate.Font = new Font("Segoe UI", 10F);
-            txtSubmissionDate.Location = new Point(240, 288);
+            txtSubmissionDate.Location = new Point(245, 266);
             txtSubmissionDate.Margin = new Padding(4, 5, 4, 5);
             txtSubmissionDate.Name = "txtSubmissionDate";
             txtSubmissionDate.ReadOnly = true;
@@ -153,7 +153,7 @@
             // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 10F);
-            lblStatus.Location = new Point(40, 354);
+            lblStatus.Location = new Point(45, 332);
             lblStatus.Margin = new Padding(4, 0, 4, 0);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(60, 23);
@@ -163,7 +163,7 @@
             // txtStatus
             // 
             txtStatus.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            txtStatus.Location = new Point(240, 349);
+            txtStatus.Location = new Point(245, 327);
             txtStatus.Margin = new Padding(4, 5, 4, 5);
             txtStatus.Name = "txtStatus";
             txtStatus.ReadOnly = true;
@@ -174,7 +174,7 @@
             // 
             lblFile.AutoSize = true;
             lblFile.Font = new Font("Segoe UI", 10F);
-            lblFile.Location = new Point(40, 415);
+            lblFile.Location = new Point(45, 393);
             lblFile.Margin = new Padding(4, 0, 4, 0);
             lblFile.Name = "lblFile";
             lblFile.Size = new Size(39, 23);
@@ -184,7 +184,7 @@
             // btnDownload
             // 
             btnDownload.Font = new Font("Segoe UI", 9F);
-            btnDownload.Location = new Point(240, 411);
+            btnDownload.Location = new Point(245, 389);
             btnDownload.Margin = new Padding(4, 5, 4, 5);
             btnDownload.Name = "btnDownload";
             btnDownload.Size = new Size(133, 43);
@@ -196,7 +196,7 @@
             // 
             lblContent.AutoSize = true;
             lblContent.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblContent.Location = new Point(40, 492);
+            lblContent.Location = new Point(45, 450);
             lblContent.Margin = new Padding(4, 0, 4, 0);
             lblContent.Name = "lblContent";
             lblContent.Size = new Size(79, 23);
@@ -206,13 +206,13 @@
             // txtContent
             // 
             txtContent.Font = new Font("Segoe UI", 9F);
-            txtContent.Location = new Point(40, 531);
+            txtContent.Location = new Point(45, 480);
             txtContent.Margin = new Padding(4, 5, 4, 5);
             txtContent.Multiline = true;
             txtContent.Name = "txtContent";
             txtContent.ReadOnly = true;
             txtContent.ScrollBars = ScrollBars.Vertical;
-            txtContent.Size = new Size(959, 229);
+            txtContent.Size = new Size(959, 100);
             txtContent.TabIndex = 14;
             // 
             // pnlResubmit
@@ -225,17 +225,17 @@
             pnlResubmit.Controls.Add(txtNewContent);
             pnlResubmit.Controls.Add(lblNewContent);
             pnlResubmit.Controls.Add(lblResubmitTitle);
-            pnlResubmit.Location = new Point(40, 800);
+            pnlResubmit.Location = new Point(45, 600);
             pnlResubmit.Margin = new Padding(4, 5, 4, 5);
             pnlResubmit.Name = "pnlResubmit";
-            pnlResubmit.Size = new Size(960, 508);
+            pnlResubmit.Size = new Size(960, 340);
             pnlResubmit.TabIndex = 15;
             pnlResubmit.Visible = false;
             // 
             // btnResubmit
             // 
             btnResubmit.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnResubmit.Location = new Point(373, 423);
+            btnResubmit.Location = new Point(373, 257);
             btnResubmit.Margin = new Padding(4, 5, 4, 5);
             btnResubmit.Name = "btnResubmit";
             btnResubmit.Size = new Size(200, 62);
@@ -246,7 +246,7 @@
             // btnChooseFile
             // 
             btnChooseFile.Font = new Font("Segoe UI", 9F);
-            btnChooseFile.Location = new Point(760, 354);
+            btnChooseFile.Location = new Point(760, 207);
             btnChooseFile.Margin = new Padding(4, 5, 4, 5);
             btnChooseFile.Name = "btnChooseFile";
             btnChooseFile.Size = new Size(160, 43);
@@ -257,7 +257,7 @@
             // txtNewFilePath
             // 
             txtNewFilePath.Font = new Font("Segoe UI", 9F);
-            txtNewFilePath.Location = new Point(200, 358);
+            txtNewFilePath.Location = new Point(200, 217);
             txtNewFilePath.Margin = new Padding(4, 5, 4, 5);
             txtNewFilePath.Name = "txtNewFilePath";
             txtNewFilePath.ReadOnly = true;
@@ -268,7 +268,7 @@
             // 
             lblNewFile.AutoSize = true;
             lblNewFile.Font = new Font("Segoe UI", 10F);
-            lblNewFile.Location = new Point(20, 362);
+            lblNewFile.Location = new Point(20, 217);
             lblNewFile.Margin = new Padding(4, 0, 4, 0);
             lblNewFile.Name = "lblNewFile";
             lblNewFile.Size = new Size(156, 23);
@@ -278,19 +278,19 @@
             // txtNewContent
             // 
             txtNewContent.Font = new Font("Segoe UI", 9F);
-            txtNewContent.Location = new Point(25, 123);
+            txtNewContent.Location = new Point(25, 95);
             txtNewContent.Margin = new Padding(4, 5, 4, 5);
             txtNewContent.Multiline = true;
             txtNewContent.Name = "txtNewContent";
             txtNewContent.ScrollBars = ScrollBars.Vertical;
-            txtNewContent.Size = new Size(905, 213);
+            txtNewContent.Size = new Size(905, 100);
             txtNewContent.TabIndex = 2;
             // 
             // lblNewContent
             // 
             lblNewContent.AutoSize = true;
             lblNewContent.Font = new Font("Segoe UI", 10F);
-            lblNewContent.Location = new Point(20, 85);
+            lblNewContent.Location = new Point(20, 65);
             lblNewContent.Margin = new Padding(4, 0, 4, 0);
             lblNewContent.Name = "lblNewContent";
             lblNewContent.Size = new Size(115, 23);
@@ -302,7 +302,7 @@
             lblResubmitTitle.AutoSize = true;
             lblResubmitTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblResubmitTitle.ForeColor = Color.FromArgb(192, 0, 0);
-            lblResubmitTitle.Location = new Point(20, 23);
+            lblResubmitTitle.Location = new Point(20, 20);
             lblResubmitTitle.Margin = new Padding(4, 0, 4, 0);
             lblResubmitTitle.Name = "lblResubmitTitle";
             lblResubmitTitle.Size = new Size(223, 28);
@@ -314,7 +314,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1045, 863);
+            ClientSize = new Size(1045, 953);
             Controls.Add(pnlResubmit);
             Controls.Add(txtContent);
             Controls.Add(lblContent);

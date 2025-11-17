@@ -117,14 +117,14 @@
             txtContent.Multiline = true;
             txtContent.Name = "txtContent";
             txtContent.ScrollBars = ScrollBars.Vertical;
-            txtContent.Size = new Size(932, 382);
+            txtContent.Size = new Size(932, 300);
             txtContent.TabIndex = 6;
             // 
             // lblAttachFile
             // 
             lblAttachFile.AutoSize = true;
             lblAttachFile.Font = new Font("Segoe UI", 10F);
-            lblAttachFile.Location = new Point(40, 708);
+            lblAttachFile.Location = new Point(39, 626);
             lblAttachFile.Margin = new Padding(4, 0, 4, 0);
             lblAttachFile.Name = "lblAttachFile";
             lblAttachFile.Size = new Size(94, 23);
@@ -134,7 +134,7 @@
             // txtFilePath
             // 
             txtFilePath.Font = new Font("Segoe UI", 10F);
-            txtFilePath.Location = new Point(173, 703);
+            txtFilePath.Location = new Point(172, 621);
             txtFilePath.Margin = new Padding(4, 5, 4, 5);
             txtFilePath.Name = "txtFilePath";
             txtFilePath.ReadOnly = true;
@@ -144,7 +144,7 @@
             // btnChooseFile
             // 
             btnChooseFile.Font = new Font("Segoe UI", 9F);
-            btnChooseFile.Location = new Point(813, 700);
+            btnChooseFile.Location = new Point(812, 618);
             btnChooseFile.Margin = new Padding(4, 5, 4, 5);
             btnChooseFile.Name = "btnChooseFile";
             btnChooseFile.Size = new Size(160, 43);
@@ -156,7 +156,7 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            btnSubmit.Location = new Point(400, 800);
+            btnSubmit.Location = new Point(400, 682);
             btnSubmit.Margin = new Padding(4, 5, 4, 5);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(240, 69);
@@ -181,7 +181,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1045, 909);
+            ClientSize = new Size(1012, 783);
             Controls.Add(btnSubmit);
             Controls.Add(btnChooseFile);
             Controls.Add(txtFilePath);

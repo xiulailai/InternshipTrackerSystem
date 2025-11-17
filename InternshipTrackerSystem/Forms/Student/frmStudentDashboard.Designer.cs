@@ -210,11 +210,12 @@
             // 
             // btnSubmission
             // 
+            btnSubmission.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSubmission.Location = new Point(500, 320);
             btnSubmission.Name = "btnSubmission";
             btnSubmission.Size = new Size(200, 62);
             btnSubmission.TabIndex = 14;
-            btnSubmission.Text = "Submit Applications";
+            btnSubmission.Text = "Submit Reports";
             btnSubmission.UseVisualStyleBackColor = true;
             btnSubmission.Click += btnSubmission_Click;
             // 
