@@ -2,7 +2,7 @@
 
 A Windows desktop application that manages the whole internship process between students, companies and university supervisors. Students search and apply for internships, company HR staff post positions and decide on applications, and supervisors follow each intern's reports and write evaluations.
 
-Built as a group project at Asia Pacific University (APU) with **C#, Windows Forms (.NET 8) and SQL Server**.
+Built as a group project (Group 10) for an Object-Oriented Programming (IOOP) assignment at Asia Pacific University (APU), with **C#, Windows Forms (.NET 8) and SQL Server**. The design shows the main OOP ideas: classes and objects, encapsulation (model classes), inheritance and a layered structure.
 
 ## Features
 
@@ -122,19 +122,17 @@ The sample data has 13 users, 5 students, 3 supervisors, 4 HR staff, 5 companies
 ## Known limitations
 
 - **Demo-level login.** Passwords are stored and compared as plain text. Hash them (for example with BCrypt) before any real use.
-- **No Admin screens yet.** An `Admin` role exists in the database, but the application has no Admin interface.
 - **Database script paths.** The script assumes the default SQL Server 2022 data folder (see above).
 
 ## Team
 
-Group project, Asia Pacific University (APU).
+Group 10, Object-Oriented Programming (IOOP) assignment, Asia Pacific University (APU).
 
 | Role area | Members |
 |---|---|
 | Company HR | [@2FoR1](https://github.com/2FoR1), [@Xylore9](https://github.com/Xylore9) |
 | Supervisor | [@xiulailai](https://github.com/xiulailai) |
-| Student | [@weishewng](https://github.com/weishewng), [@xiulailai](https://github.com/xiulailai) |
-| Admin | [@Bymys1de](https://github.com/Bymys1de), [@2FoR1](https://github.com/2FoR1), [@Xylore9](https://github.com/Xylore9) |
+| Student | [@weishewng](https://github.com/weishewng), [@xiulailai](https://github.com/xiulailai), [@Bymys1de](https://github.com/Bymys1de) |
 
 ## License
 
